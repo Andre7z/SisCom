@@ -5,16 +5,18 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@AllArgsConstructor
-@NoArgsConstructor
-@Data
 @Entity
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class Produto {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
@@ -23,11 +25,15 @@ public class Produto {
     private String nome;
 
     private Double preco;
-    private Double quantidade;
+    private Integer quantidade;
+
+    private Double valorUltimaVenda;
+    private Double valorUltimaCompra;
+    private Double precoMedio;
 
     @ManyToOne
+    @JoinColumn(name = "categoria_id")
     private Categoria categoria;
-
 }
 
 // private int id;
