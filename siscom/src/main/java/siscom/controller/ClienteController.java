@@ -1,5 +1,7 @@
 package siscom.controller;
 
+import java.util.List;
+
 import siscom.dao.ClienteDAO;
 import siscom.model.Cliente;
 
@@ -16,7 +18,14 @@ public class ClienteController {
     }
 
     public boolean excluir(int id) {
-
         return clienteDAO.excluir(id);
+    }
+
+    public Cliente pesquisar(int id) {
+        return clienteDAO.pesquisarPorId(id);
+    }
+
+    public List<Cliente> pesquisarTodos() {
+        return clienteDAO.pesquisar();
     }
 }

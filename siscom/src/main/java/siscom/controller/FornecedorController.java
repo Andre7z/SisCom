@@ -1,5 +1,7 @@
 package siscom.controller;
 
+import java.util.List;
+
 import siscom.dao.FornecedorDAO;
 import siscom.model.Fornecedor;
 
@@ -19,4 +21,11 @@ public class FornecedorController {
         return fornecedorDAO.excluir(id);
     }
 
+    public Fornecedor pesquisar(int id) {
+        return fornecedorDAO.pesquisarPorId(id);
+    }
+
+    public List<Fornecedor> pesquisarTodos() {
+        return fornecedorDAO.pesquisar();
+    }
 }
