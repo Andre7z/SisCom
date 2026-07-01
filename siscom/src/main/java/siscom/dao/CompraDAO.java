@@ -2,14 +2,12 @@ package siscom.dao;
 
 import siscom.model.Compra;
 
-import java.sql.Connection;
 import java.util.ArrayList;
 import java.util.List;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
 public class CompraDAO {
-    Connection conn = null;
 
     public boolean salvar(Compra compra){
         Transaction transaction = null;

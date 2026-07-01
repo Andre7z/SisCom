@@ -2,14 +2,12 @@ package siscom.dao;
 
 import siscom.model.FornecedorProduto;
 
-import java.sql.Connection;
 import java.util.ArrayList;
 import java.util.List;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
 public class FornecedorProdutoDAO {
-    Connection conn = null;
 
     public boolean salvar(FornecedorProduto fornecedorProduto){
         Transaction transaction = null;

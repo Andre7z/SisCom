@@ -1,53 +1,56 @@
 package siscom.dao;
 
-import siscom.model.Venda;
-
-import java.sql.Connection;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
+import siscom.model.Venda;
+
 public class VendaDAO {
-    Connection conn = null;
 
-    public boolean salvar(Venda venda){
-        Transaction transaction = null;
-
-        try (Session session = Conexao.getSessionFactory().openSession() ){
-            transaction = session.beginTransaction();
-            session.persist(venda);
-            transaction.commit();
-            return true;
-        } catch (Exception e){
-            if(transaction != null){
-                transaction.rollback();
-            }
-            return false;
-        }
-    }
-
-    public boolean alterar(Venda venda){
-        Transaction transaction = null;
-
-        try(Session session = Conexao.getSessionFactory().openSession()){
-            transaction = session.beginTransaction();
-            session.merge(venda);
-            transaction.commit();
-            return true;
-        } catch (Exception e){
-            if (transaction != null){
-                transaction.rollback();
-            }
-            return false;
-        }
-    }
-
-    public boolean excluir(int id){
+    public boolean salvar(Venda venda) {
         Transaction transaction = null;
 
         try (Session session = Conexao.getSessionFactory().openSession()) {
             transaction = session.beginTransaction();
+            session.persist(venda);
+            transaction.commit();
+            return true;
+
+        } catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+            return false;
+        }
+    }
+
+    public boolean alterar(Venda venda) {
+        Transaction transaction = null;
+
+        try (Session session = Conexao.getSessionFactory().openSession()) {
+            transaction = session.beginTransaction();
+            session.merge(venda);
+            transaction.commit();
+            return true;
+
+        } catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+            return false;
+        }
+    }
+
+    public boolean excluir(int id) {
+        Transaction transaction = null;
+
+        try (Session session = Conexao.getSessionFactory().openSession()) {
+            transaction = session.beginTransaction();
+
             Venda venda = session.get(Venda.class, id);
 
             if (venda == null) {
@@ -58,6 +61,7 @@ public class VendaDAO {
             session.remove(venda);
             transaction.commit();
             return true;
+
         } catch (Exception e) {
             if (transaction != null) {
                 transaction.rollback();
@@ -79,6 +83,30 @@ public class VendaDAO {
             return session.get(Venda.class, id);
         } catch (Exception e) {
             return null;
+        }
+    }
+
+    public int contarVendasPorCpfMes(String cpf) {
+        try (Session session = Conexao.getSessionFactory().openSession()) {
+
+            LocalDate inicioMes = LocalDate.now().withDayOfMonth(1);
+            LocalDate proximoMes = inicioMes.plusMonths(1);
+
+            Long quantidade = session.createQuery(
+                    "select count(v) from Venda v " +
+                    "where v.cliente.cpf = :cpf " +
+                    "and v.dataVenda >= :inicioMes " +
+                    "and v.dataVenda < :proximoMes",
+                    Long.class)
+                    .setParameter("cpf", cpf)
+                    .setParameter("inicioMes", inicioMes)
+                    .setParameter("proximoMes", proximoMes)
+                    .uniqueResult();
+
+            return quantidade != null ? quantidade.intValue() : 0;
+
+        } catch (Exception e) {
+            return 0;
         }
     }
 }

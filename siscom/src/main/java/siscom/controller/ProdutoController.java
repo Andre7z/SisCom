@@ -1,109 +1,269 @@
 package siscom.controller;
 
+import java.util.ArrayList;
 import java.util.List;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import siscom.dao.ProdutoDAO;
 import siscom.model.Produto;
 
 public class ProdutoController {
 
-    ProdutoDAO produtoDAO = new ProdutoDAO();
+    private static final Logger logger =
+            LogManager.getLogger(ProdutoController.class);
+
+    private ProdutoDAO produtoDAO = new ProdutoDAO();
 
     public boolean salvar(Produto produto) {
-        return produtoDAO.salvar(produto);
+        logger.info("Iniciando salvar Produto");
+
+        try {
+            if (produto == null) {
+                logger.error("Produto nulo");
+                return false;
+            }
+
+            if (produto.getNome() == null || produto.getNome().isBlank()) {
+                logger.error("Nome inválido");
+                return false;
+            }
+
+            if (produto.getCategoria() == null) {
+                logger.error("Categoria não informada");
+                return false;
+            }
+
+            boolean resultado = produtoDAO.salvar(produto);
+
+            if (resultado) {
+                logger.info("Produto salvo com sucesso");
+            } else {
+                logger.error("Falha ao salvar Produto");
+            }
+
+            return resultado;
+
+        } catch (Exception e) {
+            logger.error("Erro ao salvar Produto: " + e.getMessage());
+            return false;
+        }
     }
 
     public boolean alterar(Produto produto) {
-        return produtoDAO.alterar(produto);
+        logger.info("Iniciando alterar Produto");
+
+        try {
+            boolean resultado = produtoDAO.alterar(produto);
+
+            if (resultado) {
+                logger.info("Produto alterado com sucesso");
+            } else {
+                logger.error("Falha ao alterar Produto");
+            }
+
+            return resultado;
+
+        } catch (Exception e) {
+            logger.error("Erro ao alterar Produto: " + e.getMessage());
+            return false;
+        }
     }
 
     public boolean excluir(int id) {
-        return produtoDAO.excluir(id);
+        logger.info("Iniciando excluir Produto id=" + id);
+
+        try {
+            boolean resultado = produtoDAO.excluir(id);
+
+            if (resultado) {
+                logger.info("Produto excluído com sucesso");
+            } else {
+                logger.error("Falha ao excluir Produto");
+            }
+
+            return resultado;
+
+        } catch (Exception e) {
+            logger.error("Erro ao excluir Produto: " + e.getMessage());
+            return false;
+        }
     }
 
     public Produto pesquisar(int id) {
-        return produtoDAO.pesquisarPorId(id);
+        logger.info("Iniciando pesquisar Produto id=" + id);
+
+        try {
+            Produto produto = produtoDAO.pesquisarPorId(id);
+
+            if (produto != null) {
+                logger.info("Produto encontrado");
+            } else {
+                logger.error("Produto não encontrado");
+            }
+
+            return produto;
+
+        } catch (Exception e) {
+            logger.error("Erro ao pesquisar Produto: " + e.getMessage());
+            return null;
+        }
     }
 
     public List<Produto> pesquisarTodos() {
-        return produtoDAO.pesquisar();
+        logger.info("Iniciando pesquisar todos os Produtos");
+
+        try {
+            List<Produto> produtos = produtoDAO.pesquisar();
+            logger.info("Quantidade encontrada: " + produtos.size());
+            return produtos;
+
+        } catch (Exception e) {
+            logger.error("Erro ao pesquisar Produtos: " + e.getMessage());
+            return new ArrayList<>();
+        }
     }
 
     public boolean verificaEstoqueExistente(Produto produto) {
-        Produto produtoExistente = produtoDAO.pesquisarPorId(produto.getId());
+        logger.info("Verificando estoque do Produto");
 
-        if (produtoExistente == null) {
+        try {
+            Produto produtoExistente =
+                    produtoDAO.pesquisarPorId(produto.getId());
+
+            if (produtoExistente == null) {
+                logger.error("Produto não encontrado");
+                return false;
+            }
+
+            return produtoExistente.getQuantidade() >= 1;
+
+        } catch (Exception e) {
+            logger.error("Erro ao verificar estoque: " + e.getMessage());
             return false;
         }
-
-        return produtoExistente.getQuantidade() >= 1;
     }
 
-    public boolean atualizarEstoqueVenda(Produto produto, int quantidadeVendida) {
-        Produto produtoExistente = produtoDAO.pesquisarPorId(produto.getId());
+    public boolean atualizarEstoqueVenda(Produto produto, int quantidade) {
+        logger.info("Atualizando estoque após venda");
 
-        if (produtoExistente == null) {
+        try {
+            Produto produtoExistente =
+                    produtoDAO.pesquisarPorId(produto.getId());
+
+            if (produtoExistente == null) {
+                logger.error("Produto não encontrado");
+                return false;
+            }
+
+            produtoExistente.setQuantidade(
+                    produtoExistente.getQuantidade() - quantidade
+            );
+
+            return produtoDAO.alterar(produtoExistente);
+
+        } catch (Exception e) {
+            logger.error("Erro ao atualizar estoque venda: " + e.getMessage());
             return false;
         }
-
-        if (produtoExistente.getQuantidade() < quantidadeVendida) {
-            return false;
-        }
-
-        produtoExistente.setQuantidade(
-            produtoExistente.getQuantidade() - quantidadeVendida
-        );
-
-        return produtoDAO.alterar(produtoExistente);
     }
 
-    public boolean atualizarEstoqueCompra(Produto produto, int quantidadeComprada) {
-        Produto produtoExistente = produtoDAO.pesquisarPorId(produto.getId());
+    public boolean atualizarEstoqueCompra(Produto produto, int quantidade) {
+        logger.info("Atualizando estoque após compra");
 
-        if (produtoExistente == null) {
+        try {
+            Produto produtoExistente =
+                    produtoDAO.pesquisarPorId(produto.getId());
+
+            if (produtoExistente == null) {
+                logger.error("Produto não encontrado");
+                return false;
+            }
+
+            produtoExistente.setQuantidade(
+                    produtoExistente.getQuantidade() + quantidade
+            );
+
+            return produtoDAO.alterar(produtoExistente);
+
+        } catch (Exception e) {
+            logger.error("Erro ao atualizar estoque compra: " + e.getMessage());
             return false;
         }
-
-        produtoExistente.setQuantidade(
-            produtoExistente.getQuantidade() + quantidadeComprada
-        );
-
-        return produtoDAO.alterar(produtoExistente);
     }
 
-    public boolean atualizarUltimaVenda(Produto produto, Double valorVenda) {
-        Produto produtoExistente = produtoDAO.pesquisarPorId(produto.getId());
+    public boolean atualizarUltimaVenda(Produto produto, Double valor) {
+        logger.info("Atualizando última venda");
 
-        if (produtoExistente == null) {
+        try {
+            Produto produtoExistente =
+                    produtoDAO.pesquisarPorId(produto.getId());
+
+            if (produtoExistente == null) {
+                logger.error("Produto não encontrado");
+                return false;
+            }
+
+            produtoExistente.setValorUltimaVenda(valor);
+
+            return produtoDAO.alterar(produtoExistente);
+
+        } catch (Exception e) {
+            logger.error("Erro ao atualizar última venda: " + e.getMessage());
             return false;
         }
-
-        produtoExistente.setValorUltimaVenda(valorVenda);
-
-        return produtoDAO.alterar(produtoExistente);
     }
 
-    public boolean atualizarUltimaCompra(Produto produto, Double valorCompra) {
-        Produto produtoExistente = produtoDAO.pesquisarPorId(produto.getId());
+    public boolean atualizarUltimaCompra(Produto produto, Double valor) {
+        logger.info("Atualizando última compra");
 
-        if (produtoExistente == null) {
+        try {
+            Produto produtoExistente =
+                    produtoDAO.pesquisarPorId(produto.getId());
+
+            if (produtoExistente == null) {
+                logger.error("Produto não encontrado");
+                return false;
+            }
+
+            produtoExistente.setValorUltimaCompra(valor);
+
+            return produtoDAO.alterar(produtoExistente);
+
+        } catch (Exception e) {
+            logger.error("Erro ao atualizar última compra: " + e.getMessage());
             return false;
         }
-
-        produtoExistente.setValorUltimaCompra(valorCompra);
-
-        return produtoDAO.alterar(produtoExistente);
     }
 
-    public boolean atualizarPrecoMedio(Produto produto, Double precoMedio) {
-        Produto produtoExistente = produtoDAO.pesquisarPorId(produto.getId());
+    public boolean atualizarPrecoMedio(Produto produto, Double valorCompra) {
+        logger.info("Atualizando preço médio");
 
-        if (produtoExistente == null) {
+        try {
+            Produto produtoExistente =
+                    produtoDAO.pesquisarPorId(produto.getId());
+
+            if (produtoExistente == null) {
+                logger.error("Produto não encontrado");
+                return false;
+            }
+
+            Double ultimaCompra = produtoExistente.getValorUltimaCompra();
+
+            if (ultimaCompra == null) {
+                produtoExistente.setPrecoMedio(valorCompra);
+            } else {
+                produtoExistente.setPrecoMedio(
+                        (ultimaCompra + valorCompra) / 2
+                );
+            }
+
+            return produtoDAO.alterar(produtoExistente);
+
+        } catch (Exception e) {
+            logger.error("Erro ao atualizar preço médio: " + e.getMessage());
             return false;
         }
-
-        produtoExistente.setPrecoMedio(precoMedio);
-
-        return produtoDAO.alterar(produtoExistente);
     }
 }

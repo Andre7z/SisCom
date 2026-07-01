@@ -2,14 +2,12 @@ package siscom.dao;
 
 import siscom.model.Cliente;
 
-import java.sql.Connection;
 import java.util.ArrayList;
 import java.util.List;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
 public class ClienteDAO {
-    Connection conn = null;
 
     public boolean salvar(Cliente cliente){
         Transaction transaction = null;

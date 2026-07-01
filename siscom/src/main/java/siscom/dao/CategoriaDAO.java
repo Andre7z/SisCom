@@ -2,14 +2,12 @@ package siscom.dao;
 
 import siscom.model.Categoria;
 
-import java.sql.Connection;
 import java.util.ArrayList;
 import java.util.List;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
 public class CategoriaDAO {
-    Connection conn = null;
 
     public boolean salvar(Categoria categoria){
         Transaction transaction = null;
