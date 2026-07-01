@@ -1,51 +1,55 @@
 package siscom.dao;
 
-import siscom.model.Compra;
-
 import java.util.ArrayList;
 import java.util.List;
+
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
+import siscom.model.Compra;
+
 public class CompraDAO {
 
-    public boolean salvar(Compra compra){
-        Transaction transaction = null;
-
-        try (Session session = Conexao.getSessionFactory().openSession() ){
-            transaction = session.beginTransaction();
-            session.persist(compra);
-            transaction.commit();
-            return true;
-        } catch (Exception e){
-            if(transaction != null){
-                transaction.rollback();
-            }
-            return false;
-        }
-    }
-
-    public boolean alterar(Compra compra){
-        Transaction transaction = null;
-
-        try(Session session = Conexao.getSessionFactory().openSession()){
-            transaction = session.beginTransaction();
-            session.merge(compra);
-            transaction.commit();
-            return true;
-        } catch (Exception e){
-            if (transaction != null){
-                transaction.rollback();
-            }
-            return false;
-        }
-    }
-
-    public boolean excluir(int id){
+    public boolean salvar(Compra compra) {
         Transaction transaction = null;
 
         try (Session session = Conexao.getSessionFactory().openSession()) {
             transaction = session.beginTransaction();
+            session.persist(compra);
+            transaction.commit();
+            return true;
+
+        } catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+            return false;
+        }
+    }
+
+    public boolean alterar(Compra compra) {
+        Transaction transaction = null;
+
+        try (Session session = Conexao.getSessionFactory().openSession()) {
+            transaction = session.beginTransaction();
+            session.merge(compra);
+            transaction.commit();
+            return true;
+
+        } catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+            return false;
+        }
+    }
+
+    public boolean excluir(int id) {
+        Transaction transaction = null;
+
+        try (Session session = Conexao.getSessionFactory().openSession()) {
+            transaction = session.beginTransaction();
+
             Compra compra = session.get(Compra.class, id);
 
             if (compra == null) {
@@ -56,6 +60,7 @@ public class CompraDAO {
             session.remove(compra);
             transaction.commit();
             return true;
+
         } catch (Exception e) {
             if (transaction != null) {
                 transaction.rollback();

@@ -1,4 +1,5 @@
 package siscom.model;
+
 import java.time.LocalDate;
 import java.util.List;
 
@@ -9,6 +10,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -18,6 +20,7 @@ import lombok.NoArgsConstructor;
 @Data
 @Entity
 public class Venda {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
@@ -28,11 +31,14 @@ public class Venda {
     private LocalDate dataVenda;
     private Double valorTotal;
 
-    @OneToMany(mappedBy = "venda", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "venda",
+            cascade = CascadeType.ALL,
+            orphanRemoval = true)
     private List<VendaProduto> vendaProdutos;
 
+    @OneToOne
+    private Financeiro financeiro;
 }
-
 // private int id;
 // private LocalDate data_venda;
 // private double valor_total;
