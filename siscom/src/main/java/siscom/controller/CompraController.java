@@ -11,6 +11,8 @@ import siscom.dao.CompraDAO;
 import siscom.model.Compra;
 import siscom.model.CompraProduto;
 import siscom.model.Financeiro;
+import siscom.model.FormaPagamento;
+import siscom.model.TipoConta;
 
 public class CompraController {
 
@@ -22,7 +24,8 @@ public class CompraController {
     private FinanceiroController financeiroController =
             new FinanceiroController();
 
-    public boolean salvar(Compra compra) {
+    public boolean salvar(Compra compra, FormaPagamento formaPagamento,
+                           TipoConta tipoConta) {
         logger.info("Iniciando salvar Compra");
 
         try {
@@ -42,6 +45,16 @@ public class CompraController {
                 return false;
             }
 
+            if (formaPagamento == null) {
+                logger.error("Forma de pagamento não informada");
+                return false;
+            }
+
+            if (tipoConta == null) {
+                logger.error("Tipo de conta não informado");
+                return false;
+            }
+
             double valorTotal = 0;
 
             for (CompraProduto item : compra.getProdutos()) {
@@ -53,7 +66,6 @@ public class CompraController {
 
                 item.setCompra(compra);
 
-                // RNF-P002 → aumenta estoque
                 boolean estoqueOk =
                         produtoController.atualizarEstoqueCompra(
                                 item.getProduto(),
@@ -64,12 +76,10 @@ public class CompraController {
                     return false;
                 }
 
-                // RNF-P006
                 produtoController.atualizarUltimaCompra(
                         item.getProduto(),
                         item.getValorUnitario());
 
-                // RNF-P007
                 produtoController.atualizarPrecoMedio(
                         item.getProduto(),
                         item.getValorUnitario());
@@ -88,18 +98,32 @@ public class CompraController {
                 return false;
             }
 
-            // RF009 / RNF-P009 / RNF-P010
             Financeiro financeiro = new Financeiro();
             financeiro.setDataConta(LocalDate.now());
-            financeiro.setPagarOuReceber(0); // conta a pagar
+            financeiro.setPagarOuReceber(0);
+            financeiro.setFormaPagamento(formaPagamento);
+            financeiro.setTipoConta(tipoConta);
+            financeiro.setFornecedor(compra.getFornecedor());
 
-            // Ajuste conforme teu model Compra
-            // financeiro.setFormaPagamento(compra.getFormaPagamento());
-            // financeiro.setTipoConta(...);
+            boolean financeiroSalvo = financeiroController.salvar(financeiro);
 
-            financeiroController.salvar(financeiro);
+            if (!financeiroSalvo) {
+                logger.error("Falha ao gerar Financeiro da compra - "
+                        + "desfazendo compra id=" + compra.getId());
+                compraDAO.excluir(compra.getId());
+                return false;
+            }
 
-            logger.info("Compra salva com sucesso");
+            compra.setFinanceiro(financeiro);
+            boolean vinculoOk = compraDAO.alterar(compra);
+
+            if (!vinculoOk) {
+                logger.error("Falha ao vincular Financeiro na Compra id="
+                        + compra.getId());
+                return false;
+            }
+
+            logger.info("Compra salva com sucesso, id=" + compra.getId());
             return true;
 
         } catch (Exception e) {

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="WARN">
+    <Appenders>
+        <RollingFile name="ARQUIVO"
+                     fileName="logs/siscom.log"
+                     filePattern="logs/siscom-%d{yyyy-MM-dd}-%i.log.gz">
+            <PatternLayout pattern="%d{dd-MM-yyyy HH:mm:ss} %-5level %c{1} - %msg%n"/>
+            <Policies>
+                <SizeBasedTriggeringPolicy size="2MB"/>
+            </Policies>
+             <DefaultRolloverStrategy max="5"/> <!--Máximo 5 arquivos -->
+        </RollingFile>
+    </Appenders>
+
+    <Loggers>
+        <Root level="info">
+            <AppenderRef ref="ARQUIVO"/>
+        </Root>
+    </Loggers>
+</Configuration>

@@ -36,6 +36,14 @@ public class Financeiro {
     @JoinColumn(name = "forma_pagamento_id")
     private FormaPagamento formaPagamento;
 
+    @ManyToOne
+    @JoinColumn(name = "fornecedor_id")
+    private Fornecedor fornecedor;
+
+    @ManyToOne
+    @JoinColumn(name = "cliente_id")
+    private Cliente cliente;
+
     @OneToMany(mappedBy = "financeiro", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<FinanceiroParcela> parcelas;
 }
