@@ -7,6 +7,9 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import siscom.dao.VendaDAO;
+import siscom.model.Financeiro;
+import siscom.model.FormaPagamento;
+import siscom.model.TipoConta;
 import siscom.model.Venda;
 import siscom.model.VendaProduto;
 
@@ -17,8 +20,14 @@ public class VendaController {
 
     private VendaDAO vendaDAO = new VendaDAO();
     private ProdutoController produtoController = new ProdutoController();
+    private FinanceiroController financeiroController =
+            new FinanceiroController();
 
-    public boolean salvar(Venda venda) {
+    public boolean salvar(
+            Venda venda,
+            FormaPagamento formaPagamento,
+            TipoConta tipoConta) {
+
         logger.info("Iniciando salvar Venda");
 
         try {
@@ -43,6 +52,16 @@ public class VendaController {
                 return false;
             }
 
+            if (formaPagamento == null) {
+                logger.error("Forma de pagamento não informada");
+                return false;
+            }
+
+            if (tipoConta == null) {
+                logger.error("Tipo de conta não informado");
+                return false;
+            }
+
             int quantidadeVendas =
                     vendaDAO.contarVendasPorCpfMes(
                             venda.getCliente().getCpf());
@@ -56,17 +75,34 @@ public class VendaController {
 
             for (VendaProduto item : venda.getVendaProdutos()) {
 
+                if (item == null) {
+                    logger.error("Item da venda nulo");
+                    return false;
+                }
+
                 if (item.getProduto() == null) {
                     logger.error("Produto inválido");
                     return false;
                 }
 
+                if (item.getQuantidade() <= 0) {
+                    logger.error("Quantidade inválida");
+                    return false;
+                }
+
+                if (item.getValorUnitario() == null ||
+                    item.getValorUnitario() <= 0) {
+                    logger.error("Valor unitário inválido");
+                    return false;
+                }
+
                 boolean estoqueOk =
                         produtoController.verificaEstoqueExistente(
-                                item.getProduto());
+                                item.getProduto(),
+                                item.getQuantidade());
 
                 if (!estoqueOk) {
-                    logger.error("Produto sem estoque");
+                    logger.error("Produto sem estoque suficiente");
                     return false;
                 }
 
@@ -98,15 +134,40 @@ public class VendaController {
 
             venda.setValorTotal(valorTotal);
 
-            boolean resultado = vendaDAO.salvar(venda);
+            boolean vendaSalva = vendaDAO.salvar(venda);
 
-            if (resultado) {
-                logger.info("Venda salva com sucesso");
-            } else {
+            if (!vendaSalva) {
                 logger.error("Falha ao salvar venda");
+                return false;
             }
 
-            return resultado;
+            Financeiro financeiro = new Financeiro();
+            financeiro.setDataConta(venda.getDataVenda());
+            financeiro.setPagarOuReceber(1); // conta a receber
+            financeiro.setFormaPagamento(formaPagamento);
+            financeiro.setTipoConta(tipoConta);
+            financeiro.setCliente(venda.getCliente());
+
+            boolean financeiroSalvo =
+                    financeiroController.salvar(financeiro);
+
+            if (!financeiroSalvo) {
+                logger.error("Erro ao gerar financeiro da venda");
+                vendaDAO.excluir(venda.getId());
+                return false;
+            }
+
+            venda.setFinanceiro(financeiro);
+
+            boolean vinculoOk = vendaDAO.alterar(venda);
+
+            if (!vinculoOk) {
+                logger.error("Erro ao vincular financeiro à venda");
+                return false;
+            }
+
+            logger.info("Venda salva com sucesso");
+            return true;
 
         } catch (Exception e) {
             logger.error("Erro ao salvar Venda: " + e.getMessage());

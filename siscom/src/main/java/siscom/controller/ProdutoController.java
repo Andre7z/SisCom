@@ -35,6 +35,16 @@ public class ProdutoController {
                 return false;
             }
 
+            if (produto.getPreco() == null || produto.getPreco() <= 0) {
+                logger.error("Preço inválido");
+                return false;
+            }
+
+            if (produto.getQuantidade() == null || produto.getQuantidade() < 0) {
+                logger.error("Quantidade inválida");
+                return false;
+            }
+
             boolean resultado = produtoDAO.salvar(produto);
 
             if (resultado) {
@@ -125,7 +135,10 @@ public class ProdutoController {
         }
     }
 
-    public boolean verificaEstoqueExistente(Produto produto) {
+    public boolean verificaEstoqueExistente(
+            Produto produto,
+            int quantidadeDesejada) {
+
         logger.info("Verificando estoque do Produto");
 
         try {
@@ -137,7 +150,7 @@ public class ProdutoController {
                 return false;
             }
 
-            return produtoExistente.getQuantidade() >= 1;
+            return produtoExistente.getQuantidade() >= quantidadeDesejada;
 
         } catch (Exception e) {
             logger.error("Erro ao verificar estoque: " + e.getMessage());
@@ -157,9 +170,15 @@ public class ProdutoController {
                 return false;
             }
 
-            produtoExistente.setQuantidade(
-                    produtoExistente.getQuantidade() - quantidade
-            );
+            int novoEstoque =
+                    produtoExistente.getQuantidade() - quantidade;
+
+            if (novoEstoque < 0) {
+                logger.error("Estoque insuficiente");
+                return false;
+            }
+
+            produtoExistente.setQuantidade(novoEstoque);
 
             return produtoDAO.alterar(produtoExistente);
 
@@ -249,13 +268,14 @@ public class ProdutoController {
                 return false;
             }
 
-            Double ultimaCompra = produtoExistente.getValorUltimaCompra();
+            Double precoMedioAtual =
+                    produtoExistente.getPrecoMedio();
 
-            if (ultimaCompra == null) {
+            if (precoMedioAtual == null) {
                 produtoExistente.setPrecoMedio(valorCompra);
             } else {
                 produtoExistente.setPrecoMedio(
-                        (ultimaCompra + valorCompra) / 2
+                        (precoMedioAtual + valorCompra) / 2
                 );
             }
 

@@ -4,7 +4,9 @@ import siscom.dao.Conexao;
 
 import javax.swing.*;
 import java.awt.*;
-import java.sql.Connection;
+
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
 
 public class TelaTesteConexao extends JFrame {
 
@@ -24,12 +26,17 @@ public class TelaTesteConexao extends JFrame {
 
         JPanel painel = new JPanel();
         painel.setLayout(new GridLayout(2, 1, 10, 10));
-        painel.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
+        painel.setBorder(
+                BorderFactory.createEmptyBorder(20, 20, 20, 20)
+        );
 
         btnTestar = new JButton("Testar Conexão Hibernate");
-        lblStatus = new JLabel("Status: aguardando teste...", SwingConstants.CENTER);
+        lblStatus = new JLabel(
+                "Status: aguardando teste...",
+                SwingConstants.CENTER
+        );
 
-        btnTestar.addActionListener(e -> testarConexao()); 
+        btnTestar.addActionListener(e -> testarConexao());
 
         painel.add(btnTestar);
         painel.add(lblStatus);
@@ -40,18 +47,23 @@ public class TelaTesteConexao extends JFrame {
     private void testarConexao() {
 
         try {
-            Connection conn = Conexao.getConnection();
+            SessionFactory factory = Conexao.getSessionFactory();
+            Session session = factory.openSession();
 
-            if (conn != null && !conn.isClosed()) {
+            if (session != null && session.isOpen()) {
 
-                lblStatus.setText("Status: conexão realizada com sucesso!");
+                lblStatus.setText(
+                        "Status: conexão realizada com sucesso!"
+                );
 
                 JOptionPane.showMessageDialog(
                         this,
-                        "Conectado ao PostgreSQL com sucesso!",
+                        "Conectado ao PostgreSQL com Hibernate!",
                         "Sucesso",
                         JOptionPane.INFORMATION_MESSAGE
                 );
+
+                session.close();
 
             } else {
 
@@ -81,7 +93,6 @@ public class TelaTesteConexao extends JFrame {
     }
 
     public static void main(String[] args) {
-
         SwingUtilities.invokeLater(() -> {
             new TelaTesteConexao().setVisible(true);
         });

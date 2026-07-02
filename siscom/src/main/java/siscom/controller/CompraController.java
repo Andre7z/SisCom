@@ -16,16 +16,17 @@ import siscom.model.TipoConta;
 
 public class CompraController {
 
-    private static final Logger logger =
-            LogManager.getLogger(CompraController.class);
+    private static final Logger logger = LogManager.getLogger(CompraController.class);
 
     private CompraDAO compraDAO = new CompraDAO();
     private ProdutoController produtoController = new ProdutoController();
-    private FinanceiroController financeiroController =
-            new FinanceiroController();
+    private FinanceiroController financeiroController = new FinanceiroController();
 
-    public boolean salvar(Compra compra, FormaPagamento formaPagamento,
-                           TipoConta tipoConta) {
+    public boolean salvar(
+            Compra compra,
+            FormaPagamento formaPagamento,
+            TipoConta tipoConta) {
+
         logger.info("Iniciando salvar Compra");
 
         try {
@@ -40,7 +41,7 @@ public class CompraController {
             }
 
             if (compra.getProdutos() == null ||
-                compra.getProdutos().isEmpty()) {
+                    compra.getProdutos().isEmpty()) {
                 logger.error("Compra sem produtos");
                 return false;
             }
@@ -59,33 +60,57 @@ public class CompraController {
 
             for (CompraProduto item : compra.getProdutos()) {
 
+                if (item == null) {
+                    logger.error("Item da compra nulo");
+                    return false;
+                }
+
                 if (item.getProduto() == null) {
                     logger.error("Produto inválido");
                     return false;
                 }
 
+                if (item.getQuantidade() <= 0) {
+                    logger.error("Quantidade inválida");
+                    return false;
+                }
+
+                if (item.getValorUnitario() == null ||
+                        item.getValorUnitario() <= 0) {
+                    logger.error("Valor unitário inválido");
+                    return false;
+                }
+
                 item.setCompra(compra);
 
-                boolean estoqueOk =
-                        produtoController.atualizarEstoqueCompra(
-                                item.getProduto(),
-                                item.getQuantidade());
+                boolean estoqueOk = produtoController.atualizarEstoqueCompra(
+                        item.getProduto(),
+                        item.getQuantidade());
 
                 if (!estoqueOk) {
                     logger.error("Erro ao atualizar estoque");
                     return false;
                 }
 
-                produtoController.atualizarUltimaCompra(
+                boolean ultimaCompraOk = produtoController.atualizarUltimaCompra(
                         item.getProduto(),
                         item.getValorUnitario());
 
-                produtoController.atualizarPrecoMedio(
+                if (!ultimaCompraOk) {
+                    logger.error("Erro ao atualizar última compra");
+                    return false;
+                }
+
+                boolean precoMedioOk = produtoController.atualizarPrecoMedio(
                         item.getProduto(),
                         item.getValorUnitario());
 
-                valorTotal +=
-                        item.getQuantidade() * item.getValorUnitario();
+                if (!precoMedioOk) {
+                    logger.error("Erro ao atualizar preço médio");
+                    return false;
+                }
+
+                valorTotal += item.getQuantidade() * item.getValorUnitario();
             }
 
             compra.setValorTotal(valorTotal);
@@ -100,7 +125,7 @@ public class CompraController {
 
             Financeiro financeiro = new Financeiro();
             financeiro.setDataConta(LocalDate.now());
-            financeiro.setPagarOuReceber(0);
+            financeiro.setPagarOuReceber(0); // conta a pagar
             financeiro.setFormaPagamento(formaPagamento);
             financeiro.setTipoConta(tipoConta);
             financeiro.setFornecedor(compra.getFornecedor());
@@ -108,22 +133,21 @@ public class CompraController {
             boolean financeiroSalvo = financeiroController.salvar(financeiro);
 
             if (!financeiroSalvo) {
-                logger.error("Falha ao gerar Financeiro da compra - "
-                        + "desfazendo compra id=" + compra.getId());
+                logger.error("Falha ao gerar financeiro");
                 compraDAO.excluir(compra.getId());
                 return false;
             }
 
             compra.setFinanceiro(financeiro);
+
             boolean vinculoOk = compraDAO.alterar(compra);
 
             if (!vinculoOk) {
-                logger.error("Falha ao vincular Financeiro na Compra id="
-                        + compra.getId());
+                logger.error("Falha ao vincular financeiro");
                 return false;
             }
 
-            logger.info("Compra salva com sucesso, id=" + compra.getId());
+            logger.info("Compra salva com sucesso id=" + compra.getId());
             return true;
 
         } catch (Exception e) {

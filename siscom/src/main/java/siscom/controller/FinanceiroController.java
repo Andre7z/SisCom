@@ -48,8 +48,40 @@ public class FinanceiroController {
                 return false;
             }
 
-            if (financeiro.getParcelas() != null) {
+            // Conta a pagar precisa de fornecedor
+            if (financeiro.getPagarOuReceber() == 0 &&
+                financeiro.getFornecedor() == null) {
+                logger.error("Fornecedor não informado");
+                return false;
+            }
+
+            // Conta a receber precisa de cliente
+            if (financeiro.getPagarOuReceber() == 1 &&
+                financeiro.getCliente() == null) {
+                logger.error("Cliente não informado");
+                return false;
+            }
+
+            if (financeiro.getParcelas() != null &&
+                !financeiro.getParcelas().isEmpty()) {
+
                 for (FinanceiroParcela parcela : financeiro.getParcelas()) {
+
+                    if (parcela == null) {
+                        logger.error("Parcela nula");
+                        return false;
+                    }
+
+                    if (parcela.getNParcela() <= 0) {
+                        logger.error("Número da parcela inválido");
+                        return false;
+                    }
+
+                    if (parcela.getDataVencimento() == null) {
+                        logger.error("Data de vencimento inválida");
+                        return false;
+                    }
+
                     parcela.setFinanceiro(financeiro);
                 }
             }
@@ -65,7 +97,7 @@ public class FinanceiroController {
             return resultado;
 
         } catch (Exception e) {
-            logger.error("Erro ao salvar Financeiro: " + e.getMessage());
+            logger.error("Erro ao salvar Financeiro", e);
             return false;
         }
     }
@@ -85,7 +117,7 @@ public class FinanceiroController {
             return resultado;
 
         } catch (Exception e) {
-            logger.error("Erro ao alterar Financeiro: " + e.getMessage());
+            logger.error("Erro ao alterar Financeiro", e);
             return false;
         }
     }
@@ -105,7 +137,7 @@ public class FinanceiroController {
             return resultado;
 
         } catch (Exception e) {
-            logger.error("Erro ao excluir Financeiro: " + e.getMessage());
+            logger.error("Erro ao excluir Financeiro", e);
             return false;
         }
     }
@@ -125,7 +157,7 @@ public class FinanceiroController {
             return financeiro;
 
         } catch (Exception e) {
-            logger.error("Erro ao pesquisar Financeiro: " + e.getMessage());
+            logger.error("Erro ao pesquisar Financeiro", e);
             return null;
         }
     }
@@ -139,7 +171,7 @@ public class FinanceiroController {
             return lista;
 
         } catch (Exception e) {
-            logger.error("Erro ao pesquisar Financeiros: " + e.getMessage());
+            logger.error("Erro ao pesquisar Financeiros", e);
             return new ArrayList<>();
         }
     }

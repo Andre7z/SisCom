@@ -1,7 +1,6 @@
 package siscom.dao;
 
 import siscom.model.Usuario;
-
 import java.util.ArrayList;
 import java.util.List;
 import org.hibernate.Session;
@@ -9,39 +8,39 @@ import org.hibernate.Transaction;
 
 public class UsuarioDAO {
 
-    public boolean salvar(Usuario usuario){
+    public boolean salvar(Usuario usuario) {
         Transaction transaction = null;
 
-        try (Session session = Conexao.getSessionFactory().openSession() ){
+        try (Session session = Conexao.getSessionFactory().openSession()) {
             transaction = session.beginTransaction();
             session.persist(usuario);
             transaction.commit();
             return true;
-        } catch (Exception e){
-            if(transaction != null){
+        } catch (Exception e) {
+            if (transaction != null) {
                 transaction.rollback();
             }
             return false;
         }
     }
 
-    public boolean alterar(Usuario usuario){
+    public boolean alterar(Usuario usuario) {
         Transaction transaction = null;
 
-        try(Session session = Conexao.getSessionFactory().openSession()){
+        try (Session session = Conexao.getSessionFactory().openSession()) {
             transaction = session.beginTransaction();
             session.merge(usuario);
             transaction.commit();
             return true;
-        } catch (Exception e){
-            if (transaction != null){
+        } catch (Exception e) {
+            if (transaction != null) {
                 transaction.rollback();
             }
             return false;
         }
     }
 
-    public boolean excluir(int id){
+    public boolean excluir(int id) {
         Transaction transaction = null;
 
         try (Session session = Conexao.getSessionFactory().openSession()) {
@@ -75,6 +74,19 @@ public class UsuarioDAO {
     public Usuario pesquisarPorId(int id) {
         try (Session session = Conexao.getSessionFactory().openSession()) {
             return session.get(Usuario.class, id);
+        } catch (Exception e) {
+            return null;
+        }
+    }
+
+    public Usuario autenticar(String login, String senha) {
+        try (Session session = Conexao.getSessionFactory().openSession()) {
+            String hql = "from Usuario where login = :login and senha = :senha";
+
+            return session.createQuery(hql, Usuario.class)
+                    .setParameter("login", login)
+                    .setParameter("senha", senha)
+                    .uniqueResult();
         } catch (Exception e) {
             return null;
         }
