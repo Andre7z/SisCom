@@ -23,26 +23,30 @@ public class Categoria {
 
     @Column(length = 255)
     private String descricao;
+
+    @Override
+    public String toString() {
+        return nome;
+    }
 }
- 
 
 // private int id;
 // private String nome;
 // public int getId() {
-//     return id;
+// return id;
 // }
 // public void setId(int id) {
-//     this.id = id;
+// this.id = id;
 // }
 // public String getNome() {
-//     return nome;
+// return nome;
 // }
 // public void setNome(String nome) {
-//     this.nome = nome;
+// this.nome = nome;
 // }
 
 // public Categoria(){}
 // public Categoria(int id, String nome) {
-//     this.id = id;
-//     this.nome = nome;
+// this.id = id;
+// this.nome = nome;
 // }

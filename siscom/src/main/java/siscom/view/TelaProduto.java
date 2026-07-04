@@ -1,191 +1,191 @@
 package siscom.view;
 
-import java.awt.*;
-import java.awt.event.*;
-import java.util.List;
-import javax.swing.*;
-import javax.swing.table.DefaultTableModel;
-
 import siscom.controller.CategoriaController;
 import siscom.controller.ProdutoController;
 import siscom.model.Categoria;
 import siscom.model.Produto;
 
+import javax.swing.*;
+import java.awt.*;
+import java.util.List;
+
 public class TelaProduto extends JFrame {
 
-    private JTextField txtId;
+    private JComboBox<Produto> cbProdutos;
     private JTextField txtNome;
     private JTextField txtPreco;
     private JTextField txtQuantidade;
-    private JTextField txtUltimaVenda;
-    private JTextField txtUltimaCompra;
-    private JTextField txtPrecoMedio;
+    private JComboBox<Categoria> cbCategoria;
 
-    private JComboBox<Categoria> comboCategoria;
+    private JButton btnSalvar;
+    private JButton btnAlterar;
+    private JButton btnExcluir;
+    private JButton btnLimpar;
 
-    private JTable tabela;
-    private DefaultTableModel modelo;
-
-    private ProdutoController produtoController = new ProdutoController();
-    private CategoriaController categoriaController = new CategoriaController();
+    private ProdutoController controller;
+    private CategoriaController categoriaController;
 
     public TelaProduto() {
-        setTitle("Tela Produto");
-        setSize(1000, 550);
+        controller = new ProdutoController();
+        categoriaController = new CategoriaController();
+
+        setTitle("Cadastro de Produtos");
+        setSize(500, 350);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-        setLayout(new BorderLayout());
 
-        JPanel campos = new JPanel(new GridBagLayout());
-        GridBagConstraints gbc = new GridBagConstraints();
-        gbc.insets = new Insets(4,4,4,4);
-        gbc.anchor = GridBagConstraints.WEST;
+        initComponents();
+        carregarProdutos();
+        carregarCategorias();
+    }
 
-        txtId = new JTextField(20);
-        txtNome = new JTextField(20);
-        txtPreco = new JTextField(20);
-        txtQuantidade = new JTextField(20);
-        txtUltimaVenda = new JTextField(20);
-        txtUltimaCompra = new JTextField(20);
-        txtPrecoMedio = new JTextField(20);
-        comboCategoria = new JComboBox<>();
+    private void initComponents() {
+        JPanel painel = new JPanel(new GridLayout(7, 2, 5, 5));
 
-        int y = 0;
+        painel.add(new JLabel("Pesquisar Produto:"));
+        cbProdutos = new JComboBox<>();
+        cbProdutos.addActionListener(e -> carregarProdutoSelecionado());
+        painel.add(cbProdutos);
 
-        adicionarCampo(campos, gbc, y++, "Id:", txtId);
-        adicionarCampo(campos, gbc, y++, "Nome:", txtNome);
-        adicionarCampo(campos, gbc, y++, "Preço:", txtPreco);
-        adicionarCampo(campos, gbc, y++, "Quantidade:", txtQuantidade);
-        adicionarCampo(campos, gbc, y++, "Última Venda:", txtUltimaVenda);
-        adicionarCampo(campos, gbc, y++, "Última Compra:", txtUltimaCompra);
-        adicionarCampo(campos, gbc, y++, "Preço Médio:", txtPrecoMedio);
+        painel.add(new JLabel("Nome:"));
+        txtNome = new JTextField();
+        painel.add(txtNome);
 
-        gbc.gridx = 0;
-        gbc.gridy = y;
-        campos.add(new JLabel("Categoria:"), gbc);
-        gbc.gridx = 1;
-        campos.add(comboCategoria, gbc);
+        painel.add(new JLabel("Preço:"));
+        txtPreco = new JTextField();
+        painel.add(txtPreco);
 
-        JPanel botoes = new JPanel();
-        JButton btnSalvar = new JButton("Salvar");
-        JButton btnAlterar = new JButton("Alterar");
-        JButton btnExcluir = new JButton("Excluir");
-        JButton btnPesquisar = new JButton("Pesquisar");
+        painel.add(new JLabel("Quantidade:"));
+        txtQuantidade = new JTextField();
+        painel.add(txtQuantidade);
 
-        botoes.add(btnSalvar);
-        botoes.add(btnAlterar);
-        botoes.add(btnExcluir);
-        botoes.add(btnPesquisar);
+        painel.add(new JLabel("Categoria:"));
+        cbCategoria = new JComboBox<>();
+        painel.add(cbCategoria);
 
-        modelo = new DefaultTableModel(
-                new Object[]{"Id","Nome","Preço","Qtd","Categoria"}, 0);
-
-        tabela = new JTable(modelo);
-
-        tabela.addMouseListener(new MouseAdapter() {
-            public void mouseClicked(MouseEvent e) {
-                if (e.getClickCount() == 2) {
-                    int linha = tabela.getSelectedRow();
-                    txtId.setText(modelo.getValueAt(linha,0).toString());
-                    txtNome.setText(modelo.getValueAt(linha,1).toString());
-                    txtPreco.setText(modelo.getValueAt(linha,2).toString());
-                    txtQuantidade.setText(modelo.getValueAt(linha,3).toString());
-                }
-            }
-        });
+        btnSalvar = new JButton("Salvar");
+        btnAlterar = new JButton("Alterar");
+        btnExcluir = new JButton("Excluir");
+        btnLimpar = new JButton("Limpar");
 
         btnSalvar.addActionListener(e -> salvar());
         btnAlterar.addActionListener(e -> alterar());
         btnExcluir.addActionListener(e -> excluir());
-        btnPesquisar.addActionListener(e -> carregarTabela());
+        btnLimpar.addActionListener(e -> limparCampos());
 
-        add(campos, BorderLayout.NORTH);
-        add(new JScrollPane(tabela), BorderLayout.CENTER);
-        add(botoes, BorderLayout.SOUTH);
+        painel.add(btnSalvar);
+        painel.add(btnAlterar);
+        painel.add(btnExcluir);
+        painel.add(btnLimpar);
 
-        carregarCategorias();
-        carregarTabela();
+        add(painel);
     }
 
-    private void adicionarCampo(
-            JPanel panel, GridBagConstraints gbc,
-            int y, String label, JTextField field) {
+    private void carregarProdutos() {
+        cbProdutos.removeAllItems();
 
-        gbc.gridx = 0;
-        gbc.gridy = y;
-        panel.add(new JLabel(label), gbc);
+        List<Produto> produtos = controller.pesquisarTodos();
 
-        gbc.gridx = 1;
-        panel.add(field, gbc);
+        for (Produto p : produtos) {
+            cbProdutos.addItem(p);
+        }
     }
 
     private void carregarCategorias() {
-        comboCategoria.removeAllItems();
+        cbCategoria.removeAllItems();
 
-        List<Categoria> categorias =
-                categoriaController.pesquisarTodos();
+        List<Categoria> categorias = categoriaController.pesquisarTodos();
 
-        for (Categoria categoria : categorias) {
-            comboCategoria.addItem(categoria);
+        for (Categoria c : categorias) {
+            cbCategoria.addItem(c);
         }
     }
 
-    private Produto montarProduto() {
-        Produto produto = new Produto();
+    private void carregarProdutoSelecionado() {
+        Produto produto = (Produto) cbProdutos.getSelectedItem();
 
-        if (!txtId.getText().isBlank()) {
-            produto.setId(Integer.parseInt(txtId.getText()));
+        if (produto != null) {
+            txtNome.setText(produto.getNome());
+
+            if (produto.getPreco() != null)
+                txtPreco.setText(produto.getPreco().toString());
+
+            if (produto.getQuantidade() != null)
+                txtQuantidade.setText(produto.getQuantidade().toString());
+
+            cbCategoria.setSelectedItem(produto.getCategoria());
         }
-
-        produto.setNome(txtNome.getText());
-        produto.setPreco(Double.parseDouble(txtPreco.getText()));
-        produto.setQuantidade(Integer.parseInt(txtQuantidade.getText()));
-
-        produto.setValorUltimaVenda(
-                txtUltimaVenda.getText().isBlank() ?
-                        null : Double.parseDouble(txtUltimaVenda.getText()));
-
-        produto.setValorUltimaCompra(
-                txtUltimaCompra.getText().isBlank() ?
-                        null : Double.parseDouble(txtUltimaCompra.getText()));
-
-        produto.setPrecoMedio(
-                txtPrecoMedio.getText().isBlank() ?
-                        null : Double.parseDouble(txtPrecoMedio.getText()));
-
-        produto.setCategoria((Categoria) comboCategoria.getSelectedItem());
-
-        return produto;
     }
 
     private void salvar() {
-        produtoController.salvar(montarProduto());
-        carregarTabela();
+        try {
+            Produto produto = new Produto();
+
+            produto.setNome(txtNome.getText());
+            produto.setPreco(Double.parseDouble(txtPreco.getText()));
+            produto.setQuantidade(Integer.parseInt(txtQuantidade.getText()));
+            produto.setCategoria((Categoria) cbCategoria.getSelectedItem());
+
+            if (controller.salvar(produto)) {
+                JOptionPane.showMessageDialog(this, "Salvo com sucesso");
+                limparCampos();
+                carregarProdutos();
+            } else {
+                JOptionPane.showMessageDialog(this, "Erro ao salvar");
+            }
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Dados inválidos");
+        }
     }
 
     private void alterar() {
-        produtoController.alterar(montarProduto());
-        carregarTabela();
+        try {
+            Produto produto = (Produto) cbProdutos.getSelectedItem();
+
+            if (produto == null) return;
+
+            produto.setNome(txtNome.getText());
+            produto.setPreco(Double.parseDouble(txtPreco.getText()));
+            produto.setQuantidade(Integer.parseInt(txtQuantidade.getText()));
+            produto.setCategoria((Categoria) cbCategoria.getSelectedItem());
+
+            if (controller.alterar(produto)) {
+                JOptionPane.showMessageDialog(this, "Alterado com sucesso");
+                carregarProdutos();
+            } else {
+                JOptionPane.showMessageDialog(this, "Erro ao alterar");
+            }
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Dados inválidos");
+        }
     }
 
     private void excluir() {
-        produtoController.excluir(Integer.parseInt(txtId.getText()));
-        carregarTabela();
+        Produto produto = (Produto) cbProdutos.getSelectedItem();
+
+        if (produto == null) return;
+
+        if (controller.excluir(produto.getId())) {
+            JOptionPane.showMessageDialog(this, "Excluído com sucesso");
+            limparCampos();
+            carregarProdutos();
+        } else {
+            JOptionPane.showMessageDialog(this, "Erro ao excluir");
+        }
     }
 
-    private void carregarTabela() {
-        modelo.setRowCount(0);
-
-        List<Produto> produtos = produtoController.pesquisarTodos();
-
-        for (Produto p : produtos) {
-            modelo.addRow(new Object[]{
-                    p.getId(),
-                    p.getNome(),
-                    p.getPreco(),
-                    p.getQuantidade(),
-                    p.getCategoria() != null ? p.getCategoria().getNome() : ""
-            });
-        }
+    private void limparCampos() {
+        txtNome.setText("");
+        txtPreco.setText("");
+        txtQuantidade.setText("");
+        cbProdutos.setSelectedItem(null);
+        cbCategoria.setSelectedItem(null);
+    }
+    public static void main(String[] args) {
+        SwingUtilities.invokeLater(() ->
+                new TelaProduto().setVisible(true)
+        );
     }
 }

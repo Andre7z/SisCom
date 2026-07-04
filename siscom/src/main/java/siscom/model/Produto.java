@@ -34,6 +34,11 @@ public class Produto {
     @ManyToOne
     @JoinColumn(name = "categoria_id")
     private Categoria categoria;
+
+    @Override
+    public String toString() {
+        return id + " - " + nome;
+    }
 }
 
 // private int id;
@@ -45,55 +50,56 @@ public class Produto {
 // private double valor_ultima_venda;
 
 // public int getId() {
-//     return id;
+// return id;
 // }
 // public void setId(int id) {
-//     this.id = id;
+// this.id = id;
 // }
 // public String getNome() {
-//     return nome;
+// return nome;
 // }
 // public void setNome(String nome) {
-//     this.nome = nome;
+// this.nome = nome;
 // }
 // public double getPreco_medio() {
-//     return preco_medio;
+// return preco_medio;
 // }
 // public void setPreco_medio(double preco_medio) {
-//     this.preco_medio = preco_medio;
+// this.preco_medio = preco_medio;
 // }
 // public double getQtde_estoque() {
-//     return qtde_estoque;
+// return qtde_estoque;
 // }
 // public void setQtde_estoque(double qtde_estoque) {
-//     this.qtde_estoque = qtde_estoque;
+// this.qtde_estoque = qtde_estoque;
 // }
 // public Categoria getCategoria() {
-//     return categoria;
+// return categoria;
 // }
 // public void setCategoria(Categoria categoria) {
-//     this.categoria = categoria;
+// this.categoria = categoria;
 // }
 // public double getValor_ultima_compra() {
-//     return valor_ultima_compra;
+// return valor_ultima_compra;
 // }
 // public void setValor_ultima_compra(double valor_ultima_compra) {
-//     this.valor_ultima_compra = valor_ultima_compra;
+// this.valor_ultima_compra = valor_ultima_compra;
 // }
 // public double getValor_ultima_venda() {
-//     return valor_ultima_venda;
+// return valor_ultima_venda;
 // }
 // public void setValor_ultima_venda(double valor_ultima_venda) {
-//     this.valor_ultima_venda = valor_ultima_venda;
+// this.valor_ultima_venda = valor_ultima_venda;
 // }
 
 // public Produto(){}
-// public Produto(int id, String nome, double preco_medio, double qtde_estoque, Categoria categoria, double valor_ultima_compra, double valor_ultima_venda) {
-//     this.id = id;
-//     this.nome = nome;
-//     this.preco_medio = preco_medio;
-//     this.qtde_estoque = qtde_estoque;
-//     this.categoria = categoria;
-//     this.valor_ultima_compra = valor_ultima_compra;
-//     this.valor_ultima_venda = valor_ultima_venda;
+// public Produto(int id, String nome, double preco_medio, double qtde_estoque,
+// Categoria categoria, double valor_ultima_compra, double valor_ultima_venda) {
+// this.id = id;
+// this.nome = nome;
+// this.preco_medio = preco_medio;
+// this.qtde_estoque = qtde_estoque;
+// this.categoria = categoria;
+// this.valor_ultima_compra = valor_ultima_compra;
+// this.valor_ultima_venda = valor_ultima_venda;
 // }
