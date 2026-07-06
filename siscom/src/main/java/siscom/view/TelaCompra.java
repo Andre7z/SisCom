@@ -1,30 +1,62 @@
 package siscom.view;
 
-import java.awt.*;
+import java.awt.BorderLayout;
+import java.awt.Dimension;
+import java.awt.FlowLayout;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.awt.GridLayout;
+import java.awt.Insets;
+import java.sql.Connection;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
-import javax.swing.*;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.JTextField;
+import javax.swing.SwingUtilities;
 import javax.swing.table.DefaultTableModel;
 
+import org.hibernate.Session;
+
+import net.sf.jasperreports.engine.JasperCompileManager;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.view.JasperViewer;
 import siscom.controller.CompraController;
+import siscom.controller.FormaPagamentoController;
 import siscom.controller.FornecedorController;
 import siscom.controller.ProdutoController;
+import siscom.controller.TipoContaController;
+import siscom.dao.Conexao;
 import siscom.model.Compra;
 import siscom.model.CompraProduto;
+import siscom.model.FormaPagamento;
 import siscom.model.Fornecedor;
 import siscom.model.Produto;
+import siscom.model.TipoConta;
 
 public class TelaCompra extends JFrame {
 
     private JTextField txtId;
     private JTextField txtData;
-    private JTextField txtValorUnitario;
     private JTextField txtQuantidade;
+    private JTextField txtValorUnitario;
     private JTextField txtValorTotal;
 
     private JComboBox<Fornecedor> cbFornecedor;
     private JComboBox<Produto> cbProduto;
+    private JComboBox<FormaPagamento> cbFormaPagamento;
+    private JComboBox<TipoConta> cbTipoConta;
 
     private JButton btnAdicionar;
     private JButton btnRemover;
@@ -38,25 +70,21 @@ public class TelaCompra extends JFrame {
     private JTable tabelaProdutos;
     private DefaultTableModel modeloTabela;
 
-    private CompraController controller;
-    private ProdutoController produtoController;
-    private FornecedorController fornecedorController;
+    private CompraController controller = new CompraController();
+    private ProdutoController produtoController = new ProdutoController();
+    private FornecedorController fornecedorController = new FornecedorController();
+    private FormaPagamentoController formaPagamentoController = new FormaPagamentoController();
+    private TipoContaController tipoContaController = new TipoContaController();
 
-    private java.util.List<CompraProduto> listaProdutos;
+    private List<CompraProduto> listaProdutos = new ArrayList<>();
 
     public TelaCompra() {
 
-        setTitle("Tela Compra");
-        setSize(900,600);
+        setTitle("Cadastro de Compras");
+        setSize(950,650);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         setLayout(new BorderLayout(10,10));
-
-        controller = new CompraController();
-        produtoController = new ProdutoController();
-        fornecedorController = new FornecedorController();
-
-        listaProdutos = new ArrayList<>();
 
         JPanel painelCampos = new JPanel(new GridBagLayout());
 
@@ -64,108 +92,105 @@ public class TelaCompra extends JFrame {
         gbc.insets = new Insets(5,5,5,5);
         gbc.anchor = GridBagConstraints.WEST;
 
-        //----------------------------
+        gbc.gridx = 0;
+        gbc.gridy = 0;
+        painelCampos.add(new JLabel("Id"), gbc);
 
-        gbc.gridx=0;
-        gbc.gridy=0;
-        painelCampos.add(new JLabel("Id:"),gbc);
-
-        gbc.gridx=1;
+        gbc.gridx = 1;
         txtId = new JTextField(10);
-        painelCampos.add(txtId,gbc);
+        painelCampos.add(txtId, gbc);
 
-        //----------------------------
+        gbc.gridx = 2;
+        painelCampos.add(new JLabel("Data"), gbc);
 
-        gbc.gridx=2;
-        painelCampos.add(new JLabel("Data:"),gbc);
-
-        gbc.gridx=3;
+        gbc.gridx = 3;
         txtData = new JTextField(10);
         txtData.setText(LocalDate.now().toString());
-        painelCampos.add(txtData,gbc);
+        painelCampos.add(txtData, gbc);
 
-        //----------------------------
+        gbc.gridx = 0;
+        gbc.gridy = 1;
+        painelCampos.add(new JLabel("Fornecedor"), gbc);
 
-        gbc.gridx=0;
-        gbc.gridy=1;
-        painelCampos.add(new JLabel("Fornecedor:"),gbc);
-
-        gbc.gridx=1;
-        gbc.gridwidth=3;
+        gbc.gridx = 1;
+        gbc.gridwidth = 3;
 
         cbFornecedor = new JComboBox<>();
-        cbFornecedor.setPreferredSize(new Dimension(300,25));
+        cbFornecedor.setPreferredSize(new Dimension(350,25));
 
-        painelCampos.add(cbFornecedor,gbc);
+        painelCampos.add(cbFornecedor, gbc);
 
-        gbc.gridwidth=1;
+        gbc.gridwidth = 1;
 
-        //----------------------------
+        gbc.gridx = 0;
+        gbc.gridy = 2;
+        painelCampos.add(new JLabel("Forma Pagamento"), gbc);
 
-        gbc.gridx=0;
-        gbc.gridy=2;
-        painelCampos.add(new JLabel("Produto:"),gbc);
+        gbc.gridx = 1;
 
-        gbc.gridx=1;
+        cbFormaPagamento = new JComboBox<>();
+        cbFormaPagamento.setPreferredSize(new Dimension(180,25));
+        painelCampos.add(cbFormaPagamento, gbc);
+
+        gbc.gridx = 2;
+        painelCampos.add(new JLabel("Tipo Conta"), gbc);
+
+        gbc.gridx = 3;
+
+        cbTipoConta = new JComboBox<>();
+        cbTipoConta.setPreferredSize(new Dimension(180,25));
+        painelCampos.add(cbTipoConta, gbc);
+
+        gbc.gridx = 0;
+        gbc.gridy = 3;
+        painelCampos.add(new JLabel("Produto"), gbc);
+
+        gbc.gridx = 1;
 
         cbProduto = new JComboBox<>();
         cbProduto.setPreferredSize(new Dimension(250,25));
+        painelCampos.add(cbProduto, gbc);
 
-        painelCampos.add(cbProduto,gbc);
+        gbc.gridx = 2;
+        painelCampos.add(new JLabel("Valor Unitário"), gbc);
 
-        //----------------------------
+        gbc.gridx = 3;
 
-        gbc.gridx=2;
-        painelCampos.add(new JLabel("Valor Unitário:"),gbc);
+        txtValorUnitario = new JTextField(10);
+        painelCampos.add(txtValorUnitario, gbc);
 
-        gbc.gridx=3;
+        gbc.gridx = 0;
+        gbc.gridy = 4;
+        painelCampos.add(new JLabel("Quantidade"), gbc);
 
-        txtValorUnitario = new JTextField(8);
+        gbc.gridx = 1;
 
-        painelCampos.add(txtValorUnitario,gbc);
+        txtQuantidade = new JTextField(10);
+        painelCampos.add(txtQuantidade, gbc);
 
-        //----------------------------
+        btnAdicionar = new JButton("Adicionar");
+        btnRemover = new JButton("Remover");
 
-        gbc.gridx=0;
-        gbc.gridy=3;
+        JPanel painelItem = new JPanel();
 
-        painelCampos.add(new JLabel("Quantidade:"),gbc);
+        painelItem.add(btnAdicionar);
+        painelItem.add(btnRemover);
 
-        gbc.gridx=1;
+        gbc.gridx = 2;
+        gbc.gridwidth = 2;
 
-        txtQuantidade = new JTextField(8);
+        painelCampos.add(painelItem, gbc);
 
-        painelCampos.add(txtQuantidade,gbc);
-
-        //----------------------------
-
-        btnAdicionar = new JButton("Adicionar Produto");
-        btnRemover = new JButton("Remover Produto");
-
-        JPanel painelAdd = new JPanel();
-
-        painelAdd.add(btnAdicionar);
-        painelAdd.add(btnRemover);
-
-        gbc.gridx=2;
-        gbc.gridwidth=2;
-
-        painelCampos.add(painelAdd,gbc);
-
-        gbc.gridwidth=1;
-
-        //--------------------------------------------------
-
-        modeloTabela = new DefaultTableModel(
+                modeloTabela = new DefaultTableModel(
                 new Object[]{
                         "Produto",
-                        "Valor Unit.",
+                        "Valor Unitário",
                         "Quantidade",
                         "Subtotal"
-                },0){
+                }, 0) {
 
             @Override
-            public boolean isCellEditable(int row,int column){
+            public boolean isCellEditable(int row, int column) {
                 return false;
             }
 
@@ -175,20 +200,18 @@ public class TelaCompra extends JFrame {
 
         JScrollPane scroll = new JScrollPane(tabelaProdutos);
 
-        //--------------------------------------------------
-
         JPanel painelSul = new JPanel(new BorderLayout());
 
         JPanel painelTotal = new JPanel(new FlowLayout(FlowLayout.RIGHT));
 
-        painelTotal.add(new JLabel("Valor Total:"));
+        painelTotal.add(new JLabel("Valor Total"));
 
-        txtValorTotal = new JTextField(10);
+        txtValorTotal = new JTextField(12);
         txtValorTotal.setEditable(false);
 
         painelTotal.add(txtValorTotal);
 
-        JPanel painelBotoes = new JPanel();
+        JPanel painelBotoes = new JPanel(new GridLayout(1, 5, 10, 10));
 
         btnSalvar = new JButton("Salvar");
         btnAlterar = new JButton("Alterar");
@@ -202,136 +225,421 @@ public class TelaCompra extends JFrame {
         painelBotoes.add(btnPesquisar);
         painelBotoes.add(btnImprimir);
 
-        painelSul.add(painelTotal,BorderLayout.NORTH);
-        painelSul.add(painelBotoes,BorderLayout.SOUTH);
+        painelSul.add(painelTotal, BorderLayout.NORTH);
+        painelSul.add(painelBotoes, BorderLayout.SOUTH);
 
-        add(painelCampos,BorderLayout.NORTH);
-        add(scroll,BorderLayout.CENTER);
-        add(painelSul,BorderLayout.SOUTH);
-                carregarFornecedores();
+        add(painelCampos, BorderLayout.NORTH);
+        add(scroll, BorderLayout.CENTER);
+        add(painelSul, BorderLayout.SOUTH);
+
+        carregarFornecedores();
         carregarProdutos();
+        carregarFormaPagamento();
+        carregarTipoConta();
+
+        preencherValorUnitario();
 
         cbProduto.addActionListener(e -> preencherValorUnitario());
 
         btnAdicionar.addActionListener(e -> adicionarProduto());
-
         btnRemover.addActionListener(e -> removerProduto());
-    }
 
+        btnSalvar.addActionListener(e -> acaoSalvar());
+        btnAlterar.addActionListener(e -> acaoAlterar());
+        btnExcluir.addActionListener(e -> acaoExcluir());
+        btnPesquisar.addActionListener(e -> acaoPesquisar());
+        btnImprimir.addActionListener(e -> imprimirRelatorio());
+
+        btnImprimir.addActionListener(e ->
+                JOptionPane.showMessageDialog(this,
+                        "Relatório JasperReports"));
+
+    }
     private void carregarFornecedores() {
 
-        cbFornecedor.removeAllItems();
+    cbFornecedor.removeAllItems();
 
-        for (Fornecedor fornecedor : fornecedorController.pesquisarTodos()) {
-            cbFornecedor.addItem(fornecedor);
-        }
+    List<Fornecedor> lista = fornecedorController.pesquisarTodos();
+
+    for (Fornecedor fornecedor : lista) {
+        cbFornecedor.addItem(fornecedor);
+    }
+
+}
+
+private void carregarProdutos() {
+
+    cbProduto.removeAllItems();
+
+    List<Produto> lista = produtoController.pesquisarTodos();
+
+    for (Produto produto : lista) {
+        cbProduto.addItem(produto);
+    }
+
+}
+
+private void carregarFormaPagamento() {
+
+    cbFormaPagamento.removeAllItems();
+
+    List<FormaPagamento> lista =
+            formaPagamentoController.pesquisarTodos();
+
+    for (FormaPagamento forma : lista) {
+        cbFormaPagamento.addItem(forma);
+    }
+
+}
+
+private void carregarTipoConta() {
+
+    cbTipoConta.removeAllItems();
+
+    List<TipoConta> lista =
+            tipoContaController.pesquisarTodos();
+
+    for (TipoConta tipo : lista) {
+        cbTipoConta.addItem(tipo);
+    }
+
+}
+
+private void preencherValorUnitario() {
+
+    Produto produto = (Produto) cbProduto.getSelectedItem();
+
+    if (produto == null)
+        return;
+
+    if (produto.getValorUltimaCompra() != null &&
+            produto.getValorUltimaCompra() > 0) {
+
+        txtValorUnitario.setText(
+                produto.getValorUltimaCompra().toString());
+
+    } else if (produto.getPreco() != null) {
+
+        txtValorUnitario.setText(
+                produto.getPreco().toString());
+
+    } else {
+
+        txtValorUnitario.setText("0");
 
     }
 
-    private void carregarProdutos() {
+}
 
-        cbProduto.removeAllItems();
+private void adicionarProduto() {
 
-        for (Produto produto : produtoController.pesquisarTodos()) {
-            cbProduto.addItem(produto);
-        }
+    Produto produto = (Produto) cbProduto.getSelectedItem();
 
-    }
+    if (produto == null) {
 
-    private void preencherValorUnitario() {
+        JOptionPane.showMessageDialog(this,
+                "Selecione um produto.");
 
-        Produto produto = (Produto) cbProduto.getSelectedItem();
-
-        if (produto != null && produto.getPreco() != null) {
-
-            txtValorUnitario.setText(String.valueOf(produto.getPreco()));
-
-        }
+        return;
 
     }
 
-    private void adicionarProduto() {
+    if (txtQuantidade.getText().isBlank()) {
 
-        Produto produto = (Produto) cbProduto.getSelectedItem();
+        JOptionPane.showMessageDialog(this,
+                "Informe a quantidade.");
 
-        if (produto == null) {
+        return;
 
-            JOptionPane.showMessageDialog(this,
-                    "Selecione um produto.");
+    }
 
-            return;
-        }
+    CompraProduto item = new CompraProduto();
 
-        if (txtQuantidade.getText().isBlank()) {
+    item.setProduto(produto);
 
-            JOptionPane.showMessageDialog(this,
-                    "Informe a quantidade.");
+    item.setQuantidade(
+            Integer.parseInt(txtQuantidade.getText()));
 
-            return;
-        }
+    item.setValorUnitario(
+            Double.parseDouble(txtValorUnitario.getText()));
 
-        int quantidade = Integer.parseInt(txtQuantidade.getText());
+    listaProdutos.add(item);
 
-        double valorUnitario =
-                Double.parseDouble(txtValorUnitario.getText());
+    modeloTabela.addRow(new Object[]{
 
-        double subtotal = quantidade * valorUnitario;
+            produto.getNome(),
 
-        CompraProduto item = new CompraProduto();
+            item.getValorUnitario(),
 
-        item.setProduto(produto);
-        item.setQuantidade(quantidade);
-        item.setValorUnitario(valorUnitario);
+            item.getQuantidade(),
+
+            item.getQuantidade() * item.getValorUnitario()
+
+    });
+
+    calcularValorTotal();
+
+    txtQuantidade.setText("");
+
+}
+
+private void removerProduto() {
+
+    int linha = tabelaProdutos.getSelectedRow();
+
+    if (linha == -1)
+        return;
+
+    listaProdutos.remove(linha);
+
+    modeloTabela.removeRow(linha);
+
+    calcularValorTotal();
+
+}
+
+private void calcularValorTotal() {
+
+    double total = 0;
+
+    for (CompraProduto item : listaProdutos) {
+
+        total += item.getQuantidade() *
+                item.getValorUnitario();
+
+    }
+
+    txtValorTotal.setText(String.format("%.2f", total));
+
+}
+private void acaoSalvar() {
+
+    if (cbFornecedor.getSelectedItem() == null) {
+        JOptionPane.showMessageDialog(this, "Selecione o fornecedor.");
+        return;
+    }
+
+    if (cbFormaPagamento.getSelectedItem() == null) {
+        JOptionPane.showMessageDialog(this, "Selecione a forma de pagamento.");
+        return;
+    }
+
+    if (cbTipoConta.getSelectedItem() == null) {
+        JOptionPane.showMessageDialog(this, "Selecione o tipo da conta.");
+        return;
+    }
+
+    if (listaProdutos.isEmpty()) {
+        JOptionPane.showMessageDialog(this, "Adicione pelo menos um produto.");
+        return;
+    }
+
+    Compra compra = new Compra();
+
+    compra.setDataCompra(LocalDate.parse(txtData.getText()));
+    compra.setFornecedor((Fornecedor) cbFornecedor.getSelectedItem());
+    compra.setProdutos(listaProdutos);
+
+    for (CompraProduto item : listaProdutos) {
+        item.setCompra(compra);
+    }
+
+    boolean ok = controller.salvar(
+            compra,
+            (FormaPagamento) cbFormaPagamento.getSelectedItem(),
+            (TipoConta) cbTipoConta.getSelectedItem());
+
+    if (ok) {
+
+        JOptionPane.showMessageDialog(this,
+                "Compra salva com sucesso!");
+
+        limparTela();
+
+    } else {
+
+        JOptionPane.showMessageDialog(this,
+                "Erro ao salvar compra.");
+
+    }
+
+}
+
+private void acaoAlterar() {
+
+    Compra compra = new Compra();
+
+    compra.setId(Integer.parseInt(txtId.getText()));
+    compra.setDataCompra(LocalDate.parse(txtData.getText()));
+    compra.setFornecedor((Fornecedor) cbFornecedor.getSelectedItem());
+    compra.setProdutos(listaProdutos);
+
+    for (CompraProduto item : listaProdutos) {
+        item.setCompra(compra);
+    }
+
+    if (controller.alterar(compra)) {
+
+        JOptionPane.showMessageDialog(this,
+                "Compra alterada.");
+
+        limparTela();
+
+    } else {
+
+        JOptionPane.showMessageDialog(this,
+                "Erro ao alterar.");
+
+    }
+
+}
+
+private void acaoExcluir() {
+
+    if (txtId.getText().isBlank())
+        return;
+
+    int op = JOptionPane.showConfirmDialog(this,
+            "Deseja excluir esta compra?");
+
+    if (op != JOptionPane.YES_OPTION)
+        return;
+
+    if (controller.excluir(Integer.parseInt(txtId.getText()))) {
+
+        JOptionPane.showMessageDialog(this,
+                "Compra excluída.");
+
+        limparTela();
+
+    } else {
+
+        JOptionPane.showMessageDialog(this,
+                "Erro ao excluir.");
+
+    }
+
+}
+
+private void acaoPesquisar() {
+
+    if (txtId.getText().isBlank()) {
+
+        JOptionPane.showMessageDialog(this,
+                "Informe o ID.");
+
+        return;
+
+    }
+
+    Compra compra =
+            controller.pesquisar(Integer.parseInt(txtId.getText()));
+
+    if (compra == null) {
+
+        JOptionPane.showMessageDialog(this,
+                "Compra não encontrada.");
+
+        return;
+
+    }
+
+    txtData.setText(compra.getDataCompra().toString());
+
+    cbFornecedor.setSelectedItem(compra.getFornecedor());
+
+    listaProdutos.clear();
+
+    modeloTabela.setRowCount(0);
+
+    for (CompraProduto item : compra.getProdutos()) {
 
         listaProdutos.add(item);
 
         modeloTabela.addRow(new Object[]{
 
-                produto.getNome(),
-                valorUnitario,
-                quantidade,
-                subtotal
+                item.getProduto().getNome(),
+
+                item.getValorUnitario(),
+
+                item.getQuantidade(),
+
+                item.getQuantidade() * item.getValorUnitario()
 
         });
 
-        calcularValorTotal();
-
-        txtQuantidade.setText("");
-
     }
 
-    private void removerProduto() {
+    calcularValorTotal();
 
-        int linha = tabelaProdutos.getSelectedRow();
+}
 
-        if (linha < 0) {
+private void limparTela() {
 
-            JOptionPane.showMessageDialog(this,
-                    "Selecione um produto.");
+    txtId.setText("");
 
-            return;
+    txtData.setText(LocalDate.now().toString());
 
-        }
+    txtQuantidade.setText("");
 
-        listaProdutos.remove(linha);
+    txtValorUnitario.setText("");
 
-        modeloTabela.removeRow(linha);
+    txtValorTotal.setText("");
 
-        calcularValorTotal();
+    modeloTabela.setRowCount(0);
+
+    listaProdutos.clear();
+
+    cbFornecedor.setSelectedIndex(-1);
+    cbProduto.setSelectedIndex(-1);
+    cbFormaPagamento.setSelectedIndex(-1);
+    cbTipoConta.setSelectedIndex(-1);
+
+}
+private void imprimirRelatorio() {
+
+    Session session = null;
+
+    try {
+
+        JasperReport jasperReport =
+                JasperCompileManager.compileReport(
+                        getClass().getResourceAsStream(
+                                "/relatorios/CompraRelatorio.jrxml"));
+
+        session = Conexao.getSessionFactory().openSession();
+
+        Connection conexao = session.doReturningWork(conn -> conn);
+
+        JasperPrint jasperPrint =
+                JasperFillManager.fillReport(
+                        jasperReport,
+                        new HashMap<>(),
+                        conexao);
+
+        JasperViewer.viewReport(jasperPrint, false);
+
+    } catch (Exception e) {
+
+        e.printStackTrace();
+
+        JOptionPane.showMessageDialog(this,
+                "Erro ao gerar relatório.");
+
+    } finally {
+
+        if (session != null)
+            session.close();
 
     }
+}
 
-    private void calcularValorTotal() {
+public static void main(String[] args) {
 
-        double total = 0;
+    SwingUtilities.invokeLater(() -> {
 
-        for (int i = 0; i < modeloTabela.getRowCount(); i++) {
+        new TelaCompra().setVisible(true);
 
-            total += Double.parseDouble(
-                    modeloTabela.getValueAt(i,3).toString());
+    });
 
-        }
-
-        txtValorTotal.setText(String.valueOf(total));
-
-    }
+}}

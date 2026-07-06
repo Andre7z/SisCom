@@ -22,4 +22,9 @@ public class FormaPagamento {
     private int qtdeParcela;
     private int prazo;
     private int avistaPrazo;
+
+    @Override
+    public String toString() {
+        return id + " - " + nome;
+    }
 }
