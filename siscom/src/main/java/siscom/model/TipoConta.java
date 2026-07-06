@@ -19,4 +19,9 @@ public class TipoConta {
     private int id;
 
     private String descricao;
+
+    @Override
+    public String toString() {
+        return descricao;
+    }
 }

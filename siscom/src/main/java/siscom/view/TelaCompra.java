@@ -1,223 +1,337 @@
 package siscom.view;
 
-import siscom.controller.*;
-import siscom.model.*;
-
-import javax.swing.*;
-import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.List;
+
+import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
+
+import siscom.controller.CompraController;
+import siscom.controller.FornecedorController;
+import siscom.controller.ProdutoController;
+import siscom.model.Compra;
+import siscom.model.CompraProduto;
+import siscom.model.Fornecedor;
+import siscom.model.Produto;
 
 public class TelaCompra extends JFrame {
 
     private JTextField txtId;
-    private JTextField txtQuantidade;
+    private JTextField txtData;
     private JTextField txtValorUnitario;
-    private JLabel lblTotal;
+    private JTextField txtQuantidade;
+    private JTextField txtValorTotal;
 
     private JComboBox<Fornecedor> cbFornecedor;
     private JComboBox<Produto> cbProduto;
-    private JComboBox<FormaPagamento> cbFormaPagamento;
-    private JComboBox<TipoConta> cbTipoConta;
 
-    private JTable tabela;
-    private DefaultTableModel model;
+    private JButton btnAdicionar;
+    private JButton btnRemover;
 
-    private List<CompraProduto> itens = new ArrayList<>();
+    private JButton btnSalvar;
+    private JButton btnAlterar;
+    private JButton btnExcluir;
+    private JButton btnPesquisar;
+    private JButton btnImprimir;
 
-    private CompraController compraController = new CompraController();
-    private FornecedorController fornecedorController = new FornecedorController();
-    private ProdutoController produtoController = new ProdutoController();
-    private FormaPagamentoController formaPagamentoController =
-            new FormaPagamentoController();
-    private TipoContaController tipoContaController =
-            new TipoContaController();
+    private JTable tabelaProdutos;
+    private DefaultTableModel modeloTabela;
+
+    private CompraController controller;
+    private ProdutoController produtoController;
+    private FornecedorController fornecedorController;
+
+    private java.util.List<CompraProduto> listaProdutos;
 
     public TelaCompra() {
+
         setTitle("Tela Compra");
-        setSize(900, 600);
+        setSize(900,600);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-        setLayout(new BorderLayout());
+        setLayout(new BorderLayout(10,10));
 
-        JPanel panel = new JPanel(new GridLayout(8,2));
+        controller = new CompraController();
+        produtoController = new ProdutoController();
+        fornecedorController = new FornecedorController();
 
-        txtId = new JTextField();
-        txtQuantidade = new JTextField();
-        txtValorUnitario = new JTextField();
+        listaProdutos = new ArrayList<>();
 
-        lblTotal = new JLabel("0.0");
+        JPanel painelCampos = new JPanel(new GridBagLayout());
+
+        GridBagConstraints gbc = new GridBagConstraints();
+        gbc.insets = new Insets(5,5,5,5);
+        gbc.anchor = GridBagConstraints.WEST;
+
+        //----------------------------
+
+        gbc.gridx=0;
+        gbc.gridy=0;
+        painelCampos.add(new JLabel("Id:"),gbc);
+
+        gbc.gridx=1;
+        txtId = new JTextField(10);
+        painelCampos.add(txtId,gbc);
+
+        //----------------------------
+
+        gbc.gridx=2;
+        painelCampos.add(new JLabel("Data:"),gbc);
+
+        gbc.gridx=3;
+        txtData = new JTextField(10);
+        txtData.setText(LocalDate.now().toString());
+        painelCampos.add(txtData,gbc);
+
+        //----------------------------
+
+        gbc.gridx=0;
+        gbc.gridy=1;
+        painelCampos.add(new JLabel("Fornecedor:"),gbc);
+
+        gbc.gridx=1;
+        gbc.gridwidth=3;
 
         cbFornecedor = new JComboBox<>();
+        cbFornecedor.setPreferredSize(new Dimension(300,25));
+
+        painelCampos.add(cbFornecedor,gbc);
+
+        gbc.gridwidth=1;
+
+        //----------------------------
+
+        gbc.gridx=0;
+        gbc.gridy=2;
+        painelCampos.add(new JLabel("Produto:"),gbc);
+
+        gbc.gridx=1;
+
         cbProduto = new JComboBox<>();
-        cbFormaPagamento = new JComboBox<>();
-        cbTipoConta = new JComboBox<>();
+        cbProduto.setPreferredSize(new Dimension(250,25));
 
-        panel.add(new JLabel("Id"));
-        panel.add(txtId);
+        painelCampos.add(cbProduto,gbc);
 
-        panel.add(new JLabel("Fornecedor"));
-        panel.add(cbFornecedor);
+        //----------------------------
 
-        panel.add(new JLabel("Produto"));
-        panel.add(cbProduto);
+        gbc.gridx=2;
+        painelCampos.add(new JLabel("Valor Unitário:"),gbc);
 
-        panel.add(new JLabel("Quantidade"));
-        panel.add(txtQuantidade);
+        gbc.gridx=3;
 
-        panel.add(new JLabel("Valor Unitário"));
-        panel.add(txtValorUnitario);
+        txtValorUnitario = new JTextField(8);
 
-        panel.add(new JLabel("Forma Pagamento"));
-        panel.add(cbFormaPagamento);
+        painelCampos.add(txtValorUnitario,gbc);
 
-        panel.add(new JLabel("Tipo Conta"));
-        panel.add(cbTipoConta);
+        //----------------------------
 
-        panel.add(new JLabel("Valor Total"));
-        panel.add(lblTotal);
+        gbc.gridx=0;
+        gbc.gridy=3;
 
-        add(panel, BorderLayout.NORTH);
+        painelCampos.add(new JLabel("Quantidade:"),gbc);
 
-        model = new DefaultTableModel(
-                new Object[]{"Produto","Qtd","Valor","Subtotal"}, 0);
+        gbc.gridx=1;
 
-        tabela = new JTable(model);
-        add(new JScrollPane(tabela), BorderLayout.CENTER);
+        txtQuantidade = new JTextField(8);
 
-        JPanel botoes = new JPanel();
+        painelCampos.add(txtQuantidade,gbc);
 
-        JButton btnAdicionar = new JButton("Adicionar Item");
-        JButton btnSalvar = new JButton("Salvar");
-        JButton btnAlterar = new JButton("Alterar");
-        JButton btnExcluir = new JButton("Excluir");
-        JButton btnPesquisar = new JButton("Pesquisar");
-        JButton btnRelatorio = new JButton("Relatório");
+        //----------------------------
 
-        botoes.add(btnAdicionar);
-        botoes.add(btnSalvar);
-        botoes.add(btnAlterar);
-        botoes.add(btnExcluir);
-        botoes.add(btnPesquisar);
-        botoes.add(btnRelatorio);
+        btnAdicionar = new JButton("Adicionar Produto");
+        btnRemover = new JButton("Remover Produto");
 
-        add(botoes, BorderLayout.SOUTH);
+        JPanel painelAdd = new JPanel();
 
-        carregarCombos();
+        painelAdd.add(btnAdicionar);
+        painelAdd.add(btnRemover);
 
-        btnAdicionar.addActionListener(e -> adicionarItem());
-        btnSalvar.addActionListener(e -> salvarCompra());
-        btnAlterar.addActionListener(e -> alterarCompra());
-        btnExcluir.addActionListener(e -> excluirCompra());
-        btnPesquisar.addActionListener(e -> pesquisarCompra());
-        btnRelatorio.addActionListener(e -> gerarRelatorio());
+        gbc.gridx=2;
+        gbc.gridwidth=2;
+
+        painelCampos.add(painelAdd,gbc);
+
+        gbc.gridwidth=1;
+
+        //--------------------------------------------------
+
+        modeloTabela = new DefaultTableModel(
+                new Object[]{
+                        "Produto",
+                        "Valor Unit.",
+                        "Quantidade",
+                        "Subtotal"
+                },0){
+
+            @Override
+            public boolean isCellEditable(int row,int column){
+                return false;
+            }
+
+        };
+
+        tabelaProdutos = new JTable(modeloTabela);
+
+        JScrollPane scroll = new JScrollPane(tabelaProdutos);
+
+        //--------------------------------------------------
+
+        JPanel painelSul = new JPanel(new BorderLayout());
+
+        JPanel painelTotal = new JPanel(new FlowLayout(FlowLayout.RIGHT));
+
+        painelTotal.add(new JLabel("Valor Total:"));
+
+        txtValorTotal = new JTextField(10);
+        txtValorTotal.setEditable(false);
+
+        painelTotal.add(txtValorTotal);
+
+        JPanel painelBotoes = new JPanel();
+
+        btnSalvar = new JButton("Salvar");
+        btnAlterar = new JButton("Alterar");
+        btnExcluir = new JButton("Excluir");
+        btnPesquisar = new JButton("Pesquisar");
+        btnImprimir = new JButton("Imprimir");
+
+        painelBotoes.add(btnSalvar);
+        painelBotoes.add(btnAlterar);
+        painelBotoes.add(btnExcluir);
+        painelBotoes.add(btnPesquisar);
+        painelBotoes.add(btnImprimir);
+
+        painelSul.add(painelTotal,BorderLayout.NORTH);
+        painelSul.add(painelBotoes,BorderLayout.SOUTH);
+
+        add(painelCampos,BorderLayout.NORTH);
+        add(scroll,BorderLayout.CENTER);
+        add(painelSul,BorderLayout.SOUTH);
+                carregarFornecedores();
+        carregarProdutos();
+
+        cbProduto.addActionListener(e -> preencherValorUnitario());
+
+        btnAdicionar.addActionListener(e -> adicionarProduto());
+
+        btnRemover.addActionListener(e -> removerProduto());
     }
 
-    private void carregarCombos() {
+    private void carregarFornecedores() {
+
         cbFornecedor.removeAllItems();
-        cbProduto.removeAllItems();
-        cbFormaPagamento.removeAllItems();
-        cbTipoConta.removeAllItems();
 
-        for (Fornecedor f : fornecedorController.pesquisarTodos())
-            cbFornecedor.addItem(f);
+        for (Fornecedor fornecedor : fornecedorController.pesquisarTodos()) {
+            cbFornecedor.addItem(fornecedor);
+        }
 
-        for (Produto p : produtoController.pesquisarTodos())
-            cbProduto.addItem(p);
-
-        for (FormaPagamento fp : formaPagamentoController.pesquisarTodos())
-            cbFormaPagamento.addItem(fp);
-
-        for (TipoConta tc : tipoContaController.pesquisarTodos())
-            cbTipoConta.addItem(tc);
     }
 
-    private void adicionarItem() {
+    private void carregarProdutos() {
+
+        cbProduto.removeAllItems();
+
+        for (Produto produto : produtoController.pesquisarTodos()) {
+            cbProduto.addItem(produto);
+        }
+
+    }
+
+    private void preencherValorUnitario() {
+
         Produto produto = (Produto) cbProduto.getSelectedItem();
 
-        int qtd = Integer.parseInt(txtQuantidade.getText());
-        double valor = Double.parseDouble(txtValorUnitario.getText());
+        if (produto != null && produto.getPreco() != null) {
+
+            txtValorUnitario.setText(String.valueOf(produto.getPreco()));
+
+        }
+
+    }
+
+    private void adicionarProduto() {
+
+        Produto produto = (Produto) cbProduto.getSelectedItem();
+
+        if (produto == null) {
+
+            JOptionPane.showMessageDialog(this,
+                    "Selecione um produto.");
+
+            return;
+        }
+
+        if (txtQuantidade.getText().isBlank()) {
+
+            JOptionPane.showMessageDialog(this,
+                    "Informe a quantidade.");
+
+            return;
+        }
+
+        int quantidade = Integer.parseInt(txtQuantidade.getText());
+
+        double valorUnitario =
+                Double.parseDouble(txtValorUnitario.getText());
+
+        double subtotal = quantidade * valorUnitario;
 
         CompraProduto item = new CompraProduto();
+
         item.setProduto(produto);
-        item.setQuantidade(qtd);
-        item.setValorUnitario(valor);
+        item.setQuantidade(quantidade);
+        item.setValorUnitario(valorUnitario);
 
-        itens.add(item);
+        listaProdutos.add(item);
 
-        double subtotal = qtd * valor;
+        modeloTabela.addRow(new Object[]{
 
-        model.addRow(new Object[]{
-                produto,
-                qtd,
-                valor,
+                produto.getNome(),
+                valorUnitario,
+                quantidade,
                 subtotal
+
         });
 
-        atualizarTotal();
+        calcularValorTotal();
+
+        txtQuantidade.setText("");
+
     }
 
-    private void atualizarTotal() {
+    private void removerProduto() {
+
+        int linha = tabelaProdutos.getSelectedRow();
+
+        if (linha < 0) {
+
+            JOptionPane.showMessageDialog(this,
+                    "Selecione um produto.");
+
+            return;
+
+        }
+
+        listaProdutos.remove(linha);
+
+        modeloTabela.removeRow(linha);
+
+        calcularValorTotal();
+
+    }
+
+    private void calcularValorTotal() {
+
         double total = 0;
 
-        for (CompraProduto item : itens) {
-            total += item.getQuantidade() * item.getValorUnitario();
+        for (int i = 0; i < modeloTabela.getRowCount(); i++) {
+
+            total += Double.parseDouble(
+                    modeloTabela.getValueAt(i,3).toString());
+
         }
 
-        lblTotal.setText(String.valueOf(total));
+        txtValorTotal.setText(String.valueOf(total));
+
     }
-
-    private void salvarCompra() {
-        Compra compra = new Compra();
-
-        compra.setFornecedor(
-                (Fornecedor) cbFornecedor.getSelectedItem());
-
-        compra.setProdutos(itens);
-        compra.setDataCompra(LocalDate.now());
-
-        boolean ok = compraController.salvar(
-                compra,
-                (FormaPagamento) cbFormaPagamento.getSelectedItem(),
-                (TipoConta) cbTipoConta.getSelectedItem()
-        );
-
-        JOptionPane.showMessageDialog(this,
-                ok ? "Compra salva" : "Erro");
-    }
-
-    private void alterarCompra() {
-        Compra compra = compraController.pesquisar(
-                Integer.parseInt(txtId.getText()));
-
-        if (compra != null) {
-            compra.setFornecedor(
-                    (Fornecedor) cbFornecedor.getSelectedItem());
-            compraController.alterar(compra);
-            JOptionPane.showMessageDialog(this, "Alterado");
-        }
-    }
-
-    private void excluirCompra() {
-        compraController.excluir(
-                Integer.parseInt(txtId.getText()));
-        JOptionPane.showMessageDialog(this, "Excluído");
-    }
-
-    private void pesquisarCompra() {
-        Compra compra = compraController.pesquisar(
-                Integer.parseInt(txtId.getText()));
-
-        if (compra != null) {
-            cbFornecedor.setSelectedItem(compra.getFornecedor());
-            lblTotal.setText(String.valueOf(compra.getValorTotal()));
-        }
-    }
-
-    private void gerarRelatorio() {
-        JOptionPane.showMessageDialog(this,
-                "Relatório ainda não implementado");
-    }
-}

@@ -24,6 +24,10 @@ public class Cliente {
     private String endereco;
     private String telefone;
 
+    @Override
+    public String toString() {
+        return nome;
+    }
 }
 
 
