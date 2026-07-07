@@ -20,7 +20,6 @@ import lombok.NoArgsConstructor;
 @Data
 @Entity
 public class Venda {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
@@ -34,7 +33,7 @@ public class Venda {
     @OneToMany(mappedBy = "venda",
             cascade = CascadeType.ALL,
             orphanRemoval = true)
-    private List<VendaProduto> vendaProdutos;
+    private List<VendaProduto> produtos;
 
     @OneToOne
     private Financeiro financeiro;

@@ -7,10 +7,8 @@ import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.GridLayout;
 import java.awt.Insets;
-import java.sql.Connection;
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 import javax.swing.JButton;
@@ -25,19 +23,11 @@ import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
 import javax.swing.table.DefaultTableModel;
 
-import org.hibernate.Session;
-
-import net.sf.jasperreports.engine.JasperCompileManager;
-import net.sf.jasperreports.engine.JasperFillManager;
-import net.sf.jasperreports.engine.JasperPrint;
-import net.sf.jasperreports.engine.JasperReport;
-import net.sf.jasperreports.view.JasperViewer;
 import siscom.controller.CompraController;
 import siscom.controller.FormaPagamentoController;
 import siscom.controller.FornecedorController;
 import siscom.controller.ProdutoController;
 import siscom.controller.TipoContaController;
-import siscom.dao.Conexao;
 import siscom.model.Compra;
 import siscom.model.CompraProduto;
 import siscom.model.FormaPagamento;
@@ -65,7 +55,6 @@ public class TelaCompra extends JFrame {
     private JButton btnAlterar;
     private JButton btnExcluir;
     private JButton btnPesquisar;
-    private JButton btnImprimir;
 
     private JTable tabelaProdutos;
     private DefaultTableModel modeloTabela;
@@ -81,15 +70,15 @@ public class TelaCompra extends JFrame {
     public TelaCompra() {
 
         setTitle("Cadastro de Compras");
-        setSize(950,650);
+        setSize(950, 650);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-        setLayout(new BorderLayout(10,10));
+        setLayout(new BorderLayout(10, 10));
 
         JPanel painelCampos = new JPanel(new GridBagLayout());
 
         GridBagConstraints gbc = new GridBagConstraints();
-        gbc.insets = new Insets(5,5,5,5);
+        gbc.insets = new Insets(5, 5, 5, 5);
         gbc.anchor = GridBagConstraints.WEST;
 
         gbc.gridx = 0;
@@ -116,7 +105,7 @@ public class TelaCompra extends JFrame {
         gbc.gridwidth = 3;
 
         cbFornecedor = new JComboBox<>();
-        cbFornecedor.setPreferredSize(new Dimension(350,25));
+        cbFornecedor.setPreferredSize(new Dimension(350, 25));
 
         painelCampos.add(cbFornecedor, gbc);
 
@@ -129,7 +118,7 @@ public class TelaCompra extends JFrame {
         gbc.gridx = 1;
 
         cbFormaPagamento = new JComboBox<>();
-        cbFormaPagamento.setPreferredSize(new Dimension(180,25));
+        cbFormaPagamento.setPreferredSize(new Dimension(180, 25));
         painelCampos.add(cbFormaPagamento, gbc);
 
         gbc.gridx = 2;
@@ -138,7 +127,7 @@ public class TelaCompra extends JFrame {
         gbc.gridx = 3;
 
         cbTipoConta = new JComboBox<>();
-        cbTipoConta.setPreferredSize(new Dimension(180,25));
+        cbTipoConta.setPreferredSize(new Dimension(180, 25));
         painelCampos.add(cbTipoConta, gbc);
 
         gbc.gridx = 0;
@@ -148,7 +137,7 @@ public class TelaCompra extends JFrame {
         gbc.gridx = 1;
 
         cbProduto = new JComboBox<>();
-        cbProduto.setPreferredSize(new Dimension(250,25));
+        cbProduto.setPreferredSize(new Dimension(250, 25));
         painelCampos.add(cbProduto, gbc);
 
         gbc.gridx = 2;
@@ -181,8 +170,8 @@ public class TelaCompra extends JFrame {
 
         painelCampos.add(painelItem, gbc);
 
-                modeloTabela = new DefaultTableModel(
-                new Object[]{
+        modeloTabela = new DefaultTableModel(
+                new Object[] {
                         "Produto",
                         "Valor Unitário",
                         "Quantidade",
@@ -217,13 +206,11 @@ public class TelaCompra extends JFrame {
         btnAlterar = new JButton("Alterar");
         btnExcluir = new JButton("Excluir");
         btnPesquisar = new JButton("Pesquisar");
-        btnImprimir = new JButton("Imprimir");
 
         painelBotoes.add(btnSalvar);
         painelBotoes.add(btnAlterar);
         painelBotoes.add(btnExcluir);
         painelBotoes.add(btnPesquisar);
-        painelBotoes.add(btnImprimir);
 
         painelSul.add(painelTotal, BorderLayout.NORTH);
         painelSul.add(painelBotoes, BorderLayout.SOUTH);
@@ -248,317 +235,131 @@ public class TelaCompra extends JFrame {
         btnAlterar.addActionListener(e -> acaoAlterar());
         btnExcluir.addActionListener(e -> acaoExcluir());
         btnPesquisar.addActionListener(e -> acaoPesquisar());
-        btnImprimir.addActionListener(e -> imprimirRelatorio());
 
-        btnImprimir.addActionListener(e ->
-                JOptionPane.showMessageDialog(this,
-                        "Relatório JasperReports"));
+        // TipoConta = Pagar
+        for (int i = 0; i < cbTipoConta.getItemCount(); i++) {
+            TipoConta tipo = cbTipoConta.getItemAt(i);
 
+            if ("Pagar".equalsIgnoreCase(tipo.getDescricao())) {
+                cbTipoConta.setSelectedIndex(i);
+                break;
+            }
+        }
+
+        cbTipoConta.setEnabled(false);
     }
+
     private void carregarFornecedores() {
 
-    cbFornecedor.removeAllItems();
+        cbFornecedor.removeAllItems();
 
-    List<Fornecedor> lista = fornecedorController.pesquisarTodos();
+        List<Fornecedor> lista = fornecedorController.pesquisarTodos();
 
-    for (Fornecedor fornecedor : lista) {
-        cbFornecedor.addItem(fornecedor);
-    }
-
-}
-
-private void carregarProdutos() {
-
-    cbProduto.removeAllItems();
-
-    List<Produto> lista = produtoController.pesquisarTodos();
-
-    for (Produto produto : lista) {
-        cbProduto.addItem(produto);
-    }
-
-}
-
-private void carregarFormaPagamento() {
-
-    cbFormaPagamento.removeAllItems();
-
-    List<FormaPagamento> lista =
-            formaPagamentoController.pesquisarTodos();
-
-    for (FormaPagamento forma : lista) {
-        cbFormaPagamento.addItem(forma);
-    }
-
-}
-
-private void carregarTipoConta() {
-
-    cbTipoConta.removeAllItems();
-
-    List<TipoConta> lista =
-            tipoContaController.pesquisarTodos();
-
-    for (TipoConta tipo : lista) {
-        cbTipoConta.addItem(tipo);
-    }
-
-}
-
-private void preencherValorUnitario() {
-
-    Produto produto = (Produto) cbProduto.getSelectedItem();
-
-    if (produto == null)
-        return;
-
-    if (produto.getValorUltimaCompra() != null &&
-            produto.getValorUltimaCompra() > 0) {
-
-        txtValorUnitario.setText(
-                produto.getValorUltimaCompra().toString());
-
-    } else if (produto.getPreco() != null) {
-
-        txtValorUnitario.setText(
-                produto.getPreco().toString());
-
-    } else {
-
-        txtValorUnitario.setText("0");
+        for (Fornecedor fornecedor : lista) {
+            cbFornecedor.addItem(fornecedor);
+        }
 
     }
 
-}
+    private void carregarProdutos() {
 
-private void adicionarProduto() {
+        cbProduto.removeAllItems();
 
-    Produto produto = (Produto) cbProduto.getSelectedItem();
+        List<Produto> lista = produtoController.pesquisarTodos();
 
-    if (produto == null) {
-
-        JOptionPane.showMessageDialog(this,
-                "Selecione um produto.");
-
-        return;
+        for (Produto produto : lista) {
+            cbProduto.addItem(produto);
+        }
 
     }
 
-    if (txtQuantidade.getText().isBlank()) {
+    private void carregarFormaPagamento() {
 
-        JOptionPane.showMessageDialog(this,
-                "Informe a quantidade.");
+        cbFormaPagamento.removeAllItems();
 
-        return;
+        List<FormaPagamento> lista = formaPagamentoController.pesquisarTodos();
 
-    }
-
-    CompraProduto item = new CompraProduto();
-
-    item.setProduto(produto);
-
-    item.setQuantidade(
-            Integer.parseInt(txtQuantidade.getText()));
-
-    item.setValorUnitario(
-            Double.parseDouble(txtValorUnitario.getText()));
-
-    listaProdutos.add(item);
-
-    modeloTabela.addRow(new Object[]{
-
-            produto.getNome(),
-
-            item.getValorUnitario(),
-
-            item.getQuantidade(),
-
-            item.getQuantidade() * item.getValorUnitario()
-
-    });
-
-    calcularValorTotal();
-
-    txtQuantidade.setText("");
-
-}
-
-private void removerProduto() {
-
-    int linha = tabelaProdutos.getSelectedRow();
-
-    if (linha == -1)
-        return;
-
-    listaProdutos.remove(linha);
-
-    modeloTabela.removeRow(linha);
-
-    calcularValorTotal();
-
-}
-
-private void calcularValorTotal() {
-
-    double total = 0;
-
-    for (CompraProduto item : listaProdutos) {
-
-        total += item.getQuantidade() *
-                item.getValorUnitario();
+        for (FormaPagamento forma : lista) {
+            cbFormaPagamento.addItem(forma);
+        }
 
     }
 
-    txtValorTotal.setText(String.format("%.2f", total));
+    private void carregarTipoConta() {
 
-}
-private void acaoSalvar() {
+        cbTipoConta.removeAllItems();
 
-    if (cbFornecedor.getSelectedItem() == null) {
-        JOptionPane.showMessageDialog(this, "Selecione o fornecedor.");
-        return;
-    }
+        List<TipoConta> lista = tipoContaController.pesquisarTodos();
 
-    if (cbFormaPagamento.getSelectedItem() == null) {
-        JOptionPane.showMessageDialog(this, "Selecione a forma de pagamento.");
-        return;
-    }
-
-    if (cbTipoConta.getSelectedItem() == null) {
-        JOptionPane.showMessageDialog(this, "Selecione o tipo da conta.");
-        return;
-    }
-
-    if (listaProdutos.isEmpty()) {
-        JOptionPane.showMessageDialog(this, "Adicione pelo menos um produto.");
-        return;
-    }
-
-    Compra compra = new Compra();
-
-    compra.setDataCompra(LocalDate.parse(txtData.getText()));
-    compra.setFornecedor((Fornecedor) cbFornecedor.getSelectedItem());
-    compra.setProdutos(listaProdutos);
-
-    for (CompraProduto item : listaProdutos) {
-        item.setCompra(compra);
-    }
-
-    boolean ok = controller.salvar(
-            compra,
-            (FormaPagamento) cbFormaPagamento.getSelectedItem(),
-            (TipoConta) cbTipoConta.getSelectedItem());
-
-    if (ok) {
-
-        JOptionPane.showMessageDialog(this,
-                "Compra salva com sucesso!");
-
-        limparTela();
-
-    } else {
-
-        JOptionPane.showMessageDialog(this,
-                "Erro ao salvar compra.");
+        for (TipoConta tipo : lista) {
+            cbTipoConta.addItem(tipo);
+        }
 
     }
 
-}
+    private void preencherValorUnitario() {
 
-private void acaoAlterar() {
+        Produto produto = (Produto) cbProduto.getSelectedItem();
 
-    Compra compra = new Compra();
+        if (produto == null)
+            return;
 
-    compra.setId(Integer.parseInt(txtId.getText()));
-    compra.setDataCompra(LocalDate.parse(txtData.getText()));
-    compra.setFornecedor((Fornecedor) cbFornecedor.getSelectedItem());
-    compra.setProdutos(listaProdutos);
+        if (produto.getValorUltimaCompra() != null &&
+                produto.getValorUltimaCompra() > 0) {
 
-    for (CompraProduto item : listaProdutos) {
-        item.setCompra(compra);
-    }
+            txtValorUnitario.setText(
+                    produto.getValorUltimaCompra().toString());
 
-    if (controller.alterar(compra)) {
+        } else if (produto.getPreco() != null) {
 
-        JOptionPane.showMessageDialog(this,
-                "Compra alterada.");
+            txtValorUnitario.setText(
+                    produto.getPreco().toString());
 
-        limparTela();
+        } else {
 
-    } else {
+            txtValorUnitario.setText("0");
 
-        JOptionPane.showMessageDialog(this,
-                "Erro ao alterar.");
+        }
 
     }
 
-}
+    private void adicionarProduto() {
 
-private void acaoExcluir() {
+        Produto produto = (Produto) cbProduto.getSelectedItem();
 
-    if (txtId.getText().isBlank())
-        return;
+        if (produto == null) {
 
-    int op = JOptionPane.showConfirmDialog(this,
-            "Deseja excluir esta compra?");
+            JOptionPane.showMessageDialog(this,
+                    "Selecione um produto.");
 
-    if (op != JOptionPane.YES_OPTION)
-        return;
+            return;
 
-    if (controller.excluir(Integer.parseInt(txtId.getText()))) {
+        }
 
-        JOptionPane.showMessageDialog(this,
-                "Compra excluída.");
+        if (txtQuantidade.getText().isBlank()) {
 
-        limparTela();
+            JOptionPane.showMessageDialog(this,
+                    "Informe a quantidade.");
 
-    } else {
+            return;
 
-        JOptionPane.showMessageDialog(this,
-                "Erro ao excluir.");
+        }
 
-    }
+        CompraProduto item = new CompraProduto();
 
-}
+        item.setProduto(produto);
 
-private void acaoPesquisar() {
+        item.setQuantidade(
+                Integer.parseInt(txtQuantidade.getText()));
 
-    if (txtId.getText().isBlank()) {
-
-        JOptionPane.showMessageDialog(this,
-                "Informe o ID.");
-
-        return;
-
-    }
-
-    Compra compra =
-            controller.pesquisar(Integer.parseInt(txtId.getText()));
-
-    if (compra == null) {
-
-        JOptionPane.showMessageDialog(this,
-                "Compra não encontrada.");
-
-        return;
-
-    }
-
-    txtData.setText(compra.getDataCompra().toString());
-
-    cbFornecedor.setSelectedItem(compra.getFornecedor());
-
-    listaProdutos.clear();
-
-    modeloTabela.setRowCount(0);
-
-    for (CompraProduto item : compra.getProdutos()) {
+        item.setValorUnitario(
+                Double.parseDouble(txtValorUnitario.getText()));
 
         listaProdutos.add(item);
 
-        modeloTabela.addRow(new Object[]{
+        modeloTabela.addRow(new Object[] {
 
-                item.getProduto().getNome(),
+                produto.getNome(),
 
                 item.getValorUnitario(),
 
@@ -568,78 +369,233 @@ private void acaoPesquisar() {
 
         });
 
-    }
+        calcularValorTotal();
 
-    calcularValorTotal();
-
-}
-
-private void limparTela() {
-
-    txtId.setText("");
-
-    txtData.setText(LocalDate.now().toString());
-
-    txtQuantidade.setText("");
-
-    txtValorUnitario.setText("");
-
-    txtValorTotal.setText("");
-
-    modeloTabela.setRowCount(0);
-
-    listaProdutos.clear();
-
-    cbFornecedor.setSelectedIndex(-1);
-    cbProduto.setSelectedIndex(-1);
-    cbFormaPagamento.setSelectedIndex(-1);
-    cbTipoConta.setSelectedIndex(-1);
-
-}
-private void imprimirRelatorio() {
-
-    Session session = null;
-
-    try {
-
-        JasperReport jasperReport =
-                JasperCompileManager.compileReport(
-                        getClass().getResourceAsStream(
-                                "/relatorios/CompraRelatorio.jrxml"));
-
-        session = Conexao.getSessionFactory().openSession();
-
-        Connection conexao = session.doReturningWork(conn -> conn);
-
-        JasperPrint jasperPrint =
-                JasperFillManager.fillReport(
-                        jasperReport,
-                        new HashMap<>(),
-                        conexao);
-
-        JasperViewer.viewReport(jasperPrint, false);
-
-    } catch (Exception e) {
-
-        e.printStackTrace();
-
-        JOptionPane.showMessageDialog(this,
-                "Erro ao gerar relatório.");
-
-    } finally {
-
-        if (session != null)
-            session.close();
+        txtQuantidade.setText("");
 
     }
+
+    private void removerProduto() {
+
+        int linha = tabelaProdutos.getSelectedRow();
+
+        if (linha == -1)
+            return;
+
+        listaProdutos.remove(linha);
+
+        modeloTabela.removeRow(linha);
+
+        calcularValorTotal();
+
+    }
+
+    private void calcularValorTotal() {
+
+        double total = 0;
+
+        for (CompraProduto item : listaProdutos) {
+
+            total += item.getQuantidade() *
+                    item.getValorUnitario();
+
+        }
+
+        txtValorTotal.setText(String.format("%.2f", total));
+
+    }
+
+    private void acaoSalvar() {
+
+        if (cbFornecedor.getSelectedItem() == null) {
+            JOptionPane.showMessageDialog(this, "Selecione o fornecedor.");
+            return;
+        }
+
+        if (cbFormaPagamento.getSelectedItem() == null) {
+            JOptionPane.showMessageDialog(this, "Selecione a forma de pagamento.");
+            return;
+        }
+
+        if (cbTipoConta.getSelectedItem() == null) {
+            JOptionPane.showMessageDialog(this, "Selecione o tipo da conta.");
+            return;
+        }
+
+        if (listaProdutos.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Adicione pelo menos um produto.");
+            return;
+        }
+
+        Compra compra = new Compra();
+
+        compra.setDataCompra(LocalDate.parse(txtData.getText()));
+        compra.setFornecedor((Fornecedor) cbFornecedor.getSelectedItem());
+        compra.setProdutos(listaProdutos);
+
+        for (CompraProduto item : listaProdutos) {
+            item.setCompra(compra);
+        }
+
+        boolean ok = controller.salvar(
+                compra,
+                (FormaPagamento) cbFormaPagamento.getSelectedItem(),
+                (TipoConta) cbTipoConta.getSelectedItem());
+
+        if (ok) {
+
+            JOptionPane.showMessageDialog(this,
+                    "Compra salva com sucesso!");
+
+            limparTela();
+
+        } else {
+
+            JOptionPane.showMessageDialog(this,
+                    "Erro ao salvar compra.");
+
+        }
+
+    }
+
+    private void acaoAlterar() {
+
+        Compra compra = new Compra();
+
+        compra.setId(Integer.parseInt(txtId.getText()));
+        compra.setDataCompra(LocalDate.parse(txtData.getText()));
+        compra.setFornecedor((Fornecedor) cbFornecedor.getSelectedItem());
+        compra.setProdutos(listaProdutos);
+
+        for (CompraProduto item : listaProdutos) {
+            item.setCompra(compra);
+        }
+
+        if (controller.alterar(compra)) {
+
+            JOptionPane.showMessageDialog(this,
+                    "Compra alterada.");
+
+            limparTela();
+
+        } else {
+
+            JOptionPane.showMessageDialog(this,
+                    "Erro ao alterar.");
+
+        }
+
+    }
+
+    private void acaoExcluir() {
+
+        if (txtId.getText().isBlank())
+            return;
+
+        int op = JOptionPane.showConfirmDialog(this,
+                "Deseja excluir esta compra?");
+
+        if (op != JOptionPane.YES_OPTION)
+            return;
+
+        if (controller.excluir(Integer.parseInt(txtId.getText()))) {
+
+            JOptionPane.showMessageDialog(this,
+                    "Compra excluída.");
+
+            limparTela();
+
+        } else {
+
+            JOptionPane.showMessageDialog(this,
+                    "Erro ao excluir.");
+
+        }
+
+    }
+
+    private void acaoPesquisar() {
+
+        if (txtId.getText().isBlank()) {
+
+            JOptionPane.showMessageDialog(this,
+                    "Informe o ID.");
+
+            return;
+
+        }
+
+        Compra compra = controller.pesquisar(Integer.parseInt(txtId.getText()));
+
+        if (compra == null) {
+
+            JOptionPane.showMessageDialog(this,
+                    "Compra não encontrada.");
+
+            return;
+
+        }
+
+        txtData.setText(compra.getDataCompra().toString());
+
+        cbFornecedor.setSelectedItem(compra.getFornecedor());
+
+        listaProdutos.clear();
+
+        modeloTabela.setRowCount(0);
+
+        for (CompraProduto item : compra.getProdutos()) {
+
+            listaProdutos.add(item);
+
+            modeloTabela.addRow(new Object[] {
+
+                    item.getProduto().getNome(),
+
+                    item.getValorUnitario(),
+
+                    item.getQuantidade(),
+
+                    item.getQuantidade() * item.getValorUnitario()
+
+            });
+
+        }
+
+        calcularValorTotal();
+
+    }
+
+    private void limparTela() {
+
+        txtId.setText("");
+
+        txtData.setText(LocalDate.now().toString());
+
+        txtQuantidade.setText("");
+
+        txtValorUnitario.setText("");
+
+        txtValorTotal.setText("");
+
+        modeloTabela.setRowCount(0);
+
+        listaProdutos.clear();
+
+        cbFornecedor.setSelectedIndex(-1);
+        cbProduto.setSelectedIndex(-1);
+        cbFormaPagamento.setSelectedIndex(-1);
+        cbTipoConta.setSelectedIndex(-1);
+
+    }
+
+    public static void main(String[] args) {
+
+        SwingUtilities.invokeLater(() -> {
+
+            new TelaCompra().setVisible(true);
+
+        });
+
+    }
 }
-
-public static void main(String[] args) {
-
-    SwingUtilities.invokeLater(() -> {
-
-        new TelaCompra().setVisible(true);
-
-    });
-
-}}

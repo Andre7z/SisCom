@@ -46,12 +46,11 @@ public class VendaController {
                 return false;
             }
 
-            if (venda.getVendaProdutos() == null ||
-                venda.getVendaProdutos().isEmpty()) {
+            if (venda.getProdutos() == null ||
+                    venda.getProdutos().isEmpty()) {
                 logger.error("Venda sem produtos");
                 return false;
             }
-
             if (formaPagamento == null) {
                 logger.error("Forma de pagamento não informada");
                 return false;
@@ -73,7 +72,7 @@ public class VendaController {
 
             double valorTotal = 0;
 
-            for (VendaProduto item : venda.getVendaProdutos()) {
+            for (VendaProduto item : venda.getProdutos()) {
 
                 if (item == null) {
                     logger.error("Item da venda nulo");
@@ -143,6 +142,7 @@ public class VendaController {
 
             Financeiro financeiro = new Financeiro();
             financeiro.setDataConta(venda.getDataVenda());
+            financeiro.setValorTotal(venda.getValorTotal());
             financeiro.setPagarOuReceber(1); // conta a receber
             financeiro.setFormaPagamento(formaPagamento);
             financeiro.setTipoConta(tipoConta);

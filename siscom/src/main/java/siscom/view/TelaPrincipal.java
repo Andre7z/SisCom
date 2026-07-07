@@ -161,8 +161,7 @@ public class TelaPrincipal extends JFrame {
                 e -> new TelaFormaPagamento().setVisible(true)));
 
         botoes.add(criarBotao("Relatórios",
-                e -> JOptionPane.showMessageDialog(this,
-                        "Utilize o menu Relatórios.")));
+                e -> new TelaRelatorio().setVisible(true)));
 
         botoes.add(criarBotao("Sobre",
                 e -> mostrarSobre()));

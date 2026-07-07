@@ -16,6 +16,7 @@ public class TelaProduto extends JFrame {
     private JTextField txtPreco;
     private JTextField txtQuantidade;
     private JComboBox<Categoria> cbCategoria;
+    private JTextField txtPregetPrecoMedio;
 
     private JButton btnSalvar;
     private JButton btnAlterar;
@@ -40,7 +41,7 @@ public class TelaProduto extends JFrame {
     }
 
     private void initComponents() {
-        JPanel painel = new JPanel(new GridLayout(7, 2, 5, 5));
+        JPanel painel = new JPanel(new GridLayout(8, 2, 5, 5));
 
         painel.add(new JLabel("Pesquisar Produto:"));
         cbProdutos = new JComboBox<>();
@@ -62,6 +63,11 @@ public class TelaProduto extends JFrame {
         painel.add(new JLabel("Categoria:"));
         cbCategoria = new JComboBox<>();
         painel.add(cbCategoria);
+
+        painel.add(new JLabel("Valor Médio:"));
+        txtPregetPrecoMedio = new JTextField();
+        txtPregetPrecoMedio.setEnabled(false);
+        painel.add(txtPregetPrecoMedio);
 
         btnSalvar = new JButton("Salvar");
         btnAlterar = new JButton("Alterar");
@@ -114,6 +120,9 @@ public class TelaProduto extends JFrame {
                 txtQuantidade.setText(produto.getQuantidade().toString());
 
             cbCategoria.setSelectedItem(produto.getCategoria());
+
+            if (produto.getPrecoMedio() != null)
+                txtPregetPrecoMedio.setText(produto.getPrecoMedio().toString());
         }
     }
 
@@ -143,7 +152,8 @@ public class TelaProduto extends JFrame {
         try {
             Produto produto = (Produto) cbProdutos.getSelectedItem();
 
-            if (produto == null) return;
+            if (produto == null)
+                return;
 
             produto.setNome(txtNome.getText());
             produto.setPreco(Double.parseDouble(txtPreco.getText()));
@@ -165,7 +175,8 @@ public class TelaProduto extends JFrame {
     private void excluir() {
         Produto produto = (Produto) cbProdutos.getSelectedItem();
 
-        if (produto == null) return;
+        if (produto == null)
+            return;
 
         if (controller.excluir(produto.getId())) {
             JOptionPane.showMessageDialog(this, "Excluído com sucesso");
@@ -183,9 +194,8 @@ public class TelaProduto extends JFrame {
         cbProdutos.setSelectedItem(null);
         cbCategoria.setSelectedItem(null);
     }
+
     public static void main(String[] args) {
-        SwingUtilities.invokeLater(() ->
-                new TelaProduto().setVisible(true)
-        );
+        SwingUtilities.invokeLater(() -> new TelaProduto().setVisible(true));
     }
 }

@@ -124,8 +124,10 @@ public class CompraController {
             }
 
             Financeiro financeiro = new Financeiro();
+
             financeiro.setDataConta(LocalDate.now());
-            financeiro.setPagarOuReceber(0); // conta a pagar
+            financeiro.setValorTotal(compra.getValorTotal()); // NOVO
+            financeiro.setPagarOuReceber(0);
             financeiro.setFormaPagamento(formaPagamento);
             financeiro.setTipoConta(tipoConta);
             financeiro.setFornecedor(compra.getFornecedor());

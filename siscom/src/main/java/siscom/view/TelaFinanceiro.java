@@ -64,7 +64,8 @@ public class TelaFinanceiro extends JFrame {
     private FornecedorController fornecedorController;
     private TipoContaController tipoContaController;
     private FormaPagamentoController formaPagamentoController;
-        public TelaFinanceiro(){
+
+    public TelaFinanceiro() {
 
         financeiroController = new FinanceiroController();
         clienteController = new ClienteController();
@@ -73,83 +74,97 @@ public class TelaFinanceiro extends JFrame {
         formaPagamentoController = new FormaPagamentoController();
 
         setTitle("Cadastro Financeiro");
-        setSize(950,600);
+        setSize(950, 600);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-        setLayout(new BorderLayout(10,10));
+        setLayout(new BorderLayout(10, 10));
 
         JPanel painelCampos = new JPanel(new GridBagLayout());
 
         GridBagConstraints gbc = new GridBagConstraints();
-
-        gbc.insets = new Insets(5,5,5,5);
+        gbc.insets = new Insets(5, 5, 5, 5);
         gbc.anchor = GridBagConstraints.WEST;
+        gbc.fill = GridBagConstraints.HORIZONTAL;
+        gbc.weightx = 1.0;
 
-        gbc.gridx=0;
-        gbc.gridy=0;
-        painelCampos.add(new JLabel("ID:"),gbc);
+        // ID
+        gbc.gridx = 0;
+        gbc.gridy = 0;
+        painelCampos.add(new JLabel("ID:"), gbc);
 
-        gbc.gridx=1;
+        gbc.gridx = 1;
         cbId = new JComboBox<>();
         cbId.addItem(null);
-        painelCampos.add(cbId);
+        painelCampos.add(cbId, gbc);
 
-        gbc.gridx=0;
+        // Data
+        gbc.gridx = 0;
         gbc.gridy++;
+        gbc.weightx = 0;
+        painelCampos.add(new JLabel("Data:"), gbc);
 
-        painelCampos.add(new JLabel("Data:"),gbc);
-
-        gbc.gridx=1;
-
+        gbc.gridx = 1;
+        gbc.weightx = 1.0;
         txtData = new JTextField(15);
         txtData.setText(LocalDate.now().toString());
+        painelCampos.add(txtData, gbc);
 
-        painelCampos.add(txtData);
-
-        gbc.gridx=0;
+        // Movimento
+        gbc.gridx = 0;
         gbc.gridy++;
+        gbc.weightx = 0;
+        painelCampos.add(new JLabel("Movimento:"), gbc);
 
-        painelCampos.add(new JLabel("Movimento:"),gbc);
-
-        gbc.gridx=1;
-
+        gbc.gridx = 1;
+        gbc.weightx = 1.0;
         cbTipoMovimento = new JComboBox<>();
-
         cbTipoMovimento.addItem("Pagar");
         cbTipoMovimento.addItem("Receber");
+        painelCampos.add(cbTipoMovimento, gbc);
 
-        painelCampos.add(cbTipoMovimento);
-                gbc.gridx = 0;
+        // Tipo Conta
+        gbc.gridx = 0;
         gbc.gridy++;
+        gbc.weightx = 0;
         painelCampos.add(new JLabel("Tipo Conta:"), gbc);
 
         gbc.gridx = 1;
+        gbc.weightx = 1.0;
         cbTipoConta = new JComboBox<>();
-        painelCampos.add(cbTipoConta);
+        painelCampos.add(cbTipoConta, gbc);
 
+        // Forma de Pagamento
         gbc.gridx = 0;
         gbc.gridy++;
+        gbc.weightx = 0;
         painelCampos.add(new JLabel("Forma Pagamento:"), gbc);
 
         gbc.gridx = 1;
+        gbc.weightx = 1.0;
         cbFormaPagamento = new JComboBox<>();
-        painelCampos.add(cbFormaPagamento);
+        painelCampos.add(cbFormaPagamento, gbc);
 
+        // Fornecedor
         gbc.gridx = 0;
         gbc.gridy++;
+        gbc.weightx = 0;
         painelCampos.add(new JLabel("Fornecedor:"), gbc);
 
         gbc.gridx = 1;
+        gbc.weightx = 1.0;
         cbFornecedor = new JComboBox<>();
-        painelCampos.add(cbFornecedor);
+        painelCampos.add(cbFornecedor, gbc);
 
+        // Cliente
         gbc.gridx = 0;
         gbc.gridy++;
+        gbc.weightx = 0;
         painelCampos.add(new JLabel("Cliente:"), gbc);
 
         gbc.gridx = 1;
+        gbc.weightx = 1.0;
         cbCliente = new JComboBox<>();
-        painelCampos.add(cbCliente);
+        painelCampos.add(cbCliente, gbc);
 
         JPanel painelBotoes = new JPanel(new FlowLayout());
 
@@ -166,16 +181,16 @@ public class TelaFinanceiro extends JFrame {
         painelBotoes.add(btnImprimir);
 
         modeloTabela = new DefaultTableModel(
-                new Object[]{
+                new Object[] {
                         "ID",
                         "Data",
                         "Tipo",
                         "Conta",
                         "Pagamento"
-                },0){
+                }, 0) {
 
             @Override
-            public boolean isCellEditable(int row,int column){
+            public boolean isCellEditable(int row, int column) {
                 return false;
             }
 
@@ -183,12 +198,12 @@ public class TelaFinanceiro extends JFrame {
 
         tabela = new JTable(modeloTabela);
 
-        tabela.addMouseListener(new MouseAdapter(){
+        tabela.addMouseListener(new MouseAdapter() {
 
             @Override
-            public void mouseClicked(MouseEvent e){
+            public void mouseClicked(MouseEvent e) {
 
-                if(e.getClickCount()==2){
+                if (e.getClickCount() == 2) {
 
                     pesquisar();
 
@@ -200,11 +215,11 @@ public class TelaFinanceiro extends JFrame {
 
         JPanel painelCentral = new JPanel(new BorderLayout());
 
-        painelCentral.add(painelCampos,BorderLayout.NORTH);
-        painelCentral.add(new JScrollPane(tabela),BorderLayout.CENTER);
+        painelCentral.add(painelCampos, BorderLayout.NORTH);
+        painelCentral.add(new JScrollPane(tabela), BorderLayout.CENTER);
 
-        add(painelCentral,BorderLayout.CENTER);
-        add(painelBotoes,BorderLayout.SOUTH);
+        add(painelCentral, BorderLayout.CENTER);
+        add(painelBotoes, BorderLayout.SOUTH);
 
         carregarCombos();
 
@@ -212,15 +227,15 @@ public class TelaFinanceiro extends JFrame {
 
         cbTipoMovimento.addActionListener(e -> {
 
-            boolean pagar = cbTipoMovimento.getSelectedIndex()==0;
+            boolean pagar = cbTipoMovimento.getSelectedIndex() == 0;
 
             cbFornecedor.setEnabled(pagar);
 
             cbCliente.setEnabled(!pagar);
 
-            if(pagar){
+            if (pagar) {
                 cbCliente.setSelectedItem(null);
-            }else{
+            } else {
                 cbFornecedor.setSelectedItem(null);
             }
 
@@ -234,130 +249,282 @@ public class TelaFinanceiro extends JFrame {
 
         btnPesquisar.addActionListener(e -> pesquisar());
 
-        btnImprimir.addActionListener(e -> imprimir());
-
         cbTipoMovimento.setSelectedIndex(0);
 
     }
+
     private void carregarCombos() {
 
-    cbId.removeAllItems();
-    cbId.addItem(null);
+        cbId.removeAllItems();
+        cbId.addItem(null);
 
-    cbTipoConta.removeAllItems();
-    cbFormaPagamento.removeAllItems();
-    cbFornecedor.removeAllItems();
-    cbCliente.removeAllItems();
+        cbTipoConta.removeAllItems();
+        cbFormaPagamento.removeAllItems();
+        cbFornecedor.removeAllItems();
+        cbCliente.removeAllItems();
 
-    // Financeiro
-    List<Financeiro> financeiros = financeiroController.pesquisarTodos();
+        // Financeiro
+        List<Financeiro> financeiros = financeiroController.pesquisarTodos();
 
-    for (Financeiro financeiro : financeiros) {
-        cbId.addItem(financeiro.getId());
-    }
+        for (Financeiro financeiro : financeiros) {
+            cbId.addItem(financeiro.getId());
+        }
 
-    // Tipo Conta
-    List<TipoConta> tipos = tipoContaController.pesquisarTodos();
+        // Tipo Conta
+        List<TipoConta> tipos = tipoContaController.pesquisarTodos();
 
-    for (TipoConta tipo : tipos) {
-        cbTipoConta.addItem(tipo);
-    }
+        for (TipoConta tipo : tipos) {
+            cbTipoConta.addItem(tipo);
+        }
 
-    // Forma Pagamento
-    List<FormaPagamento> formas =
-            formaPagamentoController.pesquisarTodos();
+        // Forma Pagamento
+        List<FormaPagamento> formas = formaPagamentoController.pesquisarTodos();
 
-    for (FormaPagamento forma : formas) {
-        cbFormaPagamento.addItem(forma);
-    }
+        for (FormaPagamento forma : formas) {
+            cbFormaPagamento.addItem(forma);
+        }
 
-    // Fornecedor
-    List<Fornecedor> fornecedores =
-            fornecedorController.pesquisarTodos();
+        // Fornecedor
+        List<Fornecedor> fornecedores = fornecedorController.pesquisarTodos();
 
-    for (Fornecedor fornecedor : fornecedores) {
-        cbFornecedor.addItem(fornecedor);
-    }
+        for (Fornecedor fornecedor : fornecedores) {
+            cbFornecedor.addItem(fornecedor);
+        }
 
-    // Cliente
-    List<Cliente> clientes =
-            clienteController.pesquisarTodos();
+        // Cliente
+        List<Cliente> clientes = clienteController.pesquisarTodos();
 
-    for (Cliente cliente : clientes) {
-        cbCliente.addItem(cliente);
-    }
-
-}
-private void carregarTabela() {
-
-    modeloTabela.setRowCount(0);
-
-    List<Financeiro> lista =
-            financeiroController.pesquisarTodos();
-
-    for (Financeiro financeiro : lista) {
-
-        String tipo =
-                financeiro.getPagarOuReceber() == 0
-                        ? "Pagar"
-                        : "Receber";
-
-        modeloTabela.addRow(new Object[]{
-
-                financeiro.getId(),
-
-                financeiro.getDataConta(),
-
-                tipo,
-
-                financeiro.getTipoConta().getDescricao(),
-
-                financeiro.getFormaPagamento().getNome()
-
-        });
+        for (Cliente cliente : clientes) {
+            cbCliente.addItem(cliente);
+        }
 
     }
 
-}
-private void salvar() {
+    private void carregarTabela() {
 
-    try {
+        modeloTabela.setRowCount(0);
 
-        Financeiro financeiro = new Financeiro();
+        List<Financeiro> lista = financeiroController.pesquisarTodos();
 
-        financeiro.setDataConta(LocalDate.parse(txtData.getText()));
+        for (Financeiro financeiro : lista) {
 
-        financeiro.setPagarOuReceber(
-                cbTipoMovimento.getSelectedIndex());
+            String tipo = financeiro.getPagarOuReceber() == 0
+                    ? "Pagar"
+                    : "Receber";
 
-        financeiro.setTipoConta(
-                (TipoConta) cbTipoConta.getSelectedItem());
+            modeloTabela.addRow(new Object[] {
 
-        financeiro.setFormaPagamento(
-                (FormaPagamento) cbFormaPagamento.getSelectedItem());
+                    financeiro.getId(),
 
-        if (cbTipoMovimento.getSelectedIndex() == 0) {
+                    financeiro.getDataConta(),
 
-            financeiro.setFornecedor(
-                    (Fornecedor) cbFornecedor.getSelectedItem());
+                    tipo,
 
-            financeiro.setCliente(null);
+                    financeiro.getTipoConta().getDescricao(),
 
-        } else {
+                    financeiro.getFormaPagamento().getNome()
 
-            financeiro.setCliente(
-                    (Cliente) cbCliente.getSelectedItem());
-
-            financeiro.setFornecedor(null);
+            });
 
         }
 
-        boolean sucesso = financeiroController.salvar(financeiro);
+    }
+
+    private void salvar() {
+
+        try {
+
+            Financeiro financeiro = new Financeiro();
+
+            financeiro.setDataConta(LocalDate.parse(txtData.getText()));
+
+            financeiro.setPagarOuReceber(
+                    cbTipoMovimento.getSelectedIndex());
+
+            financeiro.setTipoConta(
+                    (TipoConta) cbTipoConta.getSelectedItem());
+
+            financeiro.setFormaPagamento(
+                    (FormaPagamento) cbFormaPagamento.getSelectedItem());
+
+            if (cbTipoMovimento.getSelectedIndex() == 0) {
+
+                financeiro.setFornecedor(
+                        (Fornecedor) cbFornecedor.getSelectedItem());
+
+                financeiro.setCliente(null);
+
+            } else {
+
+                financeiro.setCliente(
+                        (Cliente) cbCliente.getSelectedItem());
+
+                financeiro.setFornecedor(null);
+
+            }
+
+            boolean sucesso = financeiroController.salvar(financeiro);
+
+            if (sucesso) {
+
+                JOptionPane.showMessageDialog(this,
+                        "Financeiro salvo com sucesso!");
+
+                limpar();
+
+                carregarCombos();
+
+                carregarTabela();
+
+            } else {
+
+                JOptionPane.showMessageDialog(this,
+                        "Erro ao salvar.");
+
+            }
+
+        } catch (Exception ex) {
+
+            JOptionPane.showMessageDialog(this,
+                    "Dados inválidos.");
+
+        }
+
+    }
+
+    private void alterar() {
+
+        if (cbId.getSelectedItem() == null) {
+
+            JOptionPane.showMessageDialog(this,
+                    "Selecione um registro.");
+
+            return;
+        }
+
+        try {
+
+            Financeiro financeiro = new Financeiro();
+
+            financeiro.setId((Integer) cbId.getSelectedItem());
+
+            financeiro.setDataConta(LocalDate.parse(txtData.getText()));
+
+            financeiro.setPagarOuReceber(
+                    cbTipoMovimento.getSelectedIndex());
+
+            financeiro.setTipoConta(
+                    (TipoConta) cbTipoConta.getSelectedItem());
+
+            financeiro.setFormaPagamento(
+                    (FormaPagamento) cbFormaPagamento.getSelectedItem());
+
+            if (cbTipoMovimento.getSelectedIndex() == 0) {
+
+                financeiro.setFornecedor(
+                        (Fornecedor) cbFornecedor.getSelectedItem());
+
+                financeiro.setCliente(null);
+
+            } else {
+
+                financeiro.setCliente(
+                        (Cliente) cbCliente.getSelectedItem());
+
+                financeiro.setFornecedor(null);
+
+            }
+
+            boolean sucesso = financeiroController.alterar(financeiro);
+
+            if (sucesso) {
+
+                JOptionPane.showMessageDialog(this,
+                        "Alterado com sucesso!");
+
+                carregarTabela();
+
+            } else {
+
+                JOptionPane.showMessageDialog(this,
+                        "Erro ao alterar.");
+
+            }
+
+        } catch (Exception ex) {
+
+            JOptionPane.showMessageDialog(this,
+                    "Dados inválidos.");
+
+        }
+
+    }
+
+    private void pesquisar() {
+
+        if (cbId.getSelectedItem() == null) {
+
+            carregarTabela();
+
+            return;
+        }
+
+        Financeiro financeiro = financeiroController.pesquisar(
+                (Integer) cbId.getSelectedItem());
+
+        if (financeiro == null) {
+
+            JOptionPane.showMessageDialog(this,
+                    "Registro não encontrado.");
+
+            return;
+        }
+
+        txtData.setText(financeiro.getDataConta().toString());
+
+        cbTipoMovimento.setSelectedIndex(
+                financeiro.getPagarOuReceber());
+
+        cbTipoConta.setSelectedItem(
+                financeiro.getTipoConta());
+
+        cbFormaPagamento.setSelectedItem(
+                financeiro.getFormaPagamento());
+
+        cbFornecedor.setSelectedItem(
+                financeiro.getFornecedor());
+
+        cbCliente.setSelectedItem(
+                financeiro.getCliente());
+
+    }
+
+    private void excluir() {
+
+        if (cbId.getSelectedItem() == null) {
+
+            JOptionPane.showMessageDialog(this,
+                    "Selecione um registro.");
+
+            return;
+        }
+
+        int op = JOptionPane.showConfirmDialog(
+                this,
+                "Deseja realmente excluir?",
+                "Confirmação",
+                JOptionPane.YES_NO_OPTION);
+
+        if (op != JOptionPane.YES_OPTION)
+            return;
+
+        boolean sucesso = financeiroController.excluir(
+                (Integer) cbId.getSelectedItem());
 
         if (sucesso) {
 
             JOptionPane.showMessageDialog(this,
-                    "Financeiro salvo com sucesso!");
+                    "Excluído com sucesso!");
 
             limpar();
 
@@ -368,202 +535,35 @@ private void salvar() {
         } else {
 
             JOptionPane.showMessageDialog(this,
-                    "Erro ao salvar.");
+                    "Erro ao excluir.");
 
         }
 
-    } catch (Exception ex) {
+    }
 
-        JOptionPane.showMessageDialog(this,
-                "Dados inválidos.");
+    private void limpar() {
+
+        cbId.setSelectedItem(null);
+
+        txtData.setText(LocalDate.now().toString());
+
+        cbTipoMovimento.setSelectedIndex(0);
+
+        if (cbTipoConta.getItemCount() > 0)
+            cbTipoConta.setSelectedIndex(0);
+
+        if (cbFormaPagamento.getItemCount() > 0)
+            cbFormaPagamento.setSelectedIndex(0);
+
+        cbFornecedor.setSelectedItem(null);
+
+        cbCliente.setSelectedItem(null);
 
     }
 
-}
+    public static void main(String[] args) {
 
-private void alterar() {
-
-    if (cbId.getSelectedItem() == null) {
-
-        JOptionPane.showMessageDialog(this,
-                "Selecione um registro.");
-
-        return;
-    }
-
-    try {
-
-        Financeiro financeiro = new Financeiro();
-
-        financeiro.setId((Integer) cbId.getSelectedItem());
-
-        financeiro.setDataConta(LocalDate.parse(txtData.getText()));
-
-        financeiro.setPagarOuReceber(
-                cbTipoMovimento.getSelectedIndex());
-
-        financeiro.setTipoConta(
-                (TipoConta) cbTipoConta.getSelectedItem());
-
-        financeiro.setFormaPagamento(
-                (FormaPagamento) cbFormaPagamento.getSelectedItem());
-
-        if (cbTipoMovimento.getSelectedIndex() == 0) {
-
-            financeiro.setFornecedor(
-                    (Fornecedor) cbFornecedor.getSelectedItem());
-
-            financeiro.setCliente(null);
-
-        } else {
-
-            financeiro.setCliente(
-                    (Cliente) cbCliente.getSelectedItem());
-
-            financeiro.setFornecedor(null);
-
-        }
-
-        boolean sucesso =
-                financeiroController.alterar(financeiro);
-
-        if (sucesso) {
-
-            JOptionPane.showMessageDialog(this,
-                    "Alterado com sucesso!");
-
-            carregarTabela();
-
-        } else {
-
-            JOptionPane.showMessageDialog(this,
-                    "Erro ao alterar.");
-
-        }
-
-    } catch (Exception ex) {
-
-        JOptionPane.showMessageDialog(this,
-                "Dados inválidos.");
+        SwingUtilities.invokeLater(() -> new TelaFinanceiro().setVisible(true));
 
     }
-
-}
-
-private void pesquisar() {
-
-    if (cbId.getSelectedItem() == null) {
-
-        carregarTabela();
-
-        return;
-    }
-
-    Financeiro financeiro =
-            financeiroController.pesquisar(
-                    (Integer) cbId.getSelectedItem());
-
-    if (financeiro == null) {
-
-        JOptionPane.showMessageDialog(this,
-                "Registro não encontrado.");
-
-        return;
-    }
-
-    txtData.setText(financeiro.getDataConta().toString());
-
-    cbTipoMovimento.setSelectedIndex(
-            financeiro.getPagarOuReceber());
-
-    cbTipoConta.setSelectedItem(
-            financeiro.getTipoConta());
-
-    cbFormaPagamento.setSelectedItem(
-            financeiro.getFormaPagamento());
-
-    cbFornecedor.setSelectedItem(
-            financeiro.getFornecedor());
-
-    cbCliente.setSelectedItem(
-            financeiro.getCliente());
-
-}
-
-private void excluir() {
-
-    if (cbId.getSelectedItem() == null) {
-
-        JOptionPane.showMessageDialog(this,
-                "Selecione um registro.");
-
-        return;
-    }
-
-    int op = JOptionPane.showConfirmDialog(
-            this,
-            "Deseja realmente excluir?",
-            "Confirmação",
-            JOptionPane.YES_NO_OPTION);
-
-    if (op != JOptionPane.YES_OPTION)
-        return;
-
-    boolean sucesso =
-            financeiroController.excluir(
-                    (Integer) cbId.getSelectedItem());
-
-    if (sucesso) {
-
-        JOptionPane.showMessageDialog(this,
-                "Excluído com sucesso!");
-
-        limpar();
-
-        carregarCombos();
-
-        carregarTabela();
-
-    } else {
-
-        JOptionPane.showMessageDialog(this,
-                "Erro ao excluir.");
-
-    }
-
-}
-
-private void imprimir() {
-
-    JOptionPane.showMessageDialog(this,
-            "Implementar JasperReports.");
-
-}
-
-private void limpar() {
-
-    cbId.setSelectedItem(null);
-
-    txtData.setText(LocalDate.now().toString());
-
-    cbTipoMovimento.setSelectedIndex(0);
-
-    if (cbTipoConta.getItemCount() > 0)
-        cbTipoConta.setSelectedIndex(0);
-
-    if (cbFormaPagamento.getItemCount() > 0)
-        cbFormaPagamento.setSelectedIndex(0);
-
-    cbFornecedor.setSelectedItem(null);
-
-    cbCliente.setSelectedItem(null);
-
-}
-
-public static void main(String[] args) {
-
-    SwingUtilities.invokeLater(() ->
-            new TelaFinanceiro().setVisible(true));
-
-}
 }

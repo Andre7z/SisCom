@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.hibernate.Hibernate;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
@@ -78,13 +79,23 @@ public class VendaDAO {
         }
     }
 
-    public Venda pesquisarPorId(int id) {
-        try (Session session = Conexao.getSessionFactory().openSession()) {
-            return session.get(Venda.class, id);
-        } catch (Exception e) {
-            return null;
+public Venda pesquisarPorId(int id) {
+
+    try (Session session = Conexao.getSessionFactory().openSession()) {
+
+        Venda venda = session.get(Venda.class, id);
+
+        if (venda != null) {
+            Hibernate.initialize(venda.getProdutos());
         }
+
+        return venda;
+
+    } catch (Exception e) {
+        e.printStackTrace();
+        return null;
     }
+}
 
     public int contarVendasPorCpfMes(String cpf) {
         try (Session session = Conexao.getSessionFactory().openSession()) {

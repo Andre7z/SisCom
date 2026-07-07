@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.Hibernate;
 
 import siscom.model.Compra;
 
@@ -69,21 +70,42 @@ public class CompraDAO {
         }
     }
 
-    public List<Compra> pesquisar() {
-        try (Session session = Conexao.getSessionFactory().openSession()) {
-            return session.createQuery("from Compra", Compra.class).list();
-        } catch (Exception e) {
-            return new ArrayList<>();
-        }
-    }
+public List<Compra> pesquisar() {
 
-    public Compra pesquisarPorId(int id) {
-        try (Session session = Conexao.getSessionFactory().openSession()) {
-            return session.get(Compra.class, id);
-        } catch (Exception e) {
-            return null;
+    try (Session session = Conexao.getSessionFactory().openSession()) {
+
+        List<Compra> lista =
+                session.createQuery("from Compra", Compra.class).list();
+
+        for (Compra compra : lista) {
+            Hibernate.initialize(compra.getProdutos());
         }
+
+        return lista;
+
+    } catch (Exception e) {
+        e.printStackTrace();
+        return new ArrayList<>();
     }
+}
+
+public Compra pesquisarPorId(int id) {
+
+    try (Session session = Conexao.getSessionFactory().openSession()) {
+
+        Compra compra = session.get(Compra.class, id);
+
+        if (compra != null) {
+            Hibernate.initialize(compra.getProdutos());
+        }
+
+        return compra;
+
+    } catch (Exception e) {
+        e.printStackTrace();
+        return null;
+    }
+}
 }
 // public boolean salvar(Compra compra) {
 //     try {

@@ -25,6 +25,8 @@ public class Financeiro {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
+    private Double valorTotal;
+
     private LocalDate dataConta;
     private int pagarOuReceber;
 
