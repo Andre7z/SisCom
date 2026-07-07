@@ -55,7 +55,6 @@ public class TelaVenda extends JFrame {
     private JButton btnAlterar;
     private JButton btnExcluir;
     private JButton btnPesquisar;
-    private JButton btnImprimir;
 
     private JTable tabelaProdutos;
     private DefaultTableModel modeloTabela;
@@ -207,13 +206,11 @@ public class TelaVenda extends JFrame {
         btnAlterar = new JButton("Alterar");
         btnExcluir = new JButton("Excluir");
         btnPesquisar = new JButton("Pesquisar");
-        btnImprimir = new JButton("Imprimir");
 
         painelBotoes.add(btnSalvar);
         painelBotoes.add(btnAlterar);
         painelBotoes.add(btnExcluir);
         painelBotoes.add(btnPesquisar);
-        painelBotoes.add(btnImprimir);
 
         painelSul.add(painelTotal, BorderLayout.NORTH);
         painelSul.add(painelBotoes, BorderLayout.SOUTH);
@@ -239,16 +236,7 @@ public class TelaVenda extends JFrame {
         btnExcluir.addActionListener(e -> acaoExcluir());
         btnPesquisar.addActionListener(e -> acaoPesquisar());
 
-        // TipoConta = Receber
-        for (int i = 0; i < cbTipoConta.getItemCount(); i++) {
-            TipoConta tipo = cbTipoConta.getItemAt(i);
 
-            if ("Receber".equalsIgnoreCase(tipo.getDescricao())) {
-                cbTipoConta.setSelectedIndex(i);
-                break;
-            }
-        }
-        cbTipoConta.setEnabled(false);
 
     }
 

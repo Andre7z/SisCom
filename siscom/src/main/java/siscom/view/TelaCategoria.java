@@ -33,7 +33,6 @@ public class TelaCategoria extends JFrame {
     private final JButton btnAlterar;
     private final JButton btnExcluir;
     private final JButton btnPesquisar;
-    private final JButton btnImprimir;
 
     private final JTable tabelaCategorias;
     private final DefaultTableModel modeloTabela;
@@ -81,15 +80,12 @@ public class TelaCategoria extends JFrame {
         btnSalvar = new JButton("Salvar");
         btnAlterar = new JButton("Alterar");
         btnExcluir = new JButton("Excluir");
-        btnPesquisar = new JButton("Pesquisar");
-        btnImprimir = new JButton("Imprimir");
+        btnPesquisar = new JButton("Pesquisar");;
 
         painelBotoes.add(btnSalvar);
         painelBotoes.add(btnAlterar);
         painelBotoes.add(btnExcluir);
         painelBotoes.add(btnPesquisar);
-        painelBotoes.add(btnImprimir);
-
         modeloTabela = new DefaultTableModel(
                 new Object[] { "Id", "Nome", "Descricao" }, 0) {
             @Override
@@ -128,7 +124,6 @@ public class TelaCategoria extends JFrame {
         btnAlterar.addActionListener(e -> acaoAlterar());
         btnExcluir.addActionListener(e -> acaoExcluir());
         btnPesquisar.addActionListener(e -> acaoPesquisar());
-        btnImprimir.addActionListener(e -> acaoImprimir());
 
         carregarTabelaCategorias();
     }
@@ -213,11 +208,6 @@ public class TelaCategoria extends JFrame {
         }
 
         carregarTabelaCategorias();
-    }
-
-    private void acaoImprimir() {
-        JOptionPane.showMessageDialog(this,
-                "Faça o relatório no JasperReports (-|-)");
     }
 
     private void carregarTabelaCategorias() {

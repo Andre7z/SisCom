@@ -36,7 +36,6 @@ public class TelaCliente extends JFrame {
     private final JButton btnAlterar;
     private final JButton btnExcluir;
     private final JButton btnPesquisar;
-    private final JButton btnImprimir;
 
     private final JTable tabelaClientes;
     private final DefaultTableModel modeloTabela;
@@ -109,13 +108,11 @@ public class TelaCliente extends JFrame {
         btnAlterar = new JButton("Alterar");
         btnExcluir = new JButton("Excluir");
         btnPesquisar = new JButton("Pesquisar");
-        btnImprimir = new JButton("Imprimir");
 
         painelBotoes.add(btnSalvar);
         painelBotoes.add(btnAlterar);
         painelBotoes.add(btnExcluir);
         painelBotoes.add(btnPesquisar);
-        painelBotoes.add(btnImprimir);
 
         modeloTabela = new DefaultTableModel(
                 new Object[]{"Id", "Nome", "CPF", "RG", "Endereco", "Telefone"}, 0) {
@@ -156,7 +153,6 @@ public class TelaCliente extends JFrame {
         btnAlterar.addActionListener(e -> acaoAlterar());
         btnExcluir.addActionListener(e -> acaoExcluir());
         btnPesquisar.addActionListener(e -> acaoPesquisar());
-        btnImprimir.addActionListener(e -> acaoImprimir());
 
         carregarTabelaClientes();
     }
@@ -237,11 +233,6 @@ public class TelaCliente extends JFrame {
         }
 
         carregarTabelaClientes();
-    }
-
-    private void acaoImprimir() {
-        JOptionPane.showMessageDialog(this,
-                "Implementar relatório com JasperReports");
     }
 
     private void carregarTabelaClientes() {

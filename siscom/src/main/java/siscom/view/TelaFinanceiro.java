@@ -1,6 +1,7 @@
 package siscom.view;
 
 import java.awt.BorderLayout;
+import java.awt.Component;
 import java.awt.FlowLayout;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
@@ -8,12 +9,15 @@ import java.awt.Insets;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.time.LocalDate;
+import java.time.format.DateTimeParseException;
 import java.util.List;
 
+import javax.swing.DefaultListCellRenderer;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JList;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -87,7 +91,6 @@ public class TelaFinanceiro extends JFrame {
         gbc.fill = GridBagConstraints.HORIZONTAL;
         gbc.weightx = 1.0;
 
-        // ID
         gbc.gridx = 0;
         gbc.gridy = 0;
         painelCampos.add(new JLabel("ID:"), gbc);
@@ -97,7 +100,6 @@ public class TelaFinanceiro extends JFrame {
         cbId.addItem(null);
         painelCampos.add(cbId, gbc);
 
-        // Data
         gbc.gridx = 0;
         gbc.gridy++;
         gbc.weightx = 0;
@@ -109,7 +111,6 @@ public class TelaFinanceiro extends JFrame {
         txtData.setText(LocalDate.now().toString());
         painelCampos.add(txtData, gbc);
 
-        // Movimento
         gbc.gridx = 0;
         gbc.gridy++;
         gbc.weightx = 0;
@@ -122,7 +123,6 @@ public class TelaFinanceiro extends JFrame {
         cbTipoMovimento.addItem("Receber");
         painelCampos.add(cbTipoMovimento, gbc);
 
-        // Tipo Conta
         gbc.gridx = 0;
         gbc.gridy++;
         gbc.weightx = 0;
@@ -133,7 +133,6 @@ public class TelaFinanceiro extends JFrame {
         cbTipoConta = new JComboBox<>();
         painelCampos.add(cbTipoConta, gbc);
 
-        // Forma de Pagamento
         gbc.gridx = 0;
         gbc.gridy++;
         gbc.weightx = 0;
@@ -144,7 +143,6 @@ public class TelaFinanceiro extends JFrame {
         cbFormaPagamento = new JComboBox<>();
         painelCampos.add(cbFormaPagamento, gbc);
 
-        // Fornecedor
         gbc.gridx = 0;
         gbc.gridy++;
         gbc.weightx = 0;
@@ -155,7 +153,6 @@ public class TelaFinanceiro extends JFrame {
         cbFornecedor = new JComboBox<>();
         painelCampos.add(cbFornecedor, gbc);
 
-        // Cliente
         gbc.gridx = 0;
         gbc.gridy++;
         gbc.weightx = 0;
@@ -186,7 +183,8 @@ public class TelaFinanceiro extends JFrame {
                         "Data",
                         "Tipo",
                         "Conta",
-                        "Pagamento"
+                        "Pagamento",
+                        "Fornecedor/Cliente"
                 }, 0) {
 
             @Override
@@ -205,6 +203,16 @@ public class TelaFinanceiro extends JFrame {
 
                 if (e.getClickCount() == 2) {
 
+                    int linha = tabela.getSelectedRow();
+
+                    if (linha == -1) {
+                        return;
+                    }
+
+                    Integer id = (Integer) modeloTabela.getValueAt(linha, 0);
+
+                    cbId.setSelectedItem(id);
+
                     pesquisar();
 
                 }
@@ -221,25 +229,13 @@ public class TelaFinanceiro extends JFrame {
         add(painelCentral, BorderLayout.CENTER);
         add(painelBotoes, BorderLayout.SOUTH);
 
+        configurarRenderizadores();
+
         carregarCombos();
 
         carregarTabela();
 
-        cbTipoMovimento.addActionListener(e -> {
-
-            boolean pagar = cbTipoMovimento.getSelectedIndex() == 0;
-
-            cbFornecedor.setEnabled(pagar);
-
-            cbCliente.setEnabled(!pagar);
-
-            if (pagar) {
-                cbCliente.setSelectedItem(null);
-            } else {
-                cbFornecedor.setSelectedItem(null);
-            }
-
-        });
+        cbTipoMovimento.addActionListener(e -> atualizarCamposMovimento());
 
         btnSalvar.addActionListener(e -> salvar());
 
@@ -249,8 +245,100 @@ public class TelaFinanceiro extends JFrame {
 
         btnPesquisar.addActionListener(e -> pesquisar());
 
-        cbTipoMovimento.setSelectedIndex(0);
+        btnImprimir.addActionListener(e ->
+                JOptionPane.showMessageDialog(this,
+                        "Relatório JasperReports"));
 
+        cbTipoMovimento.setSelectedIndex(0);
+        atualizarCamposMovimento();
+
+    }
+
+    private void atualizarCamposMovimento() {
+
+        boolean pagar = cbTipoMovimento.getSelectedIndex() == 0;
+
+        cbFornecedor.setEnabled(pagar);
+
+        cbCliente.setEnabled(!pagar);
+
+        if (pagar) {
+            cbCliente.setSelectedItem(null);
+        } else {
+            cbFornecedor.setSelectedItem(null);
+        }
+
+    }
+
+    private void configurarRenderizadores() {
+
+        cbTipoConta.setRenderer(new DefaultListCellRenderer() {
+            @Override
+            public Component getListCellRendererComponent(JList<?> list,
+                    Object value, int index, boolean isSelected,
+                    boolean cellHasFocus) {
+
+                super.getListCellRendererComponent(list, value, index,
+                        isSelected, cellHasFocus);
+
+                if (value instanceof TipoConta tipo) {
+                    setText(tipo.getDescricao());
+                }
+
+                return this;
+            }
+        });
+
+        cbFormaPagamento.setRenderer(new DefaultListCellRenderer() {
+            @Override
+            public Component getListCellRendererComponent(JList<?> list,
+                    Object value, int index, boolean isSelected,
+                    boolean cellHasFocus) {
+
+                super.getListCellRendererComponent(list, value, index,
+                        isSelected, cellHasFocus);
+
+                if (value instanceof FormaPagamento forma) {
+                    setText(forma.getNome());
+                }
+
+                return this;
+            }
+        });
+
+        cbFornecedor.setRenderer(new DefaultListCellRenderer() {
+            @Override
+            public Component getListCellRendererComponent(JList<?> list,
+                    Object value, int index, boolean isSelected,
+                    boolean cellHasFocus) {
+
+                super.getListCellRendererComponent(list, value, index,
+                        isSelected, cellHasFocus);
+
+                if (value instanceof Fornecedor fornecedor) {
+                    setText(fornecedor.getNomeFantasia());
+                }
+
+                return this;
+            }
+        });
+
+        cbCliente.setRenderer(new DefaultListCellRenderer() {
+            @Override
+            public Component getListCellRendererComponent(JList<?> list,
+                    Object value, int index, boolean isSelected,
+                    boolean cellHasFocus) {
+
+                super.getListCellRendererComponent(list, value, index,
+                        isSelected, cellHasFocus);
+
+                if (value instanceof Cliente cliente) {
+                    setText(cliente.getNome());
+                }
+
+                return this;
+            }
+        });
     }
 
     private void carregarCombos() {
@@ -263,35 +351,30 @@ public class TelaFinanceiro extends JFrame {
         cbFornecedor.removeAllItems();
         cbCliente.removeAllItems();
 
-        // Financeiro
         List<Financeiro> financeiros = financeiroController.pesquisarTodos();
 
         for (Financeiro financeiro : financeiros) {
             cbId.addItem(financeiro.getId());
         }
 
-        // Tipo Conta
         List<TipoConta> tipos = tipoContaController.pesquisarTodos();
 
         for (TipoConta tipo : tipos) {
             cbTipoConta.addItem(tipo);
         }
 
-        // Forma Pagamento
         List<FormaPagamento> formas = formaPagamentoController.pesquisarTodos();
 
         for (FormaPagamento forma : formas) {
             cbFormaPagamento.addItem(forma);
         }
 
-        // Fornecedor
         List<Fornecedor> fornecedores = fornecedorController.pesquisarTodos();
 
         for (Fornecedor fornecedor : fornecedores) {
             cbFornecedor.addItem(fornecedor);
         }
 
-        // Cliente
         List<Cliente> clientes = clienteController.pesquisarTodos();
 
         for (Cliente cliente : clientes) {
@@ -312,6 +395,24 @@ public class TelaFinanceiro extends JFrame {
                     ? "Pagar"
                     : "Receber";
 
+            String conta = financeiro.getTipoConta() != null
+                    ? financeiro.getTipoConta().getDescricao()
+                    : "-";
+
+            String pagamento = financeiro.getFormaPagamento() != null
+                    ? financeiro.getFormaPagamento().getNome()
+                    : "-";
+
+            String fornecedorCliente;
+
+            if (financeiro.getFornecedor() != null) {
+                fornecedorCliente = financeiro.getFornecedor().getNomeFantasia();
+            } else if (financeiro.getCliente() != null) {
+                fornecedorCliente = financeiro.getCliente().getNome();
+            } else {
+                fornecedorCliente = "-";
+            }
+
             modeloTabela.addRow(new Object[] {
 
                     financeiro.getId(),
@@ -320,9 +421,11 @@ public class TelaFinanceiro extends JFrame {
 
                     tipo,
 
-                    financeiro.getTipoConta().getDescricao(),
+                    conta,
 
-                    financeiro.getFormaPagamento().getNome()
+                    pagamento,
+
+                    fornecedorCliente
 
             });
 
@@ -330,13 +433,56 @@ public class TelaFinanceiro extends JFrame {
 
     }
 
+    private boolean validarCampos() {
+
+        if (cbTipoConta.getSelectedItem() == null) {
+            JOptionPane.showMessageDialog(this, "Selecione o tipo de conta.");
+            return false;
+        }
+
+        if (cbFormaPagamento.getSelectedItem() == null) {
+            JOptionPane.showMessageDialog(this, "Selecione a forma de pagamento.");
+            return false;
+        }
+
+        boolean pagar = cbTipoMovimento.getSelectedIndex() == 0;
+
+        if (pagar && cbFornecedor.getSelectedItem() == null) {
+            JOptionPane.showMessageDialog(this,
+                    "Movimento 'Pagar' exige um fornecedor selecionado.");
+            return false;
+        }
+
+        if (!pagar && cbCliente.getSelectedItem() == null) {
+            JOptionPane.showMessageDialog(this,
+                    "Movimento 'Receber' exige um cliente selecionado.");
+            return false;
+        }
+
+        return true;
+    }
+
     private void salvar() {
+
+        if (!validarCampos()) {
+            return;
+        }
+
+        LocalDate dataConta;
+
+        try {
+            dataConta = LocalDate.parse(txtData.getText().trim());
+        } catch (DateTimeParseException ex) {
+            JOptionPane.showMessageDialog(this,
+                    "Data inválida. Use o formato AAAA-MM-DD.");
+            return;
+        }
 
         try {
 
             Financeiro financeiro = new Financeiro();
 
-            financeiro.setDataConta(LocalDate.parse(txtData.getText()));
+            financeiro.setDataConta(dataConta);
 
             financeiro.setPagarOuReceber(
                     cbTipoMovimento.getSelectedIndex());
@@ -368,7 +514,8 @@ public class TelaFinanceiro extends JFrame {
             if (sucesso) {
 
                 JOptionPane.showMessageDialog(this,
-                        "Financeiro salvo com sucesso!");
+                        "Financeiro salvo com sucesso! Id gerado: "
+                                + financeiro.getId());
 
                 limpar();
 
@@ -379,7 +526,7 @@ public class TelaFinanceiro extends JFrame {
             } else {
 
                 JOptionPane.showMessageDialog(this,
-                        "Erro ao salvar.");
+                        "Erro ao salvar. Verifique os dados informados.");
 
             }
 
@@ -402,13 +549,32 @@ public class TelaFinanceiro extends JFrame {
             return;
         }
 
+        if (!validarCampos()) {
+            return;
+        }
+
+        LocalDate dataConta;
+
+        try {
+            dataConta = LocalDate.parse(txtData.getText().trim());
+        } catch (DateTimeParseException ex) {
+            JOptionPane.showMessageDialog(this,
+                    "Data inválida. Use o formato AAAA-MM-DD.");
+            return;
+        }
+
         try {
 
-            Financeiro financeiro = new Financeiro();
+            Financeiro financeiro = financeiroController.pesquisar(
+                    (Integer) cbId.getSelectedItem());
 
-            financeiro.setId((Integer) cbId.getSelectedItem());
+            if (financeiro == null) {
+                JOptionPane.showMessageDialog(this,
+                        "Registro não encontrado.");
+                return;
+            }
 
-            financeiro.setDataConta(LocalDate.parse(txtData.getText()));
+            financeiro.setDataConta(dataConta);
 
             financeiro.setPagarOuReceber(
                     cbTipoMovimento.getSelectedIndex());
@@ -484,6 +650,8 @@ public class TelaFinanceiro extends JFrame {
 
         cbTipoMovimento.setSelectedIndex(
                 financeiro.getPagarOuReceber());
+
+        atualizarCamposMovimento();
 
         cbTipoConta.setSelectedItem(
                 financeiro.getTipoConta());

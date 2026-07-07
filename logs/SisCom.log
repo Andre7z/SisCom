@@ -1959,3 +1959,931 @@
 07-07-2026 17:15:27 ERROR FinanceiroController - Falha ao alterar Financeiro
 07-07-2026 17:15:31 INFO  FinanceiroController - Iniciando alterar Financeiro
 07-07-2026 17:15:31 ERROR FinanceiroController - Falha ao alterar Financeiro
+07-07-2026 17:32:15 INFO  FinanceiroController - Iniciando pesquisar todos os Financeiros
+07-07-2026 17:32:15 INFO  Version - HHH000412: Hibernate ORM core version 6.5.2.Final
+07-07-2026 17:32:15 INFO  Environment - HHH000205: Loaded properties from resource hibernate.properties: {hibernate.connection.driver_class=org.postgresql.Driver, hibernate.format_sql=true, hibernate.connection.url=jdbc:postgresql://localhost:5432/SisCom _comercial_prog2_andre, hibernate.hbm2ddl.auto=update, hibernate.dialect=org.hibernate.dialect.PostgreSQLDialect, hibernate.show_sql=true, hibernate.connection.password=****, hibernate.connection.username=postgres}
+07-07-2026 17:32:15 INFO  RegionFactoryInitiator - HHH000026: Second-level cache disabled
+07-07-2026 17:32:15 WARN  pooling - HHH10001002: Using built-in connection pool (not intended for production use)
+07-07-2026 17:32:15 INFO  pooling - HHH10001005: Loaded JDBC driver class: org.postgresql.Driver
+07-07-2026 17:32:15 INFO  pooling - HHH10001012: Connecting with JDBC URL [jdbc:postgresql://localhost:5432/SisCom _comercial_prog2_andre]
+07-07-2026 17:32:15 INFO  pooling - HHH10001001: Connection properties: {user=postgres, password=****}
+07-07-2026 17:32:15 INFO  pooling - HHH10001003: Autocommit mode: false
+07-07-2026 17:32:15 INFO  pooling - HHH10001115: Connection pool size: 20 (min=1)
+07-07-2026 17:32:15 WARN  deprecation - HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+07-07-2026 17:32:16 INFO  JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+07-07-2026 17:32:17 INFO  access - HHH10001501: Connection obtained from JdbcConnectionAccess [org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess@542764da] for (non-JTA) DDL execution was not in auto-commit mode; the Connection 'local transaction' will be committed and the Connection will be set into auto-commit mode.
+07-07-2026 17:32:17 INFO  FinanceiroController - Quantidade encontrada: 5
+07-07-2026 17:32:17 INFO  TipoContaController - Iniciando pesquisar todos os TipoConta
+07-07-2026 17:32:17 INFO  TipoContaController - Quantidade encontrada: 3
+07-07-2026 17:32:17 INFO  FormaPagamentoController - Iniciando pesquisar todas as FormaPagamento
+07-07-2026 17:32:17 INFO  FormaPagamentoController - Quantidade encontrada: 2
+07-07-2026 17:32:17 INFO  FornecedorController - Iniciando pesquisar todos os Fornecedores
+07-07-2026 17:32:17 INFO  FornecedorController - Quantidade encontrada: 2
+07-07-2026 17:32:17 INFO  ClienteController - Iniciando pesquisar todos os Clientes
+07-07-2026 17:32:17 INFO  ClienteController - Quantidade encontrada: 1
+07-07-2026 17:32:17 INFO  FinanceiroController - Iniciando pesquisar todos os Financeiros
+07-07-2026 17:32:17 INFO  FinanceiroController - Quantidade encontrada: 5
+07-07-2026 17:32:34 INFO  FinanceiroController - Iniciando pesquisar todos os Financeiros
+07-07-2026 17:32:34 INFO  Version - HHH000412: Hibernate ORM core version 6.5.2.Final
+07-07-2026 17:32:34 INFO  Environment - HHH000205: Loaded properties from resource hibernate.properties: {hibernate.connection.driver_class=org.postgresql.Driver, hibernate.format_sql=true, hibernate.connection.url=jdbc:postgresql://localhost:5432/SisCom _comercial_prog2_andre, hibernate.hbm2ddl.auto=update, hibernate.dialect=org.hibernate.dialect.PostgreSQLDialect, hibernate.show_sql=true, hibernate.connection.password=****, hibernate.connection.username=postgres}
+07-07-2026 17:32:34 INFO  RegionFactoryInitiator - HHH000026: Second-level cache disabled
+07-07-2026 17:32:34 WARN  pooling - HHH10001002: Using built-in connection pool (not intended for production use)
+07-07-2026 17:32:34 INFO  pooling - HHH10001005: Loaded JDBC driver class: org.postgresql.Driver
+07-07-2026 17:32:34 INFO  pooling - HHH10001012: Connecting with JDBC URL [jdbc:postgresql://localhost:5432/SisCom _comercial_prog2_andre]
+07-07-2026 17:32:34 INFO  pooling - HHH10001001: Connection properties: {user=postgres, password=****}
+07-07-2026 17:32:34 INFO  pooling - HHH10001003: Autocommit mode: false
+07-07-2026 17:32:34 INFO  pooling - HHH10001115: Connection pool size: 20 (min=1)
+07-07-2026 17:32:35 WARN  deprecation - HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+07-07-2026 17:32:36 INFO  JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+07-07-2026 17:32:36 INFO  access - HHH10001501: Connection obtained from JdbcConnectionAccess [org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess@17fed172] for (non-JTA) DDL execution was not in auto-commit mode; the Connection 'local transaction' will be committed and the Connection will be set into auto-commit mode.
+07-07-2026 17:32:36 INFO  FinanceiroController - Quantidade encontrada: 5
+07-07-2026 17:32:36 INFO  TipoContaController - Iniciando pesquisar todos os TipoConta
+07-07-2026 17:32:36 INFO  TipoContaController - Quantidade encontrada: 3
+07-07-2026 17:32:36 INFO  FormaPagamentoController - Iniciando pesquisar todas as FormaPagamento
+07-07-2026 17:32:36 INFO  FormaPagamentoController - Quantidade encontrada: 2
+07-07-2026 17:32:36 INFO  FornecedorController - Iniciando pesquisar todos os Fornecedores
+07-07-2026 17:32:36 INFO  FornecedorController - Quantidade encontrada: 2
+07-07-2026 17:32:36 INFO  ClienteController - Iniciando pesquisar todos os Clientes
+07-07-2026 17:32:36 INFO  ClienteController - Quantidade encontrada: 1
+07-07-2026 17:32:36 INFO  FinanceiroController - Iniciando pesquisar todos os Financeiros
+07-07-2026 17:32:36 INFO  FinanceiroController - Quantidade encontrada: 5
+07-07-2026 17:39:37 INFO  FinanceiroController - Iniciando pesquisar todos os Financeiros
+07-07-2026 17:39:37 INFO  Version - HHH000412: Hibernate ORM core version 6.5.2.Final
+07-07-2026 17:39:37 INFO  Environment - HHH000205: Loaded properties from resource hibernate.properties: {hibernate.connection.driver_class=org.postgresql.Driver, hibernate.format_sql=true, hibernate.connection.url=jdbc:postgresql://localhost:5432/SisCom _comercial_prog2_andre, hibernate.hbm2ddl.auto=update, hibernate.dialect=org.hibernate.dialect.PostgreSQLDialect, hibernate.show_sql=true, hibernate.connection.password=****, hibernate.connection.username=postgres}
+07-07-2026 17:39:37 INFO  RegionFactoryInitiator - HHH000026: Second-level cache disabled
+07-07-2026 17:39:37 WARN  pooling - HHH10001002: Using built-in connection pool (not intended for production use)
+07-07-2026 17:39:37 INFO  pooling - HHH10001005: Loaded JDBC driver class: org.postgresql.Driver
+07-07-2026 17:39:37 INFO  pooling - HHH10001012: Connecting with JDBC URL [jdbc:postgresql://localhost:5432/SisCom _comercial_prog2_andre]
+07-07-2026 17:39:37 INFO  pooling - HHH10001001: Connection properties: {user=postgres, password=****}
+07-07-2026 17:39:37 INFO  pooling - HHH10001003: Autocommit mode: false
+07-07-2026 17:39:37 INFO  pooling - HHH10001115: Connection pool size: 20 (min=1)
+07-07-2026 17:39:38 WARN  deprecation - HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+07-07-2026 17:39:39 INFO  JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+07-07-2026 17:39:39 INFO  access - HHH10001501: Connection obtained from JdbcConnectionAccess [org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess@17fed172] for (non-JTA) DDL execution was not in auto-commit mode; the Connection 'local transaction' will be committed and the Connection will be set into auto-commit mode.
+07-07-2026 17:39:39 INFO  FinanceiroController - Quantidade encontrada: 5
+07-07-2026 17:39:39 INFO  TipoContaController - Iniciando pesquisar todos os TipoConta
+07-07-2026 17:39:39 INFO  TipoContaController - Quantidade encontrada: 3
+07-07-2026 17:39:39 INFO  FormaPagamentoController - Iniciando pesquisar todas as FormaPagamento
+07-07-2026 17:39:39 INFO  FormaPagamentoController - Quantidade encontrada: 2
+07-07-2026 17:39:39 INFO  FornecedorController - Iniciando pesquisar todos os Fornecedores
+07-07-2026 17:39:39 INFO  FornecedorController - Quantidade encontrada: 2
+07-07-2026 17:39:39 INFO  ClienteController - Iniciando pesquisar todos os Clientes
+07-07-2026 17:39:39 INFO  ClienteController - Quantidade encontrada: 1
+07-07-2026 17:39:39 INFO  FinanceiroController - Iniciando pesquisar todos os Financeiros
+07-07-2026 17:39:39 INFO  FinanceiroController - Quantidade encontrada: 5
+07-07-2026 17:39:58 INFO  FinanceiroController - Iniciando pesquisar todos os Financeiros
+07-07-2026 17:39:58 INFO  Version - HHH000412: Hibernate ORM core version 6.5.2.Final
+07-07-2026 17:39:58 INFO  Environment - HHH000205: Loaded properties from resource hibernate.properties: {hibernate.connection.driver_class=org.postgresql.Driver, hibernate.format_sql=true, hibernate.connection.url=jdbc:postgresql://localhost:5432/SisCom _comercial_prog2_andre, hibernate.hbm2ddl.auto=update, hibernate.dialect=org.hibernate.dialect.PostgreSQLDialect, hibernate.show_sql=true, hibernate.connection.password=****, hibernate.connection.username=postgres}
+07-07-2026 17:39:59 INFO  RegionFactoryInitiator - HHH000026: Second-level cache disabled
+07-07-2026 17:39:59 WARN  pooling - HHH10001002: Using built-in connection pool (not intended for production use)
+07-07-2026 17:39:59 INFO  pooling - HHH10001005: Loaded JDBC driver class: org.postgresql.Driver
+07-07-2026 17:39:59 INFO  pooling - HHH10001012: Connecting with JDBC URL [jdbc:postgresql://localhost:5432/SisCom _comercial_prog2_andre]
+07-07-2026 17:39:59 INFO  pooling - HHH10001001: Connection properties: {user=postgres, password=****}
+07-07-2026 17:39:59 INFO  pooling - HHH10001003: Autocommit mode: false
+07-07-2026 17:39:59 INFO  pooling - HHH10001115: Connection pool size: 20 (min=1)
+07-07-2026 17:39:59 WARN  deprecation - HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+07-07-2026 17:40:00 INFO  JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+07-07-2026 17:40:00 INFO  access - HHH10001501: Connection obtained from JdbcConnectionAccess [org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess@542764da] for (non-JTA) DDL execution was not in auto-commit mode; the Connection 'local transaction' will be committed and the Connection will be set into auto-commit mode.
+07-07-2026 17:40:01 INFO  FinanceiroController - Quantidade encontrada: 5
+07-07-2026 17:40:01 INFO  TipoContaController - Iniciando pesquisar todos os TipoConta
+07-07-2026 17:40:01 INFO  TipoContaController - Quantidade encontrada: 3
+07-07-2026 17:40:01 INFO  FormaPagamentoController - Iniciando pesquisar todas as FormaPagamento
+07-07-2026 17:40:01 INFO  FormaPagamentoController - Quantidade encontrada: 2
+07-07-2026 17:40:01 INFO  FornecedorController - Iniciando pesquisar todos os Fornecedores
+07-07-2026 17:40:01 INFO  FornecedorController - Quantidade encontrada: 2
+07-07-2026 17:40:01 INFO  ClienteController - Iniciando pesquisar todos os Clientes
+07-07-2026 17:40:01 INFO  ClienteController - Quantidade encontrada: 1
+07-07-2026 17:40:01 INFO  FinanceiroController - Iniciando pesquisar todos os Financeiros
+07-07-2026 17:40:01 INFO  FinanceiroController - Quantidade encontrada: 5
+07-07-2026 17:41:31 INFO  FinanceiroController - Iniciando pesquisar todos os Financeiros
+07-07-2026 17:41:31 INFO  Version - HHH000412: Hibernate ORM core version 6.5.2.Final
+07-07-2026 17:41:31 INFO  Environment - HHH000205: Loaded properties from resource hibernate.properties: {hibernate.connection.driver_class=org.postgresql.Driver, hibernate.format_sql=true, hibernate.connection.url=jdbc:postgresql://localhost:5432/SisCom _comercial_prog2_andre, hibernate.hbm2ddl.auto=update, hibernate.dialect=org.hibernate.dialect.PostgreSQLDialect, hibernate.show_sql=true, hibernate.connection.password=****, hibernate.connection.username=postgres}
+07-07-2026 17:41:31 INFO  RegionFactoryInitiator - HHH000026: Second-level cache disabled
+07-07-2026 17:41:31 WARN  pooling - HHH10001002: Using built-in connection pool (not intended for production use)
+07-07-2026 17:41:31 INFO  pooling - HHH10001005: Loaded JDBC driver class: org.postgresql.Driver
+07-07-2026 17:41:31 INFO  pooling - HHH10001012: Connecting with JDBC URL [jdbc:postgresql://localhost:5432/SisCom _comercial_prog2_andre]
+07-07-2026 17:41:31 INFO  pooling - HHH10001001: Connection properties: {user=postgres, password=****}
+07-07-2026 17:41:31 INFO  pooling - HHH10001003: Autocommit mode: false
+07-07-2026 17:41:31 INFO  pooling - HHH10001115: Connection pool size: 20 (min=1)
+07-07-2026 17:41:31 WARN  deprecation - HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+07-07-2026 17:41:32 INFO  JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+07-07-2026 17:41:32 INFO  access - HHH10001501: Connection obtained from JdbcConnectionAccess [org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess@647af06e] for (non-JTA) DDL execution was not in auto-commit mode; the Connection 'local transaction' will be committed and the Connection will be set into auto-commit mode.
+07-07-2026 17:41:33 INFO  FinanceiroController - Quantidade encontrada: 5
+07-07-2026 17:41:33 INFO  TipoContaController - Iniciando pesquisar todos os TipoConta
+07-07-2026 17:41:33 INFO  TipoContaController - Quantidade encontrada: 3
+07-07-2026 17:41:33 INFO  FormaPagamentoController - Iniciando pesquisar todas as FormaPagamento
+07-07-2026 17:41:33 INFO  FormaPagamentoController - Quantidade encontrada: 2
+07-07-2026 17:41:33 INFO  FornecedorController - Iniciando pesquisar todos os Fornecedores
+07-07-2026 17:41:33 INFO  FornecedorController - Quantidade encontrada: 2
+07-07-2026 17:41:33 INFO  ClienteController - Iniciando pesquisar todos os Clientes
+07-07-2026 17:41:33 INFO  ClienteController - Quantidade encontrada: 1
+07-07-2026 17:41:33 INFO  FinanceiroController - Iniciando pesquisar todos os Financeiros
+07-07-2026 17:41:33 INFO  FinanceiroController - Quantidade encontrada: 5
+07-07-2026 17:41:52 INFO  FinanceiroController - Iniciando pesquisar todos os Financeiros
+07-07-2026 17:41:52 INFO  Version - HHH000412: Hibernate ORM core version 6.5.2.Final
+07-07-2026 17:41:52 INFO  Environment - HHH000205: Loaded properties from resource hibernate.properties: {hibernate.connection.driver_class=org.postgresql.Driver, hibernate.format_sql=true, hibernate.connection.url=jdbc:postgresql://localhost:5432/SisCom _comercial_prog2_andre, hibernate.hbm2ddl.auto=update, hibernate.dialect=org.hibernate.dialect.PostgreSQLDialect, hibernate.show_sql=true, hibernate.connection.password=****, hibernate.connection.username=postgres}
+07-07-2026 17:41:52 INFO  RegionFactoryInitiator - HHH000026: Second-level cache disabled
+07-07-2026 17:41:52 WARN  pooling - HHH10001002: Using built-in connection pool (not intended for production use)
+07-07-2026 17:41:52 INFO  pooling - HHH10001005: Loaded JDBC driver class: org.postgresql.Driver
+07-07-2026 17:41:52 INFO  pooling - HHH10001012: Connecting with JDBC URL [jdbc:postgresql://localhost:5432/SisCom _comercial_prog2_andre]
+07-07-2026 17:41:52 INFO  pooling - HHH10001001: Connection properties: {user=postgres, password=****}
+07-07-2026 17:41:52 INFO  pooling - HHH10001003: Autocommit mode: false
+07-07-2026 17:41:52 INFO  pooling - HHH10001115: Connection pool size: 20 (min=1)
+07-07-2026 17:41:53 WARN  deprecation - HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+07-07-2026 17:41:54 INFO  JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+07-07-2026 17:41:54 INFO  access - HHH10001501: Connection obtained from JdbcConnectionAccess [org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess@17fed172] for (non-JTA) DDL execution was not in auto-commit mode; the Connection 'local transaction' will be committed and the Connection will be set into auto-commit mode.
+07-07-2026 17:41:54 INFO  FinanceiroController - Quantidade encontrada: 5
+07-07-2026 17:41:54 INFO  TipoContaController - Iniciando pesquisar todos os TipoConta
+07-07-2026 17:41:54 INFO  TipoContaController - Quantidade encontrada: 3
+07-07-2026 17:41:54 INFO  FormaPagamentoController - Iniciando pesquisar todas as FormaPagamento
+07-07-2026 17:41:54 INFO  FormaPagamentoController - Quantidade encontrada: 2
+07-07-2026 17:41:54 INFO  FornecedorController - Iniciando pesquisar todos os Fornecedores
+07-07-2026 17:41:54 INFO  FornecedorController - Quantidade encontrada: 2
+07-07-2026 17:41:54 INFO  ClienteController - Iniciando pesquisar todos os Clientes
+07-07-2026 17:41:54 INFO  ClienteController - Quantidade encontrada: 1
+07-07-2026 17:41:54 INFO  FinanceiroController - Iniciando pesquisar todos os Financeiros
+07-07-2026 17:41:54 INFO  FinanceiroController - Quantidade encontrada: 5
+07-07-2026 17:42:08 INFO  FornecedorController - Iniciando pesquisar todos os Fornecedores
+07-07-2026 17:42:08 INFO  Version - HHH000412: Hibernate ORM core version 6.5.2.Final
+07-07-2026 17:42:08 INFO  Environment - HHH000205: Loaded properties from resource hibernate.properties: {hibernate.connection.driver_class=org.postgresql.Driver, hibernate.format_sql=true, hibernate.connection.url=jdbc:postgresql://localhost:5432/SisCom _comercial_prog2_andre, hibernate.hbm2ddl.auto=update, hibernate.dialect=org.hibernate.dialect.PostgreSQLDialect, hibernate.show_sql=true, hibernate.connection.password=****, hibernate.connection.username=postgres}
+07-07-2026 17:42:08 INFO  RegionFactoryInitiator - HHH000026: Second-level cache disabled
+07-07-2026 17:42:08 WARN  pooling - HHH10001002: Using built-in connection pool (not intended for production use)
+07-07-2026 17:42:08 INFO  pooling - HHH10001005: Loaded JDBC driver class: org.postgresql.Driver
+07-07-2026 17:42:08 INFO  pooling - HHH10001012: Connecting with JDBC URL [jdbc:postgresql://localhost:5432/SisCom _comercial_prog2_andre]
+07-07-2026 17:42:08 INFO  pooling - HHH10001001: Connection properties: {user=postgres, password=****}
+07-07-2026 17:42:08 INFO  pooling - HHH10001003: Autocommit mode: false
+07-07-2026 17:42:08 INFO  pooling - HHH10001115: Connection pool size: 20 (min=1)
+07-07-2026 17:42:09 WARN  deprecation - HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+07-07-2026 17:42:10 INFO  JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+07-07-2026 17:42:10 INFO  access - HHH10001501: Connection obtained from JdbcConnectionAccess [org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess@1dee97f3] for (non-JTA) DDL execution was not in auto-commit mode; the Connection 'local transaction' will be committed and the Connection will be set into auto-commit mode.
+07-07-2026 17:42:10 INFO  FornecedorController - Quantidade encontrada: 2
+07-07-2026 17:42:10 INFO  ProdutoController - Iniciando pesquisar todos os Produtos
+07-07-2026 17:42:10 INFO  ProdutoController - Quantidade encontrada: 2
+07-07-2026 17:42:10 INFO  FormaPagamentoController - Iniciando pesquisar todas as FormaPagamento
+07-07-2026 17:42:10 INFO  FormaPagamentoController - Quantidade encontrada: 2
+07-07-2026 17:42:10 INFO  TipoContaController - Iniciando pesquisar todos os TipoConta
+07-07-2026 17:42:10 INFO  TipoContaController - Quantidade encontrada: 3
+07-07-2026 17:42:21 INFO  ClienteController - Iniciando pesquisar todos os Clientes
+07-07-2026 17:42:21 INFO  Version - HHH000412: Hibernate ORM core version 6.5.2.Final
+07-07-2026 17:42:21 INFO  Environment - HHH000205: Loaded properties from resource hibernate.properties: {hibernate.connection.driver_class=org.postgresql.Driver, hibernate.format_sql=true, hibernate.connection.url=jdbc:postgresql://localhost:5432/SisCom _comercial_prog2_andre, hibernate.hbm2ddl.auto=update, hibernate.dialect=org.hibernate.dialect.PostgreSQLDialect, hibernate.show_sql=true, hibernate.connection.password=****, hibernate.connection.username=postgres}
+07-07-2026 17:42:21 INFO  RegionFactoryInitiator - HHH000026: Second-level cache disabled
+07-07-2026 17:42:21 WARN  pooling - HHH10001002: Using built-in connection pool (not intended for production use)
+07-07-2026 17:42:21 INFO  pooling - HHH10001005: Loaded JDBC driver class: org.postgresql.Driver
+07-07-2026 17:42:21 INFO  pooling - HHH10001012: Connecting with JDBC URL [jdbc:postgresql://localhost:5432/SisCom _comercial_prog2_andre]
+07-07-2026 17:42:21 INFO  pooling - HHH10001001: Connection properties: {user=postgres, password=****}
+07-07-2026 17:42:21 INFO  pooling - HHH10001003: Autocommit mode: false
+07-07-2026 17:42:21 INFO  pooling - HHH10001115: Connection pool size: 20 (min=1)
+07-07-2026 17:42:21 WARN  deprecation - HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+07-07-2026 17:42:22 INFO  JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+07-07-2026 17:42:22 INFO  access - HHH10001501: Connection obtained from JdbcConnectionAccess [org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess@725c9250] for (non-JTA) DDL execution was not in auto-commit mode; the Connection 'local transaction' will be committed and the Connection will be set into auto-commit mode.
+07-07-2026 17:42:23 INFO  ClienteController - Quantidade encontrada: 1
+07-07-2026 17:42:23 INFO  ProdutoController - Iniciando pesquisar todos os Produtos
+07-07-2026 17:42:23 INFO  ProdutoController - Quantidade encontrada: 2
+07-07-2026 17:42:23 INFO  FormaPagamentoController - Iniciando pesquisar todas as FormaPagamento
+07-07-2026 17:42:23 INFO  FormaPagamentoController - Quantidade encontrada: 2
+07-07-2026 17:42:23 INFO  TipoContaController - Iniciando pesquisar todos os TipoConta
+07-07-2026 17:42:23 INFO  TipoContaController - Quantidade encontrada: 3
+07-07-2026 17:44:36 INFO  FinanceiroController - Iniciando pesquisar todos os Financeiros
+07-07-2026 17:44:36 INFO  Version - HHH000412: Hibernate ORM core version 6.5.2.Final
+07-07-2026 17:44:36 INFO  Environment - HHH000205: Loaded properties from resource hibernate.properties: {hibernate.connection.driver_class=org.postgresql.Driver, hibernate.format_sql=true, hibernate.connection.url=jdbc:postgresql://localhost:5432/SisCom _comercial_prog2_andre, hibernate.hbm2ddl.auto=update, hibernate.dialect=org.hibernate.dialect.PostgreSQLDialect, hibernate.show_sql=true, hibernate.connection.password=****, hibernate.connection.username=postgres}
+07-07-2026 17:44:36 INFO  RegionFactoryInitiator - HHH000026: Second-level cache disabled
+07-07-2026 17:44:36 WARN  pooling - HHH10001002: Using built-in connection pool (not intended for production use)
+07-07-2026 17:44:36 INFO  pooling - HHH10001005: Loaded JDBC driver class: org.postgresql.Driver
+07-07-2026 17:44:36 INFO  pooling - HHH10001012: Connecting with JDBC URL [jdbc:postgresql://localhost:5432/SisCom _comercial_prog2_andre]
+07-07-2026 17:44:36 INFO  pooling - HHH10001001: Connection properties: {user=postgres, password=****}
+07-07-2026 17:44:36 INFO  pooling - HHH10001003: Autocommit mode: false
+07-07-2026 17:44:36 INFO  pooling - HHH10001115: Connection pool size: 20 (min=1)
+07-07-2026 17:44:36 WARN  deprecation - HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+07-07-2026 17:44:37 INFO  JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+07-07-2026 17:44:37 INFO  access - HHH10001501: Connection obtained from JdbcConnectionAccess [org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess@17fed172] for (non-JTA) DDL execution was not in auto-commit mode; the Connection 'local transaction' will be committed and the Connection will be set into auto-commit mode.
+07-07-2026 17:44:38 INFO  FinanceiroController - Quantidade encontrada: 5
+07-07-2026 17:44:38 INFO  TipoContaController - Iniciando pesquisar todos os TipoConta
+07-07-2026 17:44:38 INFO  TipoContaController - Quantidade encontrada: 3
+07-07-2026 17:44:38 INFO  FormaPagamentoController - Iniciando pesquisar todas as FormaPagamento
+07-07-2026 17:44:38 INFO  FormaPagamentoController - Quantidade encontrada: 2
+07-07-2026 17:44:38 INFO  FornecedorController - Iniciando pesquisar todos os Fornecedores
+07-07-2026 17:44:38 INFO  FornecedorController - Quantidade encontrada: 2
+07-07-2026 17:44:38 INFO  ClienteController - Iniciando pesquisar todos os Clientes
+07-07-2026 17:44:38 INFO  ClienteController - Quantidade encontrada: 1
+07-07-2026 17:44:38 INFO  FinanceiroController - Iniciando pesquisar todos os Financeiros
+07-07-2026 17:44:38 INFO  FinanceiroController - Quantidade encontrada: 5
+07-07-2026 17:50:10 INFO  FinanceiroController - Iniciando pesquisar todos os Financeiros
+07-07-2026 17:50:10 INFO  Version - HHH000412: Hibernate ORM core version 6.5.2.Final
+07-07-2026 17:50:10 INFO  Environment - HHH000205: Loaded properties from resource hibernate.properties: {hibernate.connection.driver_class=org.postgresql.Driver, hibernate.format_sql=true, hibernate.connection.url=jdbc:postgresql://localhost:5432/SisCom _comercial_prog2_andre, hibernate.hbm2ddl.auto=update, hibernate.dialect=org.hibernate.dialect.PostgreSQLDialect, hibernate.show_sql=true, hibernate.connection.password=****, hibernate.connection.username=postgres}
+07-07-2026 17:50:10 INFO  RegionFactoryInitiator - HHH000026: Second-level cache disabled
+07-07-2026 17:50:10 WARN  pooling - HHH10001002: Using built-in connection pool (not intended for production use)
+07-07-2026 17:50:10 INFO  pooling - HHH10001005: Loaded JDBC driver class: org.postgresql.Driver
+07-07-2026 17:50:10 INFO  pooling - HHH10001012: Connecting with JDBC URL [jdbc:postgresql://localhost:5432/SisCom _comercial_prog2_andre]
+07-07-2026 17:50:10 INFO  pooling - HHH10001001: Connection properties: {user=postgres, password=****}
+07-07-2026 17:50:10 INFO  pooling - HHH10001003: Autocommit mode: false
+07-07-2026 17:50:10 INFO  pooling - HHH10001115: Connection pool size: 20 (min=1)
+07-07-2026 17:50:10 WARN  deprecation - HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+07-07-2026 17:50:11 INFO  JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+07-07-2026 17:50:11 INFO  access - HHH10001501: Connection obtained from JdbcConnectionAccess [org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess@29f2b05e] for (non-JTA) DDL execution was not in auto-commit mode; the Connection 'local transaction' will be committed and the Connection will be set into auto-commit mode.
+07-07-2026 17:50:12 INFO  FinanceiroController - Quantidade encontrada: 5
+07-07-2026 17:50:12 INFO  TipoContaController - Iniciando pesquisar todos os TipoConta
+07-07-2026 17:50:12 INFO  TipoContaController - Quantidade encontrada: 3
+07-07-2026 17:50:12 INFO  FormaPagamentoController - Iniciando pesquisar todas as FormaPagamento
+07-07-2026 17:50:12 INFO  FormaPagamentoController - Quantidade encontrada: 2
+07-07-2026 17:50:12 INFO  FornecedorController - Iniciando pesquisar todos os Fornecedores
+07-07-2026 17:50:12 INFO  FornecedorController - Quantidade encontrada: 2
+07-07-2026 17:50:12 INFO  ClienteController - Iniciando pesquisar todos os Clientes
+07-07-2026 17:50:12 INFO  ClienteController - Quantidade encontrada: 1
+07-07-2026 17:50:12 INFO  FinanceiroController - Iniciando pesquisar todos os Financeiros
+07-07-2026 17:50:12 INFO  FinanceiroController - Quantidade encontrada: 5
+07-07-2026 17:54:25 INFO  FinanceiroController - Iniciando pesquisar todos os Financeiros
+07-07-2026 17:54:25 INFO  Version - HHH000412: Hibernate ORM core version 6.5.2.Final
+07-07-2026 17:54:25 INFO  Environment - HHH000205: Loaded properties from resource hibernate.properties: {hibernate.connection.driver_class=org.postgresql.Driver, hibernate.format_sql=true, hibernate.connection.url=jdbc:postgresql://localhost:5432/SisCom _comercial_prog2_andre, hibernate.hbm2ddl.auto=update, hibernate.dialect=org.hibernate.dialect.PostgreSQLDialect, hibernate.show_sql=true, hibernate.connection.password=****, hibernate.connection.username=postgres}
+07-07-2026 17:54:25 INFO  RegionFactoryInitiator - HHH000026: Second-level cache disabled
+07-07-2026 17:54:25 WARN  pooling - HHH10001002: Using built-in connection pool (not intended for production use)
+07-07-2026 17:54:25 INFO  pooling - HHH10001005: Loaded JDBC driver class: org.postgresql.Driver
+07-07-2026 17:54:25 INFO  pooling - HHH10001012: Connecting with JDBC URL [jdbc:postgresql://localhost:5432/SisCom _comercial_prog2_andre]
+07-07-2026 17:54:25 INFO  pooling - HHH10001001: Connection properties: {user=postgres, password=****}
+07-07-2026 17:54:25 INFO  pooling - HHH10001003: Autocommit mode: false
+07-07-2026 17:54:25 INFO  pooling - HHH10001115: Connection pool size: 20 (min=1)
+07-07-2026 17:54:25 WARN  deprecation - HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+07-07-2026 17:54:26 INFO  JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+07-07-2026 17:54:26 INFO  access - HHH10001501: Connection obtained from JdbcConnectionAccess [org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess@5be6d4d8] for (non-JTA) DDL execution was not in auto-commit mode; the Connection 'local transaction' will be committed and the Connection will be set into auto-commit mode.
+07-07-2026 17:54:27 INFO  FinanceiroController - Quantidade encontrada: 5
+07-07-2026 17:54:27 INFO  TipoContaController - Iniciando pesquisar todos os TipoConta
+07-07-2026 17:54:27 INFO  TipoContaController - Quantidade encontrada: 3
+07-07-2026 17:54:27 INFO  FormaPagamentoController - Iniciando pesquisar todas as FormaPagamento
+07-07-2026 17:54:27 INFO  FormaPagamentoController - Quantidade encontrada: 2
+07-07-2026 17:54:27 INFO  FornecedorController - Iniciando pesquisar todos os Fornecedores
+07-07-2026 17:54:27 INFO  FornecedorController - Quantidade encontrada: 2
+07-07-2026 17:54:27 INFO  ClienteController - Iniciando pesquisar todos os Clientes
+07-07-2026 17:54:27 INFO  ClienteController - Quantidade encontrada: 1
+07-07-2026 17:54:27 INFO  FinanceiroController - Iniciando pesquisar todos os Financeiros
+07-07-2026 17:54:27 INFO  FinanceiroController - Quantidade encontrada: 5
+07-07-2026 17:55:13 INFO  FinanceiroController - Iniciando pesquisar todos os Financeiros
+07-07-2026 17:55:13 INFO  Version - HHH000412: Hibernate ORM core version 6.5.2.Final
+07-07-2026 17:55:13 INFO  Environment - HHH000205: Loaded properties from resource hibernate.properties: {hibernate.connection.driver_class=org.postgresql.Driver, hibernate.format_sql=true, hibernate.connection.url=jdbc:postgresql://localhost:5432/SisCom _comercial_prog2_andre, hibernate.hbm2ddl.auto=update, hibernate.dialect=org.hibernate.dialect.PostgreSQLDialect, hibernate.show_sql=true, hibernate.connection.password=****, hibernate.connection.username=postgres}
+07-07-2026 17:55:13 INFO  RegionFactoryInitiator - HHH000026: Second-level cache disabled
+07-07-2026 17:55:13 WARN  pooling - HHH10001002: Using built-in connection pool (not intended for production use)
+07-07-2026 17:55:13 INFO  pooling - HHH10001005: Loaded JDBC driver class: org.postgresql.Driver
+07-07-2026 17:55:13 INFO  pooling - HHH10001012: Connecting with JDBC URL [jdbc:postgresql://localhost:5432/SisCom _comercial_prog2_andre]
+07-07-2026 17:55:13 INFO  pooling - HHH10001001: Connection properties: {user=postgres, password=****}
+07-07-2026 17:55:13 INFO  pooling - HHH10001003: Autocommit mode: false
+07-07-2026 17:55:13 INFO  pooling - HHH10001115: Connection pool size: 20 (min=1)
+07-07-2026 17:55:14 WARN  deprecation - HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+07-07-2026 17:55:15 INFO  JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+07-07-2026 17:55:15 INFO  access - HHH10001501: Connection obtained from JdbcConnectionAccess [org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess@9055436] for (non-JTA) DDL execution was not in auto-commit mode; the Connection 'local transaction' will be committed and the Connection will be set into auto-commit mode.
+07-07-2026 17:55:15 INFO  FinanceiroController - Quantidade encontrada: 5
+07-07-2026 17:55:15 INFO  TipoContaController - Iniciando pesquisar todos os TipoConta
+07-07-2026 17:55:15 INFO  TipoContaController - Quantidade encontrada: 3
+07-07-2026 17:55:15 INFO  FormaPagamentoController - Iniciando pesquisar todas as FormaPagamento
+07-07-2026 17:55:15 INFO  FormaPagamentoController - Quantidade encontrada: 2
+07-07-2026 17:55:15 INFO  FornecedorController - Iniciando pesquisar todos os Fornecedores
+07-07-2026 17:55:15 INFO  FornecedorController - Quantidade encontrada: 2
+07-07-2026 17:55:15 INFO  ClienteController - Iniciando pesquisar todos os Clientes
+07-07-2026 17:55:15 INFO  ClienteController - Quantidade encontrada: 1
+07-07-2026 17:55:15 INFO  FinanceiroController - Iniciando pesquisar todos os Financeiros
+07-07-2026 17:55:15 INFO  FinanceiroController - Quantidade encontrada: 5
+07-07-2026 17:55:58 INFO  FinanceiroController - Iniciando pesquisar todos os Financeiros
+07-07-2026 17:55:58 INFO  Version - HHH000412: Hibernate ORM core version 6.5.2.Final
+07-07-2026 17:55:58 INFO  Environment - HHH000205: Loaded properties from resource hibernate.properties: {hibernate.connection.driver_class=org.postgresql.Driver, hibernate.format_sql=true, hibernate.connection.url=jdbc:postgresql://localhost:5432/SisCom _comercial_prog2_andre, hibernate.hbm2ddl.auto=update, hibernate.dialect=org.hibernate.dialect.PostgreSQLDialect, hibernate.show_sql=true, hibernate.connection.password=****, hibernate.connection.username=postgres}
+07-07-2026 17:55:58 INFO  RegionFactoryInitiator - HHH000026: Second-level cache disabled
+07-07-2026 17:55:59 WARN  pooling - HHH10001002: Using built-in connection pool (not intended for production use)
+07-07-2026 17:55:59 INFO  pooling - HHH10001005: Loaded JDBC driver class: org.postgresql.Driver
+07-07-2026 17:55:59 INFO  pooling - HHH10001012: Connecting with JDBC URL [jdbc:postgresql://localhost:5432/SisCom _comercial_prog2_andre]
+07-07-2026 17:55:59 INFO  pooling - HHH10001001: Connection properties: {user=postgres, password=****}
+07-07-2026 17:55:59 INFO  pooling - HHH10001003: Autocommit mode: false
+07-07-2026 17:55:59 INFO  pooling - HHH10001115: Connection pool size: 20 (min=1)
+07-07-2026 17:55:59 WARN  deprecation - HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+07-07-2026 17:56:00 INFO  JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+07-07-2026 17:56:00 INFO  access - HHH10001501: Connection obtained from JdbcConnectionAccess [org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess@9055436] for (non-JTA) DDL execution was not in auto-commit mode; the Connection 'local transaction' will be committed and the Connection will be set into auto-commit mode.
+07-07-2026 17:56:00 INFO  FinanceiroController - Quantidade encontrada: 5
+07-07-2026 17:56:00 INFO  TipoContaController - Iniciando pesquisar todos os TipoConta
+07-07-2026 17:56:00 INFO  TipoContaController - Quantidade encontrada: 3
+07-07-2026 17:56:00 INFO  FormaPagamentoController - Iniciando pesquisar todas as FormaPagamento
+07-07-2026 17:56:00 INFO  FormaPagamentoController - Quantidade encontrada: 2
+07-07-2026 17:56:00 INFO  FornecedorController - Iniciando pesquisar todos os Fornecedores
+07-07-2026 17:56:00 INFO  FornecedorController - Quantidade encontrada: 2
+07-07-2026 17:56:00 INFO  ClienteController - Iniciando pesquisar todos os Clientes
+07-07-2026 17:56:00 INFO  ClienteController - Quantidade encontrada: 1
+07-07-2026 17:56:00 INFO  FinanceiroController - Iniciando pesquisar todos os Financeiros
+07-07-2026 17:56:00 INFO  FinanceiroController - Quantidade encontrada: 5
+07-07-2026 17:56:18 INFO  FinanceiroController - Iniciando pesquisar todos os Financeiros
+07-07-2026 17:56:18 INFO  Version - HHH000412: Hibernate ORM core version 6.5.2.Final
+07-07-2026 17:56:18 INFO  Environment - HHH000205: Loaded properties from resource hibernate.properties: {hibernate.connection.driver_class=org.postgresql.Driver, hibernate.format_sql=true, hibernate.connection.url=jdbc:postgresql://localhost:5432/SisCom _comercial_prog2_andre, hibernate.hbm2ddl.auto=update, hibernate.dialect=org.hibernate.dialect.PostgreSQLDialect, hibernate.show_sql=true, hibernate.connection.password=****, hibernate.connection.username=postgres}
+07-07-2026 17:56:18 INFO  RegionFactoryInitiator - HHH000026: Second-level cache disabled
+07-07-2026 17:56:18 WARN  pooling - HHH10001002: Using built-in connection pool (not intended for production use)
+07-07-2026 17:56:18 INFO  pooling - HHH10001005: Loaded JDBC driver class: org.postgresql.Driver
+07-07-2026 17:56:18 INFO  pooling - HHH10001012: Connecting with JDBC URL [jdbc:postgresql://localhost:5432/SisCom _comercial_prog2_andre]
+07-07-2026 17:56:18 INFO  pooling - HHH10001001: Connection properties: {user=postgres, password=****}
+07-07-2026 17:56:18 INFO  pooling - HHH10001003: Autocommit mode: false
+07-07-2026 17:56:18 INFO  pooling - HHH10001115: Connection pool size: 20 (min=1)
+07-07-2026 17:56:18 WARN  deprecation - HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+07-07-2026 17:56:19 INFO  JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+07-07-2026 17:56:19 INFO  access - HHH10001501: Connection obtained from JdbcConnectionAccess [org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess@9055436] for (non-JTA) DDL execution was not in auto-commit mode; the Connection 'local transaction' will be committed and the Connection will be set into auto-commit mode.
+07-07-2026 17:56:20 INFO  FinanceiroController - Quantidade encontrada: 5
+07-07-2026 17:56:20 INFO  TipoContaController - Iniciando pesquisar todos os TipoConta
+07-07-2026 17:56:20 INFO  TipoContaController - Quantidade encontrada: 3
+07-07-2026 17:56:20 INFO  FormaPagamentoController - Iniciando pesquisar todas as FormaPagamento
+07-07-2026 17:56:20 INFO  FormaPagamentoController - Quantidade encontrada: 2
+07-07-2026 17:56:20 INFO  FornecedorController - Iniciando pesquisar todos os Fornecedores
+07-07-2026 17:56:20 INFO  FornecedorController - Quantidade encontrada: 2
+07-07-2026 17:56:20 INFO  ClienteController - Iniciando pesquisar todos os Clientes
+07-07-2026 17:56:20 INFO  ClienteController - Quantidade encontrada: 1
+07-07-2026 17:56:20 INFO  FinanceiroController - Iniciando pesquisar todos os Financeiros
+07-07-2026 17:56:20 INFO  FinanceiroController - Quantidade encontrada: 5
+07-07-2026 17:56:24 INFO  FinanceiroController - Iniciando pesquisar Financeiro id=1
+07-07-2026 17:56:24 INFO  FinanceiroController - Financeiro encontrado
+07-07-2026 17:56:29 INFO  FinanceiroController - Iniciando alterar Financeiro
+07-07-2026 17:56:29 ERROR FinanceiroController - Falha ao alterar Financeiro
+07-07-2026 17:57:53 INFO  ClienteController - Iniciando pesquisar todos os Clientes
+07-07-2026 17:57:53 INFO  Version - HHH000412: Hibernate ORM core version 6.5.2.Final
+07-07-2026 17:57:53 INFO  Environment - HHH000205: Loaded properties from resource hibernate.properties: {hibernate.connection.driver_class=org.postgresql.Driver, hibernate.format_sql=true, hibernate.connection.url=jdbc:postgresql://localhost:5432/SisCom _comercial_prog2_andre, hibernate.hbm2ddl.auto=update, hibernate.dialect=org.hibernate.dialect.PostgreSQLDialect, hibernate.show_sql=true, hibernate.connection.password=****, hibernate.connection.username=postgres}
+07-07-2026 17:57:53 INFO  RegionFactoryInitiator - HHH000026: Second-level cache disabled
+07-07-2026 17:57:54 WARN  pooling - HHH10001002: Using built-in connection pool (not intended for production use)
+07-07-2026 17:57:54 INFO  pooling - HHH10001005: Loaded JDBC driver class: org.postgresql.Driver
+07-07-2026 17:57:54 INFO  pooling - HHH10001012: Connecting with JDBC URL [jdbc:postgresql://localhost:5432/SisCom _comercial_prog2_andre]
+07-07-2026 17:57:54 INFO  pooling - HHH10001001: Connection properties: {user=postgres, password=****}
+07-07-2026 17:57:54 INFO  pooling - HHH10001003: Autocommit mode: false
+07-07-2026 17:57:54 INFO  pooling - HHH10001115: Connection pool size: 20 (min=1)
+07-07-2026 17:57:54 WARN  deprecation - HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+07-07-2026 17:57:55 INFO  JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+07-07-2026 17:57:55 INFO  access - HHH10001501: Connection obtained from JdbcConnectionAccess [org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess@6f1930ca] for (non-JTA) DDL execution was not in auto-commit mode; the Connection 'local transaction' will be committed and the Connection will be set into auto-commit mode.
+07-07-2026 17:57:55 INFO  ClienteController - Quantidade encontrada: 1
+07-07-2026 17:57:58 INFO  FornecedorController - Iniciando pesquisar todos os Fornecedores
+07-07-2026 17:57:58 INFO  FornecedorController - Quantidade encontrada: 2
+07-07-2026 17:58:00 INFO  CategoriaController - Iniciando pesquisar todas as Categorias
+07-07-2026 17:58:00 INFO  CategoriaController - Quantidade encontrada: 1
+07-07-2026 17:58:03 INFO  CategoriaController - Iniciando pesquisar todas as Categorias
+07-07-2026 17:58:03 INFO  CategoriaController - Quantidade encontrada: 1
+07-07-2026 17:58:04 INFO  ProdutoController - Iniciando pesquisar todos os Produtos
+07-07-2026 17:58:05 INFO  ProdutoController - Quantidade encontrada: 2
+07-07-2026 17:58:05 INFO  CategoriaController - Iniciando pesquisar todas as Categorias
+07-07-2026 17:58:05 INFO  CategoriaController - Quantidade encontrada: 1
+07-07-2026 17:58:07 INFO  FornecedorController - Iniciando pesquisar todos os Fornecedores
+07-07-2026 17:58:07 INFO  FornecedorController - Quantidade encontrada: 2
+07-07-2026 17:58:07 INFO  ProdutoController - Iniciando pesquisar todos os Produtos
+07-07-2026 17:58:07 INFO  ProdutoController - Quantidade encontrada: 2
+07-07-2026 17:58:07 INFO  FormaPagamentoController - Iniciando pesquisar todas as FormaPagamento
+07-07-2026 17:58:07 INFO  FormaPagamentoController - Quantidade encontrada: 2
+07-07-2026 17:58:07 INFO  TipoContaController - Iniciando pesquisar todos os TipoConta
+07-07-2026 17:58:07 INFO  TipoContaController - Quantidade encontrada: 3
+07-07-2026 17:58:11 INFO  ClienteController - Iniciando pesquisar todos os Clientes
+07-07-2026 17:58:11 INFO  ClienteController - Quantidade encontrada: 1
+07-07-2026 17:58:11 INFO  ProdutoController - Iniciando pesquisar todos os Produtos
+07-07-2026 17:58:11 INFO  ProdutoController - Quantidade encontrada: 2
+07-07-2026 17:58:11 INFO  FormaPagamentoController - Iniciando pesquisar todas as FormaPagamento
+07-07-2026 17:58:11 INFO  FormaPagamentoController - Quantidade encontrada: 2
+07-07-2026 17:58:11 INFO  TipoContaController - Iniciando pesquisar todos os TipoConta
+07-07-2026 17:58:11 INFO  TipoContaController - Quantidade encontrada: 3
+07-07-2026 17:58:14 INFO  FinanceiroController - Iniciando pesquisar todos os Financeiros
+07-07-2026 17:58:14 INFO  FinanceiroController - Quantidade encontrada: 5
+07-07-2026 17:58:14 INFO  TipoContaController - Iniciando pesquisar todos os TipoConta
+07-07-2026 17:58:14 INFO  TipoContaController - Quantidade encontrada: 3
+07-07-2026 17:58:14 INFO  FormaPagamentoController - Iniciando pesquisar todas as FormaPagamento
+07-07-2026 17:58:14 INFO  FormaPagamentoController - Quantidade encontrada: 2
+07-07-2026 17:58:14 INFO  FornecedorController - Iniciando pesquisar todos os Fornecedores
+07-07-2026 17:58:14 INFO  FornecedorController - Quantidade encontrada: 2
+07-07-2026 17:58:14 INFO  ClienteController - Iniciando pesquisar todos os Clientes
+07-07-2026 17:58:14 INFO  ClienteController - Quantidade encontrada: 1
+07-07-2026 17:58:14 INFO  FinanceiroController - Iniciando pesquisar todos os Financeiros
+07-07-2026 17:58:14 INFO  FinanceiroController - Quantidade encontrada: 5
+07-07-2026 17:58:17 INFO  TipoContaController - Iniciando pesquisar todos os TipoConta
+07-07-2026 17:58:17 INFO  TipoContaController - Quantidade encontrada: 3
+07-07-2026 17:58:20 INFO  FormaPagamentoController - Iniciando pesquisar todas as FormaPagamento
+07-07-2026 17:58:20 INFO  FormaPagamentoController - Quantidade encontrada: 2
+07-07-2026 17:58:23 INFO  ClienteController - Iniciando pesquisar todos os Clientes
+07-07-2026 17:58:23 INFO  ClienteController - Quantidade encontrada: 1
+07-07-2026 17:58:23 INFO  FornecedorController - Iniciando pesquisar todos os Fornecedores
+07-07-2026 17:58:23 INFO  FornecedorController - Quantidade encontrada: 2
+07-07-2026 17:59:55 INFO  FinanceiroController - Iniciando pesquisar todos os Financeiros
+07-07-2026 17:59:55 INFO  Version - HHH000412: Hibernate ORM core version 6.5.2.Final
+07-07-2026 17:59:55 INFO  Environment - HHH000205: Loaded properties from resource hibernate.properties: {hibernate.connection.driver_class=org.postgresql.Driver, hibernate.format_sql=true, hibernate.connection.url=jdbc:postgresql://localhost:5432/SisCom _comercial_prog2_andre, hibernate.hbm2ddl.auto=update, hibernate.dialect=org.hibernate.dialect.PostgreSQLDialect, hibernate.show_sql=true, hibernate.connection.password=****, hibernate.connection.username=postgres}
+07-07-2026 17:59:55 INFO  RegionFactoryInitiator - HHH000026: Second-level cache disabled
+07-07-2026 17:59:55 WARN  pooling - HHH10001002: Using built-in connection pool (not intended for production use)
+07-07-2026 17:59:55 INFO  pooling - HHH10001005: Loaded JDBC driver class: org.postgresql.Driver
+07-07-2026 17:59:55 INFO  pooling - HHH10001012: Connecting with JDBC URL [jdbc:postgresql://localhost:5432/SisCom _comercial_prog2_andre]
+07-07-2026 17:59:55 INFO  pooling - HHH10001001: Connection properties: {user=postgres, password=****}
+07-07-2026 17:59:55 INFO  pooling - HHH10001003: Autocommit mode: false
+07-07-2026 17:59:55 INFO  pooling - HHH10001115: Connection pool size: 20 (min=1)
+07-07-2026 17:59:55 WARN  deprecation - HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+07-07-2026 17:59:57 INFO  JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+07-07-2026 17:59:57 INFO  access - HHH10001501: Connection obtained from JdbcConnectionAccess [org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess@29f2b05e] for (non-JTA) DDL execution was not in auto-commit mode; the Connection 'local transaction' will be committed and the Connection will be set into auto-commit mode.
+07-07-2026 17:59:57 INFO  FinanceiroController - Quantidade encontrada: 5
+07-07-2026 17:59:57 INFO  TipoContaController - Iniciando pesquisar todos os TipoConta
+07-07-2026 17:59:57 INFO  TipoContaController - Quantidade encontrada: 3
+07-07-2026 17:59:57 INFO  FormaPagamentoController - Iniciando pesquisar todas as FormaPagamento
+07-07-2026 17:59:57 INFO  FormaPagamentoController - Quantidade encontrada: 2
+07-07-2026 17:59:57 INFO  FornecedorController - Iniciando pesquisar todos os Fornecedores
+07-07-2026 17:59:57 INFO  FornecedorController - Quantidade encontrada: 2
+07-07-2026 17:59:57 INFO  ClienteController - Iniciando pesquisar todos os Clientes
+07-07-2026 17:59:57 INFO  ClienteController - Quantidade encontrada: 1
+07-07-2026 17:59:57 INFO  FinanceiroController - Iniciando pesquisar todos os Financeiros
+07-07-2026 17:59:57 INFO  FinanceiroController - Quantidade encontrada: 5
+07-07-2026 18:00:01 INFO  FinanceiroController - Iniciando pesquisar Financeiro id=2
+07-07-2026 18:00:01 INFO  FinanceiroController - Financeiro encontrado
+07-07-2026 18:00:14 INFO  FinanceiroController - Iniciando alterar Financeiro
+07-07-2026 18:00:14 ERROR FinanceiroController - Falha ao alterar Financeiro
+07-07-2026 18:00:17 INFO  FinanceiroController - Iniciando alterar Financeiro
+07-07-2026 18:00:17 ERROR FinanceiroController - Falha ao alterar Financeiro
+07-07-2026 18:01:02 INFO  FinanceiroController - Iniciando pesquisar todos os Financeiros
+07-07-2026 18:01:02 INFO  Version - HHH000412: Hibernate ORM core version 6.5.2.Final
+07-07-2026 18:01:02 INFO  Environment - HHH000205: Loaded properties from resource hibernate.properties: {hibernate.connection.driver_class=org.postgresql.Driver, hibernate.format_sql=true, hibernate.connection.url=jdbc:postgresql://localhost:5432/SisCom _comercial_prog2_andre, hibernate.hbm2ddl.auto=update, hibernate.dialect=org.hibernate.dialect.PostgreSQLDialect, hibernate.show_sql=true, hibernate.connection.password=****, hibernate.connection.username=postgres}
+07-07-2026 18:01:02 INFO  RegionFactoryInitiator - HHH000026: Second-level cache disabled
+07-07-2026 18:01:02 WARN  pooling - HHH10001002: Using built-in connection pool (not intended for production use)
+07-07-2026 18:01:02 INFO  pooling - HHH10001005: Loaded JDBC driver class: org.postgresql.Driver
+07-07-2026 18:01:02 INFO  pooling - HHH10001012: Connecting with JDBC URL [jdbc:postgresql://localhost:5432/SisCom _comercial_prog2_andre]
+07-07-2026 18:01:02 INFO  pooling - HHH10001001: Connection properties: {user=postgres, password=****}
+07-07-2026 18:01:02 INFO  pooling - HHH10001003: Autocommit mode: false
+07-07-2026 18:01:02 INFO  pooling - HHH10001115: Connection pool size: 20 (min=1)
+07-07-2026 18:01:02 WARN  deprecation - HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+07-07-2026 18:01:03 INFO  JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+07-07-2026 18:01:04 INFO  access - HHH10001501: Connection obtained from JdbcConnectionAccess [org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess@29f2b05e] for (non-JTA) DDL execution was not in auto-commit mode; the Connection 'local transaction' will be committed and the Connection will be set into auto-commit mode.
+07-07-2026 18:01:04 INFO  FinanceiroController - Quantidade encontrada: 5
+07-07-2026 18:01:04 INFO  TipoContaController - Iniciando pesquisar todos os TipoConta
+07-07-2026 18:01:04 INFO  TipoContaController - Quantidade encontrada: 3
+07-07-2026 18:01:04 INFO  FormaPagamentoController - Iniciando pesquisar todas as FormaPagamento
+07-07-2026 18:01:04 INFO  FormaPagamentoController - Quantidade encontrada: 2
+07-07-2026 18:01:04 INFO  FornecedorController - Iniciando pesquisar todos os Fornecedores
+07-07-2026 18:01:04 INFO  FornecedorController - Quantidade encontrada: 2
+07-07-2026 18:01:04 INFO  ClienteController - Iniciando pesquisar todos os Clientes
+07-07-2026 18:01:04 INFO  ClienteController - Quantidade encontrada: 1
+07-07-2026 18:01:04 INFO  FinanceiroController - Iniciando pesquisar todos os Financeiros
+07-07-2026 18:01:04 INFO  FinanceiroController - Quantidade encontrada: 5
+07-07-2026 18:03:22 INFO  ClienteController - Iniciando pesquisar todos os Clientes
+07-07-2026 18:03:22 INFO  Version - HHH000412: Hibernate ORM core version 6.5.2.Final
+07-07-2026 18:03:22 INFO  Environment - HHH000205: Loaded properties from resource hibernate.properties: {hibernate.connection.driver_class=org.postgresql.Driver, hibernate.format_sql=true, hibernate.connection.url=jdbc:postgresql://localhost:5432/SisCom _comercial_prog2_andre, hibernate.hbm2ddl.auto=update, hibernate.dialect=org.hibernate.dialect.PostgreSQLDialect, hibernate.show_sql=true, hibernate.connection.password=****, hibernate.connection.username=postgres}
+07-07-2026 18:03:22 INFO  RegionFactoryInitiator - HHH000026: Second-level cache disabled
+07-07-2026 18:03:22 WARN  pooling - HHH10001002: Using built-in connection pool (not intended for production use)
+07-07-2026 18:03:22 INFO  pooling - HHH10001005: Loaded JDBC driver class: org.postgresql.Driver
+07-07-2026 18:03:22 INFO  pooling - HHH10001012: Connecting with JDBC URL [jdbc:postgresql://localhost:5432/SisCom _comercial_prog2_andre]
+07-07-2026 18:03:22 INFO  pooling - HHH10001001: Connection properties: {user=postgres, password=****}
+07-07-2026 18:03:22 INFO  pooling - HHH10001003: Autocommit mode: false
+07-07-2026 18:03:22 INFO  pooling - HHH10001115: Connection pool size: 20 (min=1)
+07-07-2026 18:03:22 WARN  deprecation - HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+07-07-2026 18:03:23 INFO  JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+07-07-2026 18:03:23 INFO  access - HHH10001501: Connection obtained from JdbcConnectionAccess [org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess@604ea5a9] for (non-JTA) DDL execution was not in auto-commit mode; the Connection 'local transaction' will be committed and the Connection will be set into auto-commit mode.
+07-07-2026 18:03:24 INFO  ClienteController - Quantidade encontrada: 1
+07-07-2026 18:03:26 INFO  FornecedorController - Iniciando pesquisar todos os Fornecedores
+07-07-2026 18:03:26 INFO  FornecedorController - Quantidade encontrada: 2
+07-07-2026 18:03:28 INFO  CategoriaController - Iniciando pesquisar todas as Categorias
+07-07-2026 18:03:28 INFO  CategoriaController - Quantidade encontrada: 1
+07-07-2026 18:03:30 INFO  ProdutoController - Iniciando pesquisar todos os Produtos
+07-07-2026 18:03:30 INFO  ProdutoController - Quantidade encontrada: 2
+07-07-2026 18:03:30 INFO  CategoriaController - Iniciando pesquisar todas as Categorias
+07-07-2026 18:03:30 INFO  CategoriaController - Quantidade encontrada: 1
+07-07-2026 18:03:32 INFO  TipoContaController - Iniciando pesquisar todos os TipoConta
+07-07-2026 18:03:32 INFO  TipoContaController - Quantidade encontrada: 3
+07-07-2026 18:03:35 INFO  FinanceiroController - Iniciando pesquisar todos os Financeiros
+07-07-2026 18:03:35 INFO  FinanceiroController - Quantidade encontrada: 5
+07-07-2026 18:03:35 INFO  TipoContaController - Iniciando pesquisar todos os TipoConta
+07-07-2026 18:03:35 INFO  TipoContaController - Quantidade encontrada: 3
+07-07-2026 18:03:35 INFO  FormaPagamentoController - Iniciando pesquisar todas as FormaPagamento
+07-07-2026 18:03:35 INFO  FormaPagamentoController - Quantidade encontrada: 2
+07-07-2026 18:03:35 INFO  FornecedorController - Iniciando pesquisar todos os Fornecedores
+07-07-2026 18:03:35 INFO  FornecedorController - Quantidade encontrada: 2
+07-07-2026 18:03:35 INFO  ClienteController - Iniciando pesquisar todos os Clientes
+07-07-2026 18:03:35 INFO  ClienteController - Quantidade encontrada: 1
+07-07-2026 18:03:35 INFO  FinanceiroController - Iniciando pesquisar todos os Financeiros
+07-07-2026 18:03:35 INFO  FinanceiroController - Quantidade encontrada: 5
+07-07-2026 18:03:37 INFO  ClienteController - Iniciando pesquisar todos os Clientes
+07-07-2026 18:03:37 INFO  ClienteController - Quantidade encontrada: 1
+07-07-2026 18:03:37 INFO  ProdutoController - Iniciando pesquisar todos os Produtos
+07-07-2026 18:03:37 INFO  ProdutoController - Quantidade encontrada: 2
+07-07-2026 18:03:37 INFO  FormaPagamentoController - Iniciando pesquisar todas as FormaPagamento
+07-07-2026 18:03:37 INFO  FormaPagamentoController - Quantidade encontrada: 2
+07-07-2026 18:03:37 INFO  TipoContaController - Iniciando pesquisar todos os TipoConta
+07-07-2026 18:03:37 INFO  TipoContaController - Quantidade encontrada: 3
+07-07-2026 18:03:41 INFO  FornecedorController - Iniciando pesquisar todos os Fornecedores
+07-07-2026 18:03:41 INFO  FornecedorController - Quantidade encontrada: 2
+07-07-2026 18:03:41 INFO  ProdutoController - Iniciando pesquisar todos os Produtos
+07-07-2026 18:03:41 INFO  ProdutoController - Quantidade encontrada: 2
+07-07-2026 18:03:41 INFO  FormaPagamentoController - Iniciando pesquisar todas as FormaPagamento
+07-07-2026 18:03:41 INFO  FormaPagamentoController - Quantidade encontrada: 2
+07-07-2026 18:03:41 INFO  TipoContaController - Iniciando pesquisar todos os TipoConta
+07-07-2026 18:03:41 INFO  TipoContaController - Quantidade encontrada: 3
+07-07-2026 18:03:44 INFO  FormaPagamentoController - Iniciando pesquisar todas as FormaPagamento
+07-07-2026 18:03:44 INFO  FormaPagamentoController - Quantidade encontrada: 2
+07-07-2026 18:03:47 INFO  ClienteController - Iniciando pesquisar todos os Clientes
+07-07-2026 18:03:47 INFO  ClienteController - Quantidade encontrada: 1
+07-07-2026 18:03:47 INFO  FornecedorController - Iniciando pesquisar todos os Fornecedores
+07-07-2026 18:03:47 INFO  FornecedorController - Quantidade encontrada: 2
+07-07-2026 18:05:09 INFO  ClienteController - Iniciando pesquisar todos os Clientes
+07-07-2026 18:05:09 INFO  Version - HHH000412: Hibernate ORM core version 6.5.2.Final
+07-07-2026 18:05:09 INFO  Environment - HHH000205: Loaded properties from resource hibernate.properties: {hibernate.connection.driver_class=org.postgresql.Driver, hibernate.format_sql=true, hibernate.connection.url=jdbc:postgresql://localhost:5432/SisCom _comercial_prog2_andre, hibernate.hbm2ddl.auto=update, hibernate.dialect=org.hibernate.dialect.PostgreSQLDialect, hibernate.show_sql=true, hibernate.connection.password=****, hibernate.connection.username=postgres}
+07-07-2026 18:05:09 INFO  RegionFactoryInitiator - HHH000026: Second-level cache disabled
+07-07-2026 18:05:09 WARN  pooling - HHH10001002: Using built-in connection pool (not intended for production use)
+07-07-2026 18:05:09 INFO  pooling - HHH10001005: Loaded JDBC driver class: org.postgresql.Driver
+07-07-2026 18:05:09 INFO  pooling - HHH10001012: Connecting with JDBC URL [jdbc:postgresql://localhost:5432/SisCom _comercial_prog2_andre]
+07-07-2026 18:05:09 INFO  pooling - HHH10001001: Connection properties: {user=postgres, password=****}
+07-07-2026 18:05:09 INFO  pooling - HHH10001003: Autocommit mode: false
+07-07-2026 18:05:09 INFO  pooling - HHH10001115: Connection pool size: 20 (min=1)
+07-07-2026 18:05:10 WARN  deprecation - HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+07-07-2026 18:05:11 INFO  JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+07-07-2026 18:05:11 INFO  access - HHH10001501: Connection obtained from JdbcConnectionAccess [org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess@684037a4] for (non-JTA) DDL execution was not in auto-commit mode; the Connection 'local transaction' will be committed and the Connection will be set into auto-commit mode.
+07-07-2026 18:05:11 INFO  ClienteController - Quantidade encontrada: 1
+07-07-2026 18:05:11 INFO  ProdutoController - Iniciando pesquisar todos os Produtos
+07-07-2026 18:05:11 INFO  ProdutoController - Quantidade encontrada: 2
+07-07-2026 18:05:11 INFO  FormaPagamentoController - Iniciando pesquisar todas as FormaPagamento
+07-07-2026 18:05:11 INFO  FormaPagamentoController - Quantidade encontrada: 2
+07-07-2026 18:05:11 INFO  TipoContaController - Iniciando pesquisar todos os TipoConta
+07-07-2026 18:05:11 INFO  TipoContaController - Quantidade encontrada: 3
+07-07-2026 18:07:35 INFO  ClienteController - Iniciando pesquisar todos os Clientes
+07-07-2026 18:07:35 INFO  Version - HHH000412: Hibernate ORM core version 6.5.2.Final
+07-07-2026 18:07:35 INFO  Environment - HHH000205: Loaded properties from resource hibernate.properties: {hibernate.connection.driver_class=org.postgresql.Driver, hibernate.format_sql=true, hibernate.connection.url=jdbc:postgresql://localhost:5432/SisCom _comercial_prog2_andre, hibernate.hbm2ddl.auto=update, hibernate.dialect=org.hibernate.dialect.PostgreSQLDialect, hibernate.show_sql=true, hibernate.connection.password=****, hibernate.connection.username=postgres}
+07-07-2026 18:07:35 INFO  RegionFactoryInitiator - HHH000026: Second-level cache disabled
+07-07-2026 18:07:36 WARN  pooling - HHH10001002: Using built-in connection pool (not intended for production use)
+07-07-2026 18:07:36 INFO  pooling - HHH10001005: Loaded JDBC driver class: org.postgresql.Driver
+07-07-2026 18:07:36 INFO  pooling - HHH10001012: Connecting with JDBC URL [jdbc:postgresql://localhost:5432/SisCom _comercial_prog2_andre]
+07-07-2026 18:07:36 INFO  pooling - HHH10001001: Connection properties: {user=postgres, password=****}
+07-07-2026 18:07:36 INFO  pooling - HHH10001003: Autocommit mode: false
+07-07-2026 18:07:36 INFO  pooling - HHH10001115: Connection pool size: 20 (min=1)
+07-07-2026 18:07:36 WARN  deprecation - HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+07-07-2026 18:07:37 INFO  JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+07-07-2026 18:07:37 INFO  access - HHH10001501: Connection obtained from JdbcConnectionAccess [org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess@7a8ff6fa] for (non-JTA) DDL execution was not in auto-commit mode; the Connection 'local transaction' will be committed and the Connection will be set into auto-commit mode.
+07-07-2026 18:07:37 INFO  ClienteController - Quantidade encontrada: 1
+07-07-2026 18:07:37 INFO  FornecedorController - Iniciando pesquisar todos os Fornecedores
+07-07-2026 18:07:37 INFO  FornecedorController - Quantidade encontrada: 2
+07-07-2026 18:07:46 INFO  TipoContaController - Iniciando pesquisar todos os TipoConta
+07-07-2026 18:07:46 INFO  TipoContaController - Quantidade encontrada: 3
+07-07-2026 18:08:03 INFO  TipoContaController - Iniciando pesquisar TipoConta id=1
+07-07-2026 18:08:03 INFO  TipoContaController - TipoConta encontrado
+07-07-2026 18:08:11 INFO  TipoContaController - Iniciando alterar TipoConta
+07-07-2026 18:08:11 INFO  TipoContaController - TipoConta alterado com sucesso
+07-07-2026 18:08:12 INFO  TipoContaController - Iniciando pesquisar todos os TipoConta
+07-07-2026 18:08:12 INFO  TipoContaController - Quantidade encontrada: 3
+07-07-2026 18:08:28 INFO  TipoContaController - Iniciando alterar TipoConta
+07-07-2026 18:08:28 INFO  TipoContaController - TipoConta alterado com sucesso
+07-07-2026 18:08:29 INFO  TipoContaController - Iniciando pesquisar todos os TipoConta
+07-07-2026 18:08:29 INFO  TipoContaController - Quantidade encontrada: 3
+07-07-2026 18:08:30 INFO  ClienteController - Iniciando pesquisar todos os Clientes
+07-07-2026 18:08:30 INFO  ClienteController - Quantidade encontrada: 1
+07-07-2026 18:08:33 INFO  FornecedorController - Iniciando pesquisar todos os Fornecedores
+07-07-2026 18:08:33 INFO  FornecedorController - Quantidade encontrada: 2
+07-07-2026 18:08:36 INFO  CategoriaController - Iniciando pesquisar todas as Categorias
+07-07-2026 18:08:36 INFO  CategoriaController - Quantidade encontrada: 1
+07-07-2026 18:08:37 INFO  ProdutoController - Iniciando pesquisar todos os Produtos
+07-07-2026 18:08:37 INFO  ProdutoController - Quantidade encontrada: 2
+07-07-2026 18:08:37 INFO  CategoriaController - Iniciando pesquisar todas as Categorias
+07-07-2026 18:08:37 INFO  CategoriaController - Quantidade encontrada: 1
+07-07-2026 18:08:39 INFO  TipoContaController - Iniciando pesquisar todos os TipoConta
+07-07-2026 18:08:39 INFO  TipoContaController - Quantidade encontrada: 3
+07-07-2026 18:08:41 INFO  FinanceiroController - Iniciando pesquisar todos os Financeiros
+07-07-2026 18:08:41 INFO  FinanceiroController - Quantidade encontrada: 5
+07-07-2026 18:08:41 INFO  TipoContaController - Iniciando pesquisar todos os TipoConta
+07-07-2026 18:08:41 INFO  TipoContaController - Quantidade encontrada: 3
+07-07-2026 18:08:41 INFO  FormaPagamentoController - Iniciando pesquisar todas as FormaPagamento
+07-07-2026 18:08:41 INFO  FormaPagamentoController - Quantidade encontrada: 2
+07-07-2026 18:08:41 INFO  FornecedorController - Iniciando pesquisar todos os Fornecedores
+07-07-2026 18:08:41 INFO  FornecedorController - Quantidade encontrada: 2
+07-07-2026 18:08:41 INFO  ClienteController - Iniciando pesquisar todos os Clientes
+07-07-2026 18:08:41 INFO  ClienteController - Quantidade encontrada: 1
+07-07-2026 18:08:41 INFO  FinanceiroController - Iniciando pesquisar todos os Financeiros
+07-07-2026 18:08:41 INFO  FinanceiroController - Quantidade encontrada: 5
+07-07-2026 18:08:43 INFO  ClienteController - Iniciando pesquisar todos os Clientes
+07-07-2026 18:08:43 INFO  ClienteController - Quantidade encontrada: 1
+07-07-2026 18:08:43 INFO  ProdutoController - Iniciando pesquisar todos os Produtos
+07-07-2026 18:08:43 INFO  ProdutoController - Quantidade encontrada: 2
+07-07-2026 18:08:43 INFO  FormaPagamentoController - Iniciando pesquisar todas as FormaPagamento
+07-07-2026 18:08:43 INFO  FormaPagamentoController - Quantidade encontrada: 2
+07-07-2026 18:08:43 INFO  TipoContaController - Iniciando pesquisar todos os TipoConta
+07-07-2026 18:08:43 INFO  TipoContaController - Quantidade encontrada: 3
+07-07-2026 18:08:46 INFO  FornecedorController - Iniciando pesquisar todos os Fornecedores
+07-07-2026 18:08:46 INFO  FornecedorController - Quantidade encontrada: 2
+07-07-2026 18:08:46 INFO  ProdutoController - Iniciando pesquisar todos os Produtos
+07-07-2026 18:08:46 INFO  ProdutoController - Quantidade encontrada: 2
+07-07-2026 18:08:46 INFO  FormaPagamentoController - Iniciando pesquisar todas as FormaPagamento
+07-07-2026 18:08:46 INFO  FormaPagamentoController - Quantidade encontrada: 2
+07-07-2026 18:08:46 INFO  TipoContaController - Iniciando pesquisar todos os TipoConta
+07-07-2026 18:08:46 INFO  TipoContaController - Quantidade encontrada: 3
+07-07-2026 18:08:48 INFO  FormaPagamentoController - Iniciando pesquisar todas as FormaPagamento
+07-07-2026 18:08:48 INFO  FormaPagamentoController - Quantidade encontrada: 2
+07-07-2026 18:08:50 INFO  ClienteController - Iniciando pesquisar todos os Clientes
+07-07-2026 18:08:50 INFO  ClienteController - Quantidade encontrada: 1
+07-07-2026 18:08:50 INFO  FornecedorController - Iniciando pesquisar todos os Fornecedores
+07-07-2026 18:08:50 INFO  FornecedorController - Quantidade encontrada: 2
+07-07-2026 18:10:02 INFO  ClienteController - Iniciando pesquisar todos os Clientes
+07-07-2026 18:10:02 INFO  Version - HHH000412: Hibernate ORM core version 6.5.2.Final
+07-07-2026 18:10:02 INFO  Environment - HHH000205: Loaded properties from resource hibernate.properties: {hibernate.connection.driver_class=org.postgresql.Driver, hibernate.format_sql=true, hibernate.connection.url=jdbc:postgresql://localhost:5432/SisCom _comercial_prog2_andre, hibernate.hbm2ddl.auto=update, hibernate.dialect=org.hibernate.dialect.PostgreSQLDialect, hibernate.show_sql=true, hibernate.connection.password=****, hibernate.connection.username=postgres}
+07-07-2026 18:10:02 INFO  RegionFactoryInitiator - HHH000026: Second-level cache disabled
+07-07-2026 18:10:02 WARN  pooling - HHH10001002: Using built-in connection pool (not intended for production use)
+07-07-2026 18:10:02 INFO  pooling - HHH10001005: Loaded JDBC driver class: org.postgresql.Driver
+07-07-2026 18:10:02 INFO  pooling - HHH10001012: Connecting with JDBC URL [jdbc:postgresql://localhost:5432/SisCom _comercial_prog2_andre]
+07-07-2026 18:10:02 INFO  pooling - HHH10001001: Connection properties: {user=postgres, password=****}
+07-07-2026 18:10:02 INFO  pooling - HHH10001003: Autocommit mode: false
+07-07-2026 18:10:02 INFO  pooling - HHH10001115: Connection pool size: 20 (min=1)
+07-07-2026 18:10:03 WARN  deprecation - HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+07-07-2026 18:10:04 INFO  JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+07-07-2026 18:10:04 INFO  access - HHH10001501: Connection obtained from JdbcConnectionAccess [org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess@3bbdb0f] for (non-JTA) DDL execution was not in auto-commit mode; the Connection 'local transaction' will be committed and the Connection will be set into auto-commit mode.
+07-07-2026 18:10:04 INFO  ClienteController - Quantidade encontrada: 1
+07-07-2026 18:10:04 INFO  ProdutoController - Iniciando pesquisar todos os Produtos
+07-07-2026 18:10:04 INFO  ProdutoController - Quantidade encontrada: 2
+07-07-2026 18:10:04 INFO  FormaPagamentoController - Iniciando pesquisar todas as FormaPagamento
+07-07-2026 18:10:04 INFO  FormaPagamentoController - Quantidade encontrada: 2
+07-07-2026 18:10:04 INFO  TipoContaController - Iniciando pesquisar todos os TipoConta
+07-07-2026 18:10:04 INFO  TipoContaController - Quantidade encontrada: 3
+07-07-2026 18:10:08 INFO  ClienteController - Iniciando pesquisar todos os Clientes
+07-07-2026 18:10:08 INFO  ClienteController - Quantidade encontrada: 1
+07-07-2026 18:10:08 INFO  ProdutoController - Iniciando pesquisar todos os Produtos
+07-07-2026 18:10:08 INFO  ProdutoController - Quantidade encontrada: 2
+07-07-2026 18:10:08 INFO  FormaPagamentoController - Iniciando pesquisar todas as FormaPagamento
+07-07-2026 18:10:08 INFO  FormaPagamentoController - Quantidade encontrada: 2
+07-07-2026 18:10:08 INFO  TipoContaController - Iniciando pesquisar todos os TipoConta
+07-07-2026 18:10:08 INFO  TipoContaController - Quantidade encontrada: 3
+07-07-2026 18:10:13 INFO  FornecedorController - Iniciando pesquisar todos os Fornecedores
+07-07-2026 18:10:13 INFO  FornecedorController - Quantidade encontrada: 2
+07-07-2026 18:10:13 INFO  ProdutoController - Iniciando pesquisar todos os Produtos
+07-07-2026 18:10:13 INFO  ProdutoController - Quantidade encontrada: 2
+07-07-2026 18:10:13 INFO  FormaPagamentoController - Iniciando pesquisar todas as FormaPagamento
+07-07-2026 18:10:13 INFO  FormaPagamentoController - Quantidade encontrada: 2
+07-07-2026 18:10:13 INFO  TipoContaController - Iniciando pesquisar todos os TipoConta
+07-07-2026 18:10:13 INFO  TipoContaController - Quantidade encontrada: 3
+07-07-2026 18:10:17 INFO  TipoContaController - Iniciando pesquisar todos os TipoConta
+07-07-2026 18:10:17 INFO  TipoContaController - Quantidade encontrada: 3
+07-07-2026 18:10:19 INFO  ProdutoController - Iniciando pesquisar todos os Produtos
+07-07-2026 18:10:19 INFO  ProdutoController - Quantidade encontrada: 2
+07-07-2026 18:10:19 INFO  CategoriaController - Iniciando pesquisar todas as Categorias
+07-07-2026 18:10:19 INFO  CategoriaController - Quantidade encontrada: 1
+07-07-2026 18:10:20 INFO  CategoriaController - Iniciando pesquisar todas as Categorias
+07-07-2026 18:10:20 INFO  CategoriaController - Quantidade encontrada: 1
+07-07-2026 18:10:22 INFO  TipoContaController - Iniciando pesquisar todos os TipoConta
+07-07-2026 18:10:22 INFO  TipoContaController - Quantidade encontrada: 3
+07-07-2026 18:10:25 INFO  ClienteController - Iniciando pesquisar todos os Clientes
+07-07-2026 18:10:25 INFO  ClienteController - Quantidade encontrada: 1
+07-07-2026 18:10:25 INFO  ProdutoController - Iniciando pesquisar todos os Produtos
+07-07-2026 18:10:25 INFO  ProdutoController - Quantidade encontrada: 2
+07-07-2026 18:10:25 INFO  FormaPagamentoController - Iniciando pesquisar todas as FormaPagamento
+07-07-2026 18:10:25 INFO  FormaPagamentoController - Quantidade encontrada: 2
+07-07-2026 18:10:25 INFO  TipoContaController - Iniciando pesquisar todos os TipoConta
+07-07-2026 18:10:25 INFO  TipoContaController - Quantidade encontrada: 3
+07-07-2026 18:10:28 INFO  FornecedorController - Iniciando pesquisar todos os Fornecedores
+07-07-2026 18:10:28 INFO  FornecedorController - Quantidade encontrada: 2
+07-07-2026 18:10:28 INFO  ProdutoController - Iniciando pesquisar todos os Produtos
+07-07-2026 18:10:28 INFO  ProdutoController - Quantidade encontrada: 2
+07-07-2026 18:10:28 INFO  FormaPagamentoController - Iniciando pesquisar todas as FormaPagamento
+07-07-2026 18:10:28 INFO  FormaPagamentoController - Quantidade encontrada: 2
+07-07-2026 18:10:28 INFO  TipoContaController - Iniciando pesquisar todos os TipoConta
+07-07-2026 18:10:28 INFO  TipoContaController - Quantidade encontrada: 3
+07-07-2026 18:11:16 INFO  FornecedorController - Iniciando pesquisar todos os Fornecedores
+07-07-2026 18:11:17 INFO  Version - HHH000412: Hibernate ORM core version 6.5.2.Final
+07-07-2026 18:11:17 INFO  Environment - HHH000205: Loaded properties from resource hibernate.properties: {hibernate.connection.driver_class=org.postgresql.Driver, hibernate.format_sql=true, hibernate.connection.url=jdbc:postgresql://localhost:5432/SisCom _comercial_prog2_andre, hibernate.hbm2ddl.auto=update, hibernate.dialect=org.hibernate.dialect.PostgreSQLDialect, hibernate.show_sql=true, hibernate.connection.password=****, hibernate.connection.username=postgres}
+07-07-2026 18:11:17 INFO  RegionFactoryInitiator - HHH000026: Second-level cache disabled
+07-07-2026 18:11:17 WARN  pooling - HHH10001002: Using built-in connection pool (not intended for production use)
+07-07-2026 18:11:17 INFO  pooling - HHH10001005: Loaded JDBC driver class: org.postgresql.Driver
+07-07-2026 18:11:17 INFO  pooling - HHH10001012: Connecting with JDBC URL [jdbc:postgresql://localhost:5432/SisCom _comercial_prog2_andre]
+07-07-2026 18:11:17 INFO  pooling - HHH10001001: Connection properties: {user=postgres, password=****}
+07-07-2026 18:11:17 INFO  pooling - HHH10001003: Autocommit mode: false
+07-07-2026 18:11:17 INFO  pooling - HHH10001115: Connection pool size: 20 (min=1)
+07-07-2026 18:11:17 WARN  deprecation - HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+07-07-2026 18:11:18 INFO  JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+07-07-2026 18:11:18 INFO  access - HHH10001501: Connection obtained from JdbcConnectionAccess [org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess@75b508c6] for (non-JTA) DDL execution was not in auto-commit mode; the Connection 'local transaction' will be committed and the Connection will be set into auto-commit mode.
+07-07-2026 18:11:19 INFO  FornecedorController - Quantidade encontrada: 2
+07-07-2026 18:11:19 INFO  ProdutoController - Iniciando pesquisar todos os Produtos
+07-07-2026 18:11:19 INFO  ProdutoController - Quantidade encontrada: 2
+07-07-2026 18:11:19 INFO  FormaPagamentoController - Iniciando pesquisar todas as FormaPagamento
+07-07-2026 18:11:19 INFO  FormaPagamentoController - Quantidade encontrada: 2
+07-07-2026 18:11:19 INFO  TipoContaController - Iniciando pesquisar todos os TipoConta
+07-07-2026 18:11:19 INFO  TipoContaController - Quantidade encontrada: 3
+07-07-2026 18:12:16 INFO  FinanceiroController - Iniciando pesquisar todos os Financeiros
+07-07-2026 18:12:16 INFO  Version - HHH000412: Hibernate ORM core version 6.5.2.Final
+07-07-2026 18:12:16 INFO  Environment - HHH000205: Loaded properties from resource hibernate.properties: {hibernate.connection.driver_class=org.postgresql.Driver, hibernate.format_sql=true, hibernate.connection.url=jdbc:postgresql://localhost:5432/SisCom _comercial_prog2_andre, hibernate.hbm2ddl.auto=update, hibernate.dialect=org.hibernate.dialect.PostgreSQLDialect, hibernate.show_sql=true, hibernate.connection.password=****, hibernate.connection.username=postgres}
+07-07-2026 18:12:16 INFO  RegionFactoryInitiator - HHH000026: Second-level cache disabled
+07-07-2026 18:12:16 WARN  pooling - HHH10001002: Using built-in connection pool (not intended for production use)
+07-07-2026 18:12:16 INFO  pooling - HHH10001005: Loaded JDBC driver class: org.postgresql.Driver
+07-07-2026 18:12:16 INFO  pooling - HHH10001012: Connecting with JDBC URL [jdbc:postgresql://localhost:5432/SisCom _comercial_prog2_andre]
+07-07-2026 18:12:16 INFO  pooling - HHH10001001: Connection properties: {user=postgres, password=****}
+07-07-2026 18:12:16 INFO  pooling - HHH10001003: Autocommit mode: false
+07-07-2026 18:12:16 INFO  pooling - HHH10001115: Connection pool size: 20 (min=1)
+07-07-2026 18:12:16 WARN  deprecation - HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+07-07-2026 18:12:18 INFO  JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+07-07-2026 18:12:18 INFO  access - HHH10001501: Connection obtained from JdbcConnectionAccess [org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess@9055436] for (non-JTA) DDL execution was not in auto-commit mode; the Connection 'local transaction' will be committed and the Connection will be set into auto-commit mode.
+07-07-2026 18:12:18 INFO  FinanceiroController - Quantidade encontrada: 5
+07-07-2026 18:12:18 INFO  TipoContaController - Iniciando pesquisar todos os TipoConta
+07-07-2026 18:12:18 INFO  TipoContaController - Quantidade encontrada: 3
+07-07-2026 18:12:18 INFO  FormaPagamentoController - Iniciando pesquisar todas as FormaPagamento
+07-07-2026 18:12:18 INFO  FormaPagamentoController - Quantidade encontrada: 2
+07-07-2026 18:12:18 INFO  FornecedorController - Iniciando pesquisar todos os Fornecedores
+07-07-2026 18:12:18 INFO  FornecedorController - Quantidade encontrada: 2
+07-07-2026 18:12:18 INFO  ClienteController - Iniciando pesquisar todos os Clientes
+07-07-2026 18:12:18 INFO  ClienteController - Quantidade encontrada: 1
+07-07-2026 18:12:18 INFO  FinanceiroController - Iniciando pesquisar todos os Financeiros
+07-07-2026 18:12:18 INFO  FinanceiroController - Quantidade encontrada: 5
+07-07-2026 18:12:23 INFO  FinanceiroController - Iniciando pesquisar todos os Financeiros
+07-07-2026 18:12:23 INFO  FinanceiroController - Quantidade encontrada: 5
+07-07-2026 18:12:36 INFO  FinanceiroController - Iniciando pesquisar Financeiro id=1
+07-07-2026 18:12:36 INFO  FinanceiroController - Financeiro encontrado
+07-07-2026 18:12:36 INFO  FinanceiroController - Iniciando alterar Financeiro
+07-07-2026 18:12:36 INFO  FinanceiroController - Financeiro alterado com sucesso
+07-07-2026 18:12:37 INFO  FinanceiroController - Iniciando pesquisar todos os Financeiros
+07-07-2026 18:12:37 INFO  FinanceiroController - Quantidade encontrada: 5
+07-07-2026 18:16:42 INFO  ClienteController - Iniciando pesquisar todos os Clientes
+07-07-2026 18:16:42 INFO  Version - HHH000412: Hibernate ORM core version 6.5.2.Final
+07-07-2026 18:16:42 INFO  Environment - HHH000205: Loaded properties from resource hibernate.properties: {hibernate.connection.driver_class=org.postgresql.Driver, hibernate.format_sql=true, hibernate.connection.url=jdbc:postgresql://localhost:5432/SisCom _comercial_prog2_andre, hibernate.hbm2ddl.auto=update, hibernate.dialect=org.hibernate.dialect.PostgreSQLDialect, hibernate.show_sql=true, hibernate.connection.password=****, hibernate.connection.username=postgres}
+07-07-2026 18:16:42 INFO  RegionFactoryInitiator - HHH000026: Second-level cache disabled
+07-07-2026 18:16:42 WARN  pooling - HHH10001002: Using built-in connection pool (not intended for production use)
+07-07-2026 18:16:42 INFO  pooling - HHH10001005: Loaded JDBC driver class: org.postgresql.Driver
+07-07-2026 18:16:42 INFO  pooling - HHH10001012: Connecting with JDBC URL [jdbc:postgresql://localhost:5432/SisCom _comercial_prog2_andre]
+07-07-2026 18:16:42 INFO  pooling - HHH10001001: Connection properties: {user=postgres, password=****}
+07-07-2026 18:16:42 INFO  pooling - HHH10001003: Autocommit mode: false
+07-07-2026 18:16:42 INFO  pooling - HHH10001115: Connection pool size: 20 (min=1)
+07-07-2026 18:16:42 WARN  deprecation - HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+07-07-2026 18:16:43 INFO  JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+07-07-2026 18:16:43 INFO  access - HHH10001501: Connection obtained from JdbcConnectionAccess [org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess@4c233bfb] for (non-JTA) DDL execution was not in auto-commit mode; the Connection 'local transaction' will be committed and the Connection will be set into auto-commit mode.
+07-07-2026 18:16:44 INFO  ClienteController - Quantidade encontrada: 1
+07-07-2026 18:16:44 INFO  FornecedorController - Iniciando pesquisar todos os Fornecedores
+07-07-2026 18:16:44 INFO  FornecedorController - Quantidade encontrada: 2
+07-07-2026 18:25:24 INFO  ClienteController - Iniciando pesquisar todos os Clientes
+07-07-2026 18:25:24 INFO  Version - HHH000412: Hibernate ORM core version 6.5.2.Final
+07-07-2026 18:25:24 INFO  Environment - HHH000205: Loaded properties from resource hibernate.properties: {hibernate.connection.driver_class=org.postgresql.Driver, hibernate.format_sql=true, hibernate.connection.url=jdbc:postgresql://localhost:5432/SisCom _comercial_prog2_andre, hibernate.hbm2ddl.auto=update, hibernate.dialect=org.hibernate.dialect.PostgreSQLDialect, hibernate.show_sql=true, hibernate.connection.password=****, hibernate.connection.username=postgres}
+07-07-2026 18:25:24 INFO  RegionFactoryInitiator - HHH000026: Second-level cache disabled
+07-07-2026 18:25:24 WARN  pooling - HHH10001002: Using built-in connection pool (not intended for production use)
+07-07-2026 18:25:24 INFO  pooling - HHH10001005: Loaded JDBC driver class: org.postgresql.Driver
+07-07-2026 18:25:24 INFO  pooling - HHH10001012: Connecting with JDBC URL [jdbc:postgresql://localhost:5432/SisCom _comercial_prog2_andre]
+07-07-2026 18:25:24 INFO  pooling - HHH10001001: Connection properties: {user=postgres, password=****}
+07-07-2026 18:25:24 INFO  pooling - HHH10001003: Autocommit mode: false
+07-07-2026 18:25:24 INFO  pooling - HHH10001115: Connection pool size: 20 (min=1)
+07-07-2026 18:25:24 WARN  deprecation - HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+07-07-2026 18:25:25 INFO  JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+07-07-2026 18:25:25 INFO  access - HHH10001501: Connection obtained from JdbcConnectionAccess [org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess@4ceb2cd2] for (non-JTA) DDL execution was not in auto-commit mode; the Connection 'local transaction' will be committed and the Connection will be set into auto-commit mode.
+07-07-2026 18:25:26 INFO  ClienteController - Quantidade encontrada: 1
+07-07-2026 18:25:26 INFO  FornecedorController - Iniciando pesquisar todos os Fornecedores
+07-07-2026 18:25:26 INFO  FornecedorController - Quantidade encontrada: 2
+07-07-2026 18:27:41 INFO  ClienteController - Iniciando pesquisar todos os Clientes
+07-07-2026 18:27:41 INFO  Version - HHH000412: Hibernate ORM core version 6.5.2.Final
+07-07-2026 18:27:41 INFO  Environment - HHH000205: Loaded properties from resource hibernate.properties: {hibernate.connection.driver_class=org.postgresql.Driver, hibernate.format_sql=true, hibernate.connection.url=jdbc:postgresql://localhost:5432/SisCom _comercial_prog2_andre, hibernate.hbm2ddl.auto=update, hibernate.dialect=org.hibernate.dialect.PostgreSQLDialect, hibernate.show_sql=true, hibernate.connection.password=****, hibernate.connection.username=postgres}
+07-07-2026 18:27:41 INFO  RegionFactoryInitiator - HHH000026: Second-level cache disabled
+07-07-2026 18:27:41 WARN  pooling - HHH10001002: Using built-in connection pool (not intended for production use)
+07-07-2026 18:27:41 INFO  pooling - HHH10001005: Loaded JDBC driver class: org.postgresql.Driver
+07-07-2026 18:27:41 INFO  pooling - HHH10001012: Connecting with JDBC URL [jdbc:postgresql://localhost:5432/SisCom _comercial_prog2_andre]
+07-07-2026 18:27:41 INFO  pooling - HHH10001001: Connection properties: {user=postgres, password=****}
+07-07-2026 18:27:41 INFO  pooling - HHH10001003: Autocommit mode: false
+07-07-2026 18:27:41 INFO  pooling - HHH10001115: Connection pool size: 20 (min=1)
+07-07-2026 18:27:41 WARN  deprecation - HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+07-07-2026 18:27:43 INFO  JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+07-07-2026 18:27:43 INFO  access - HHH10001501: Connection obtained from JdbcConnectionAccess [org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess@4ceb2cd2] for (non-JTA) DDL execution was not in auto-commit mode; the Connection 'local transaction' will be committed and the Connection will be set into auto-commit mode.
+07-07-2026 18:27:43 INFO  ClienteController - Quantidade encontrada: 1
+07-07-2026 18:27:43 INFO  FornecedorController - Iniciando pesquisar todos os Fornecedores
+07-07-2026 18:27:43 INFO  FornecedorController - Quantidade encontrada: 2
+07-07-2026 18:28:50 INFO  ClienteController - Iniciando pesquisar todos os Clientes
+07-07-2026 18:28:50 INFO  Version - HHH000412: Hibernate ORM core version 6.5.2.Final
+07-07-2026 18:28:50 INFO  Environment - HHH000205: Loaded properties from resource hibernate.properties: {hibernate.connection.driver_class=org.postgresql.Driver, hibernate.format_sql=true, hibernate.connection.url=jdbc:postgresql://localhost:5432/SisCom _comercial_prog2_andre, hibernate.hbm2ddl.auto=update, hibernate.dialect=org.hibernate.dialect.PostgreSQLDialect, hibernate.show_sql=true, hibernate.connection.password=****, hibernate.connection.username=postgres}
+07-07-2026 18:28:50 INFO  RegionFactoryInitiator - HHH000026: Second-level cache disabled
+07-07-2026 18:28:51 WARN  pooling - HHH10001002: Using built-in connection pool (not intended for production use)
+07-07-2026 18:28:51 INFO  pooling - HHH10001005: Loaded JDBC driver class: org.postgresql.Driver
+07-07-2026 18:28:51 INFO  pooling - HHH10001012: Connecting with JDBC URL [jdbc:postgresql://localhost:5432/SisCom _comercial_prog2_andre]
+07-07-2026 18:28:51 INFO  pooling - HHH10001001: Connection properties: {user=postgres, password=****}
+07-07-2026 18:28:51 INFO  pooling - HHH10001003: Autocommit mode: false
+07-07-2026 18:28:51 INFO  pooling - HHH10001115: Connection pool size: 20 (min=1)
+07-07-2026 18:28:51 WARN  deprecation - HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+07-07-2026 18:28:52 INFO  JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+07-07-2026 18:28:52 INFO  access - HHH10001501: Connection obtained from JdbcConnectionAccess [org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess@cab903f] for (non-JTA) DDL execution was not in auto-commit mode; the Connection 'local transaction' will be committed and the Connection will be set into auto-commit mode.
+07-07-2026 18:28:53 INFO  ClienteController - Quantidade encontrada: 1
+07-07-2026 18:28:53 INFO  ProdutoController - Iniciando pesquisar todos os Produtos
+07-07-2026 18:28:53 INFO  ProdutoController - Quantidade encontrada: 2
+07-07-2026 18:28:53 INFO  FormaPagamentoController - Iniciando pesquisar todas as FormaPagamento
+07-07-2026 18:28:53 INFO  FormaPagamentoController - Quantidade encontrada: 2
+07-07-2026 18:28:53 INFO  TipoContaController - Iniciando pesquisar todos os TipoConta
+07-07-2026 18:28:53 INFO  TipoContaController - Quantidade encontrada: 3
+07-07-2026 18:28:59 INFO  VendaController - Iniciando pesquisar Venda id=5
+07-07-2026 18:28:59 ERROR VendaController - Venda não encontrada
+07-07-2026 18:29:02 INFO  VendaController - Iniciando pesquisar Venda id=4
+07-07-2026 18:29:02 ERROR VendaController - Venda não encontrada
+07-07-2026 18:29:05 INFO  VendaController - Iniciando pesquisar Venda id=3
+07-07-2026 18:29:05 ERROR VendaController - Venda não encontrada
+07-07-2026 18:29:08 INFO  VendaController - Iniciando pesquisar Venda id=2
+07-07-2026 18:29:08 INFO  VendaController - Venda encontrada
+07-07-2026 18:29:15 INFO  ClienteController - Iniciando pesquisar todos os Clientes
+07-07-2026 18:29:15 INFO  ClienteController - Quantidade encontrada: 1
+07-07-2026 18:29:15 INFO  FornecedorController - Iniciando pesquisar todos os Fornecedores
+07-07-2026 18:29:15 INFO  FornecedorController - Quantidade encontrada: 2
+07-07-2026 18:29:20 INFO  FinanceiroController - Iniciando pesquisar todos os Financeiros
+07-07-2026 18:29:20 INFO  FinanceiroController - Quantidade encontrada: 5
+07-07-2026 18:29:20 INFO  TipoContaController - Iniciando pesquisar todos os TipoConta
+07-07-2026 18:29:20 INFO  TipoContaController - Quantidade encontrada: 3
+07-07-2026 18:29:20 INFO  FormaPagamentoController - Iniciando pesquisar todas as FormaPagamento
+07-07-2026 18:29:20 INFO  FormaPagamentoController - Quantidade encontrada: 2
+07-07-2026 18:29:20 INFO  FornecedorController - Iniciando pesquisar todos os Fornecedores
+07-07-2026 18:29:20 INFO  FornecedorController - Quantidade encontrada: 2
+07-07-2026 18:29:20 INFO  ClienteController - Iniciando pesquisar todos os Clientes
+07-07-2026 18:29:20 INFO  ClienteController - Quantidade encontrada: 1
+07-07-2026 18:29:20 INFO  FinanceiroController - Iniciando pesquisar todos os Financeiros
+07-07-2026 18:29:20 INFO  FinanceiroController - Quantidade encontrada: 5
+07-07-2026 18:29:33 INFO  FinanceiroController - Iniciando pesquisar todos os Financeiros
+07-07-2026 18:29:33 INFO  FinanceiroController - Quantidade encontrada: 5
+07-07-2026 18:29:33 INFO  TipoContaController - Iniciando pesquisar todos os TipoConta
+07-07-2026 18:29:33 INFO  TipoContaController - Quantidade encontrada: 3
+07-07-2026 18:29:33 INFO  FormaPagamentoController - Iniciando pesquisar todas as FormaPagamento
+07-07-2026 18:29:33 INFO  FormaPagamentoController - Quantidade encontrada: 2
+07-07-2026 18:29:33 INFO  FornecedorController - Iniciando pesquisar todos os Fornecedores
+07-07-2026 18:29:33 INFO  FornecedorController - Quantidade encontrada: 2
+07-07-2026 18:29:33 INFO  ClienteController - Iniciando pesquisar todos os Clientes
+07-07-2026 18:29:33 INFO  ClienteController - Quantidade encontrada: 1
+07-07-2026 18:29:33 INFO  FinanceiroController - Iniciando pesquisar todos os Financeiros
+07-07-2026 18:29:33 INFO  FinanceiroController - Quantidade encontrada: 5
+07-07-2026 18:29:35 INFO  ClienteController - Iniciando pesquisar todos os Clientes
+07-07-2026 18:29:35 INFO  ClienteController - Quantidade encontrada: 1
+07-07-2026 18:29:35 INFO  FornecedorController - Iniciando pesquisar todos os Fornecedores
+07-07-2026 18:29:35 INFO  FornecedorController - Quantidade encontrada: 2
+07-07-2026 18:39:36 INFO  ClienteController - Iniciando pesquisar todos os Clientes
+07-07-2026 18:39:36 INFO  Version - HHH000412: Hibernate ORM core version 6.5.2.Final
+07-07-2026 18:39:36 INFO  Environment - HHH000205: Loaded properties from resource hibernate.properties: {hibernate.connection.driver_class=org.postgresql.Driver, hibernate.format_sql=true, hibernate.connection.url=jdbc:postgresql://localhost:5432/SisCom _comercial_prog2_andre, hibernate.hbm2ddl.auto=update, hibernate.dialect=org.hibernate.dialect.PostgreSQLDialect, hibernate.show_sql=true, hibernate.connection.password=****, hibernate.connection.username=postgres}
+07-07-2026 18:39:36 INFO  RegionFactoryInitiator - HHH000026: Second-level cache disabled
+07-07-2026 18:39:36 WARN  pooling - HHH10001002: Using built-in connection pool (not intended for production use)
+07-07-2026 18:39:36 INFO  pooling - HHH10001005: Loaded JDBC driver class: org.postgresql.Driver
+07-07-2026 18:39:36 INFO  pooling - HHH10001012: Connecting with JDBC URL [jdbc:postgresql://localhost:5432/SisCom _comercial_prog2_andre]
+07-07-2026 18:39:36 INFO  pooling - HHH10001001: Connection properties: {user=postgres, password=****}
+07-07-2026 18:39:36 INFO  pooling - HHH10001003: Autocommit mode: false
+07-07-2026 18:39:36 INFO  pooling - HHH10001115: Connection pool size: 20 (min=1)
+07-07-2026 18:39:36 WARN  deprecation - HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+07-07-2026 18:39:37 INFO  JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+07-07-2026 18:39:37 INFO  access - HHH10001501: Connection obtained from JdbcConnectionAccess [org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess@6b613bab] for (non-JTA) DDL execution was not in auto-commit mode; the Connection 'local transaction' will be committed and the Connection will be set into auto-commit mode.
+07-07-2026 18:39:38 INFO  ClienteController - Quantidade encontrada: 1
+07-07-2026 18:39:38 INFO  FornecedorController - Iniciando pesquisar todos os Fornecedores
+07-07-2026 18:39:38 INFO  FornecedorController - Quantidade encontrada: 2
+07-07-2026 18:43:38 INFO  ClienteController - Iniciando pesquisar todos os Clientes
+07-07-2026 18:43:38 INFO  Version - HHH000412: Hibernate ORM core version 6.5.2.Final
+07-07-2026 18:43:38 INFO  Environment - HHH000205: Loaded properties from resource hibernate.properties: {hibernate.connection.driver_class=org.postgresql.Driver, hibernate.format_sql=true, hibernate.connection.url=jdbc:postgresql://localhost:5432/SisCom _comercial_prog2_andre, hibernate.hbm2ddl.auto=update, hibernate.dialect=org.hibernate.dialect.PostgreSQLDialect, hibernate.show_sql=true, hibernate.connection.password=****, hibernate.connection.username=postgres}
+07-07-2026 18:43:38 INFO  RegionFactoryInitiator - HHH000026: Second-level cache disabled
+07-07-2026 18:43:38 WARN  pooling - HHH10001002: Using built-in connection pool (not intended for production use)
+07-07-2026 18:43:38 INFO  pooling - HHH10001005: Loaded JDBC driver class: org.postgresql.Driver
+07-07-2026 18:43:38 INFO  pooling - HHH10001012: Connecting with JDBC URL [jdbc:postgresql://localhost:5432/SisCom _comercial_prog2_andre]
+07-07-2026 18:43:38 INFO  pooling - HHH10001001: Connection properties: {user=postgres, password=****}
+07-07-2026 18:43:38 INFO  pooling - HHH10001003: Autocommit mode: false
+07-07-2026 18:43:38 INFO  pooling - HHH10001115: Connection pool size: 20 (min=1)
+07-07-2026 18:43:38 WARN  deprecation - HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+07-07-2026 18:43:39 INFO  JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+07-07-2026 18:43:39 INFO  access - HHH10001501: Connection obtained from JdbcConnectionAccess [org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess@4ceb2cd2] for (non-JTA) DDL execution was not in auto-commit mode; the Connection 'local transaction' will be committed and the Connection will be set into auto-commit mode.
+07-07-2026 18:43:40 INFO  ClienteController - Quantidade encontrada: 1
+07-07-2026 18:43:40 INFO  FornecedorController - Iniciando pesquisar todos os Fornecedores
+07-07-2026 18:43:40 INFO  FornecedorController - Quantidade encontrada: 2
+07-07-2026 18:49:29 INFO  FinanceiroController - Iniciando pesquisar todos os Financeiros
+07-07-2026 18:49:29 INFO  Version - HHH000412: Hibernate ORM core version 6.5.2.Final
+07-07-2026 18:49:29 INFO  Environment - HHH000205: Loaded properties from resource hibernate.properties: {hibernate.connection.driver_class=org.postgresql.Driver, hibernate.format_sql=true, hibernate.connection.url=jdbc:postgresql://localhost:5432/SisCom _comercial_prog2_andre, hibernate.hbm2ddl.auto=update, hibernate.dialect=org.hibernate.dialect.PostgreSQLDialect, hibernate.show_sql=true, hibernate.connection.password=****, hibernate.connection.username=postgres}
+07-07-2026 18:49:29 INFO  RegionFactoryInitiator - HHH000026: Second-level cache disabled
+07-07-2026 18:49:30 WARN  pooling - HHH10001002: Using built-in connection pool (not intended for production use)
+07-07-2026 18:49:30 INFO  pooling - HHH10001005: Loaded JDBC driver class: org.postgresql.Driver
+07-07-2026 18:49:30 INFO  pooling - HHH10001012: Connecting with JDBC URL [jdbc:postgresql://localhost:5432/SisCom _comercial_prog2_andre]
+07-07-2026 18:49:30 INFO  pooling - HHH10001001: Connection properties: {user=postgres, password=****}
+07-07-2026 18:49:30 INFO  pooling - HHH10001003: Autocommit mode: false
+07-07-2026 18:49:30 INFO  pooling - HHH10001115: Connection pool size: 20 (min=1)
+07-07-2026 18:49:30 WARN  deprecation - HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+07-07-2026 18:49:31 INFO  JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+07-07-2026 18:49:31 INFO  access - HHH10001501: Connection obtained from JdbcConnectionAccess [org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess@50a49ac7] for (non-JTA) DDL execution was not in auto-commit mode; the Connection 'local transaction' will be committed and the Connection will be set into auto-commit mode.
+07-07-2026 18:49:31 INFO  FinanceiroController - Quantidade encontrada: 5
+07-07-2026 18:49:48 INFO  FinanceiroController - Iniciando pesquisar todos os Financeiros
+07-07-2026 18:49:48 INFO  Version - HHH000412: Hibernate ORM core version 6.5.2.Final
+07-07-2026 18:49:48 INFO  Environment - HHH000205: Loaded properties from resource hibernate.properties: {hibernate.connection.driver_class=org.postgresql.Driver, hibernate.format_sql=true, hibernate.connection.url=jdbc:postgresql://localhost:5432/SisCom _comercial_prog2_andre, hibernate.hbm2ddl.auto=update, hibernate.dialect=org.hibernate.dialect.PostgreSQLDialect, hibernate.show_sql=true, hibernate.connection.password=****, hibernate.connection.username=postgres}
+07-07-2026 18:49:48 INFO  RegionFactoryInitiator - HHH000026: Second-level cache disabled
+07-07-2026 18:49:48 WARN  pooling - HHH10001002: Using built-in connection pool (not intended for production use)
+07-07-2026 18:49:48 INFO  pooling - HHH10001005: Loaded JDBC driver class: org.postgresql.Driver
+07-07-2026 18:49:48 INFO  pooling - HHH10001012: Connecting with JDBC URL [jdbc:postgresql://localhost:5432/SisCom _comercial_prog2_andre]
+07-07-2026 18:49:48 INFO  pooling - HHH10001001: Connection properties: {user=postgres, password=****}
+07-07-2026 18:49:48 INFO  pooling - HHH10001003: Autocommit mode: false
+07-07-2026 18:49:48 INFO  pooling - HHH10001115: Connection pool size: 20 (min=1)
+07-07-2026 18:49:49 WARN  deprecation - HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+07-07-2026 18:49:50 INFO  JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+07-07-2026 18:49:50 INFO  access - HHH10001501: Connection obtained from JdbcConnectionAccess [org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess@726acf87] for (non-JTA) DDL execution was not in auto-commit mode; the Connection 'local transaction' will be committed and the Connection will be set into auto-commit mode.
+07-07-2026 18:49:50 INFO  FinanceiroController - Quantidade encontrada: 5
+07-07-2026 18:51:57 INFO  FinanceiroController - Iniciando pesquisar todos os Financeiros
+07-07-2026 18:51:57 INFO  Version - HHH000412: Hibernate ORM core version 6.5.2.Final
+07-07-2026 18:51:57 INFO  Environment - HHH000205: Loaded properties from resource hibernate.properties: {hibernate.connection.driver_class=org.postgresql.Driver, hibernate.format_sql=true, hibernate.connection.url=jdbc:postgresql://localhost:5432/SisCom _comercial_prog2_andre, hibernate.hbm2ddl.auto=update, hibernate.dialect=org.hibernate.dialect.PostgreSQLDialect, hibernate.show_sql=true, hibernate.connection.password=****, hibernate.connection.username=postgres}
+07-07-2026 18:51:57 INFO  RegionFactoryInitiator - HHH000026: Second-level cache disabled
+07-07-2026 18:51:57 WARN  pooling - HHH10001002: Using built-in connection pool (not intended for production use)
+07-07-2026 18:51:57 INFO  pooling - HHH10001005: Loaded JDBC driver class: org.postgresql.Driver
+07-07-2026 18:51:57 INFO  pooling - HHH10001012: Connecting with JDBC URL [jdbc:postgresql://localhost:5432/SisCom _comercial_prog2_andre]
+07-07-2026 18:51:57 INFO  pooling - HHH10001001: Connection properties: {user=postgres, password=****}
+07-07-2026 18:51:57 INFO  pooling - HHH10001003: Autocommit mode: false
+07-07-2026 18:51:57 INFO  pooling - HHH10001115: Connection pool size: 20 (min=1)
+07-07-2026 18:51:57 WARN  deprecation - HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+07-07-2026 18:51:58 INFO  JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+07-07-2026 18:51:58 INFO  access - HHH10001501: Connection obtained from JdbcConnectionAccess [org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess@726acf87] for (non-JTA) DDL execution was not in auto-commit mode; the Connection 'local transaction' will be committed and the Connection will be set into auto-commit mode.
+07-07-2026 18:51:59 INFO  FinanceiroController - Quantidade encontrada: 5
+07-07-2026 18:51:59 INFO  FinanceiroParcelaController - Iniciando pesquisar todas as FinanceiroParcela
+07-07-2026 18:51:59 INFO  FinanceiroParcelaController - Quantidade encontrada: 0
+07-07-2026 18:52:58 INFO  FinanceiroController - Iniciando pesquisar todos os Financeiros
+07-07-2026 18:52:58 INFO  Version - HHH000412: Hibernate ORM core version 6.5.2.Final
+07-07-2026 18:52:58 INFO  Environment - HHH000205: Loaded properties from resource hibernate.properties: {hibernate.connection.driver_class=org.postgresql.Driver, hibernate.format_sql=true, hibernate.connection.url=jdbc:postgresql://localhost:5432/SisCom _comercial_prog2_andre, hibernate.hbm2ddl.auto=update, hibernate.dialect=org.hibernate.dialect.PostgreSQLDialect, hibernate.show_sql=true, hibernate.connection.password=****, hibernate.connection.username=postgres}
+07-07-2026 18:52:58 INFO  RegionFactoryInitiator - HHH000026: Second-level cache disabled
+07-07-2026 18:52:58 WARN  pooling - HHH10001002: Using built-in connection pool (not intended for production use)
+07-07-2026 18:52:58 INFO  pooling - HHH10001005: Loaded JDBC driver class: org.postgresql.Driver
+07-07-2026 18:52:58 INFO  pooling - HHH10001012: Connecting with JDBC URL [jdbc:postgresql://localhost:5432/SisCom _comercial_prog2_andre]
+07-07-2026 18:52:58 INFO  pooling - HHH10001001: Connection properties: {user=postgres, password=****}
+07-07-2026 18:52:58 INFO  pooling - HHH10001003: Autocommit mode: false
+07-07-2026 18:52:58 INFO  pooling - HHH10001115: Connection pool size: 20 (min=1)
+07-07-2026 18:52:58 WARN  deprecation - HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+07-07-2026 18:52:59 INFO  JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+07-07-2026 18:52:59 INFO  access - HHH10001501: Connection obtained from JdbcConnectionAccess [org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess@726acf87] for (non-JTA) DDL execution was not in auto-commit mode; the Connection 'local transaction' will be committed and the Connection will be set into auto-commit mode.
+07-07-2026 18:53:00 INFO  FinanceiroController - Quantidade encontrada: 5
+07-07-2026 18:53:00 INFO  FinanceiroParcelaController - Iniciando pesquisar todas as FinanceiroParcela
+07-07-2026 18:53:00 INFO  FinanceiroParcelaController - Quantidade encontrada: 0
+07-07-2026 18:56:58 INFO  FinanceiroController - Iniciando pesquisar todos os Financeiros
+07-07-2026 18:56:58 INFO  Version - HHH000412: Hibernate ORM core version 6.5.2.Final
+07-07-2026 18:56:58 INFO  Environment - HHH000205: Loaded properties from resource hibernate.properties: {hibernate.connection.driver_class=org.postgresql.Driver, hibernate.format_sql=true, hibernate.connection.url=jdbc:postgresql://localhost:5432/SisCom _comercial_prog2_andre, hibernate.hbm2ddl.auto=update, hibernate.dialect=org.hibernate.dialect.PostgreSQLDialect, hibernate.show_sql=true, hibernate.connection.password=****, hibernate.connection.username=postgres}
+07-07-2026 18:56:59 INFO  RegionFactoryInitiator - HHH000026: Second-level cache disabled
+07-07-2026 18:56:59 WARN  pooling - HHH10001002: Using built-in connection pool (not intended for production use)
+07-07-2026 18:56:59 INFO  pooling - HHH10001005: Loaded JDBC driver class: org.postgresql.Driver
+07-07-2026 18:56:59 INFO  pooling - HHH10001012: Connecting with JDBC URL [jdbc:postgresql://localhost:5432/SisCom _comercial_prog2_andre]
+07-07-2026 18:56:59 INFO  pooling - HHH10001001: Connection properties: {user=postgres, password=****}
+07-07-2026 18:56:59 INFO  pooling - HHH10001003: Autocommit mode: false
+07-07-2026 18:56:59 INFO  pooling - HHH10001115: Connection pool size: 20 (min=1)
+07-07-2026 18:56:59 WARN  deprecation - HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+07-07-2026 18:57:00 INFO  JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+07-07-2026 18:57:00 INFO  access - HHH10001501: Connection obtained from JdbcConnectionAccess [org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess@50a49ac7] for (non-JTA) DDL execution was not in auto-commit mode; the Connection 'local transaction' will be committed and the Connection will be set into auto-commit mode.
+07-07-2026 18:57:01 INFO  FinanceiroController - Quantidade encontrada: 5
+07-07-2026 18:57:01 INFO  FinanceiroParcelaController - Iniciando pesquisar todas as FinanceiroParcela
+07-07-2026 18:57:01 INFO  FinanceiroParcelaController - Quantidade encontrada: 0

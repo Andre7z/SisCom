@@ -33,7 +33,6 @@ public class TelaTipoConta extends JFrame {
     private JButton btnAlterar;
     private JButton btnExcluir;
     private JButton btnPesquisar;
-    private JButton btnImprimir;
 
     private JTable tabela;
     private DefaultTableModel modeloTabela;
@@ -80,13 +79,11 @@ public class TelaTipoConta extends JFrame {
         btnAlterar = new JButton("Alterar");
         btnExcluir = new JButton("Excluir");
         btnPesquisar = new JButton("Pesquisar");
-        btnImprimir = new JButton("Imprimir");
 
         painelBotoes.add(btnSalvar);
         painelBotoes.add(btnAlterar);
         painelBotoes.add(btnExcluir);
         painelBotoes.add(btnPesquisar);
-        painelBotoes.add(btnImprimir);
 
         modeloTabela = new DefaultTableModel(
                 new Object[]{"ID","Descrição"},0){
@@ -130,7 +127,6 @@ public class TelaTipoConta extends JFrame {
         btnAlterar.addActionListener(e->alterar());
         btnExcluir.addActionListener(e->excluir());
         btnPesquisar.addActionListener(e->pesquisar());
-        btnImprimir.addActionListener(e->imprimir());
 
         carregarTabela();
 
@@ -216,13 +212,6 @@ public class TelaTipoConta extends JFrame {
 
     }
 
-    private void imprimir(){
-
-        JOptionPane.showMessageDialog(
-                this,
-                "Implementar relatório no JasperReports.");
-
-    }
 
     private void carregarTabela(){
 

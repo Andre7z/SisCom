@@ -4,6 +4,7 @@
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="SisCom"/>
 	<parameter name="dataInicial" class="java.sql.Date"/>
 	<parameter name="dataFinal" class="java.sql.Date"/>
+	<parameter name="pagarOuReceber" class="java.lang.Integer"/>
 	<query language="SQL"><![CDATA[SELECT
     f.id,
     f.dataconta,
@@ -35,6 +36,10 @@ LEFT JOIN formapagamento fp
 
 WHERE
     f.dataconta BETWEEN $P{dataInicial} AND $P{dataFinal}
+    AND (
+        $P{pagarOuReceber} IS NULL
+        OR f.pagaroureceber = $P{pagarOuReceber}
+    )
 
 ORDER BY
     f.dataconta,
@@ -49,7 +54,7 @@ ORDER BY
 		<property name="com.jaspersoft.studio.field.label" value="dataconta"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="financeiro"/>
 	</field>
-	<field name="valortotal" class="java.math.BigDecimal">
+	<field name="valortotal" class="java.lang.Double">
 		<property name="com.jaspersoft.studio.field.name" value="valortotal"/>
 		<property name="com.jaspersoft.studio.field.label" value="valortotal"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="financeiro"/>

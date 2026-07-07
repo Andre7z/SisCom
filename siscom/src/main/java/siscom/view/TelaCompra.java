@@ -235,18 +235,6 @@ public class TelaCompra extends JFrame {
         btnAlterar.addActionListener(e -> acaoAlterar());
         btnExcluir.addActionListener(e -> acaoExcluir());
         btnPesquisar.addActionListener(e -> acaoPesquisar());
-
-        // TipoConta = Pagar
-        for (int i = 0; i < cbTipoConta.getItemCount(); i++) {
-            TipoConta tipo = cbTipoConta.getItemAt(i);
-
-            if ("Pagar".equalsIgnoreCase(tipo.getDescricao())) {
-                cbTipoConta.setSelectedIndex(i);
-                break;
-            }
-        }
-
-        cbTipoConta.setEnabled(false);
     }
 
     private void carregarFornecedores() {

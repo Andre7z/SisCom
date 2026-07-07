@@ -44,6 +44,7 @@ public class TelaRelatorio extends JFrame {
 
     private JComboBox<Cliente> cbCliente;
     private JComboBox<Fornecedor> cbFornecedor;
+    private JComboBox<String> cbPagarOuReceber;
 
     private JButton btnGerar;
     private JButton btnFechar;
@@ -123,6 +124,18 @@ public class TelaRelatorio extends JFrame {
         gbc.gridx = 1;
         painel.add(cbFornecedor, gbc);
 
+        gbc.gridx = 0;
+        gbc.gridy++;
+        painel.add(new JLabel("Pagar ou Receber:"), gbc);
+
+        gbc.gridx = 1;
+
+        cbPagarOuReceber = new JComboBox<>();
+        cbPagarOuReceber.addItem("Pagar");
+        cbPagarOuReceber.addItem("Receber");
+
+        painel.add(cbPagarOuReceber, gbc);
+
         JPanel botoes = new JPanel();
 
         btnGerar = new JButton("Gerar Relatório");
@@ -173,108 +186,107 @@ public class TelaRelatorio extends JFrame {
             cbFornecedor.addItem(f);
         }
     }
+
     private void gerarRelatorio() {
 
-    String arquivo;
+        String arquivo;
 
-    if (rbVenda.isSelected()) {
-        arquivo = "/relatorios/VendaRelatorio.jrxml";
-    } else if (rbCompra.isSelected()) {
-        arquivo = "/relatorios/CompraRelatorio.jrxml";
-    } else {
-        arquivo = "/relatorios/FinanceiroRelatorio.jrxml";
+        if (rbVenda.isSelected()) {
+            arquivo = "/relatorios/VendaRelatorio.jrxml";
+        } else if (rbCompra.isSelected()) {
+            arquivo = "/relatorios/CompraRelatorio.jrxml";
+        } else {
+            arquivo = "/relatorios/FinanceiroRelatorio.jrxml";
+        }
+
+        abrirRelatorio(arquivo);
     }
 
-    abrirRelatorio(arquivo);
-}
+    private void abrirRelatorio(String arquivo) {
 
-private void abrirRelatorio(String arquivo) {
+        Session session = null;
 
-    Session session = null;
+        try {
 
-    try {
+            if (txtDataInicial.getText().trim().isEmpty()
+                    || txtDataFinal.getText().trim().isEmpty()) {
 
-        if (txtDataInicial.getText().trim().isEmpty()
-                || txtDataFinal.getText().trim().isEmpty()) {
+                JOptionPane.showMessageDialog(
+                        this,
+                        "Informe a Data Inicial e a Data Final.\nFormato: dd/MM/yyyy");
+
+                return;
+            }
+
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+
+            LocalDate dataInicial = LocalDate.parse(txtDataInicial.getText(), formatter);
+
+            LocalDate dataFinal = LocalDate.parse(txtDataFinal.getText(), formatter);
+
+            JasperReport jasperReport = JasperCompileManager.compileReport(
+                    getClass().getResourceAsStream(arquivo));
+
+            session = Conexao.getSessionFactory().openSession();
+
+            Connection conexao = session.doReturningWork(conn -> conn);
+
+            HashMap<String, Object> parametros = new HashMap<>();
+
+            parametros.put(
+                    "dataInicial",
+                    java.sql.Date.valueOf(dataInicial));
+
+            parametros.put(
+                    "dataFinal",
+                    java.sql.Date.valueOf(dataFinal));
+
+            if (rbFinanceiro.isSelected()) {
+                parametros.put(
+                        "pagarOuReceber",
+                        cbPagarOuReceber.getSelectedIndex());
+            }
+
+            if (rbVenda.isSelected() && cbCliente.getSelectedItem() != null) {
+
+                Cliente cliente = (Cliente) cbCliente.getSelectedItem();
+
+                parametros.put("clienteId", cliente.getId());
+
+            }
+
+            if (rbCompra.isSelected() && cbFornecedor.getSelectedItem() != null) {
+
+                Fornecedor fornecedor = (Fornecedor) cbFornecedor.getSelectedItem();
+
+                parametros.put("fornecedorId", fornecedor.getId());
+
+            }
+            JasperPrint jasperPrint = JasperFillManager.fillReport(
+                    jasperReport,
+                    parametros,
+                    conexao);
+
+            JasperViewer.viewReport(jasperPrint, false);
+
+        } catch (Exception e) {
+
+            e.printStackTrace();
 
             JOptionPane.showMessageDialog(
                     this,
-                    "Informe a Data Inicial e a Data Final.\nFormato: dd/MM/yyyy");
+                    "Erro ao gerar relatório.\n\n"
+                            + e.getMessage());
 
-            return;
-        }
+        } finally {
 
-        DateTimeFormatter formatter =
-                DateTimeFormatter.ofPattern("dd/MM/yyyy");
-
-        LocalDate dataInicial =
-                LocalDate.parse(txtDataInicial.getText(), formatter);
-
-        LocalDate dataFinal =
-                LocalDate.parse(txtDataFinal.getText(), formatter);
-
-        JasperReport jasperReport =
-                JasperCompileManager.compileReport(
-                        getClass().getResourceAsStream(arquivo));
-
-        session = Conexao.getSessionFactory().openSession();
-
-        Connection conexao =
-                session.doReturningWork(conn -> conn);
-
-        HashMap<String, Object> parametros = new HashMap<>();
-
-        parametros.put(
-                "dataInicial",
-                java.sql.Date.valueOf(dataInicial));
-
-        parametros.put(
-                "dataFinal",
-                java.sql.Date.valueOf(dataFinal));
-
-        if (rbVenda.isSelected() && cbCliente.getSelectedItem() != null) {
-
-            Cliente cliente =
-                    (Cliente) cbCliente.getSelectedItem();
-
-            parametros.put("clienteId", cliente.getId());
+            if (session != null) {
+                session.close();
+            }
 
         }
-
-        if (rbCompra.isSelected() && cbFornecedor.getSelectedItem() != null) {
-
-            Fornecedor fornecedor =
-                    (Fornecedor) cbFornecedor.getSelectedItem();
-
-            parametros.put("fornecedorId", fornecedor.getId());
-
-        }
-
-        JasperPrint jasperPrint =
-                JasperFillManager.fillReport(
-                        jasperReport,
-                        parametros,
-                        conexao);
-
-        JasperViewer.viewReport(jasperPrint, false);
-
-    } catch (Exception e) {
-
-        e.printStackTrace();
-
-        JOptionPane.showMessageDialog(
-                this,
-                "Erro ao gerar relatório.\n\n"
-                        + e.getMessage());
-
-    } finally {
-
-        if (session != null) {
-            session.close();
-        }
-
     }
-}
+
     public static void main(String[] args) {
 
         java.awt.EventQueue.invokeLater(() -> {
