@@ -56,11 +56,21 @@ public class TelaFinanceiroParcela extends JFrame {
     private FinanceiroParcelaController controller = new FinanceiroParcelaController();
     private FinanceiroController financeiroController = new FinanceiroController();
 
+    private final Financeiro financeiroFiltro;
+
     private static final String[] STATUS = {"Pendente", "Pago", "Atrasado"};
 
     public TelaFinanceiroParcela() {
+        this(null);
+    }
 
-        setTitle("Cadastro de Parcelas do Financeiro");
+    public TelaFinanceiroParcela(Financeiro financeiroPreSelecionado) {
+
+        this.financeiroFiltro = financeiroPreSelecionado;
+
+        setTitle(financeiroFiltro != null
+                ? "Parcelas do Financeiro Id " + financeiroFiltro.getId()
+                : "Cadastro de Parcelas do Financeiro");
         setSize(950, 600);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
@@ -229,6 +239,10 @@ public class TelaFinanceiroParcela extends JFrame {
 
         carregarFinanceiros();
 
+        if (financeiroPreSelecionado != null) {
+            cbFinanceiro.setSelectedItem(financeiroPreSelecionado);
+        }
+
         carregarTabela();
 
         btnSalvar.addActionListener(e -> salvar());
@@ -301,6 +315,12 @@ public class TelaFinanceiroParcela extends JFrame {
         List<FinanceiroParcela> lista = controller.pesquisarTodos();
 
         for (FinanceiroParcela parcela : lista) {
+
+            if (financeiroFiltro != null
+                    && (parcela.getFinanceiro() == null
+                        || parcela.getFinanceiro().getId() != financeiroFiltro.getId())) {
+                continue;
+            }
 
             String financeiroDesc = parcela.getFinanceiro() != null
                     ? "Id " + parcela.getFinanceiro().getId()

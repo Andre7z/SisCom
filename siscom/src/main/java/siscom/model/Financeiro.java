@@ -1,6 +1,7 @@
 package siscom.model;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 import jakarta.persistence.CascadeType;
@@ -47,6 +48,6 @@ public class Financeiro {
     private Cliente cliente;
 
     @OneToMany(mappedBy = "financeiro", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<FinanceiroParcela> parcelas;
-    
+    private List<FinanceiroParcela> parcelas = new ArrayList<>();
+
 }

@@ -12,16 +12,16 @@ import siscom.model.FormaPagamento;
 import siscom.model.TipoConta;
 import siscom.model.Venda;
 import siscom.model.VendaProduto;
+import siscom.model.FinanceiroParcela;
 
 public class VendaController {
 
-    private static final Logger logger =
-            LogManager.getLogger(VendaController.class);
+    private static final Logger logger = LogManager.getLogger(VendaController.class);
 
     private VendaDAO vendaDAO = new VendaDAO();
     private ProdutoController produtoController = new ProdutoController();
-    private FinanceiroController financeiroController =
-            new FinanceiroController();
+    private FinanceiroController financeiroController = new FinanceiroController();
+    private FinanceiroParcelaController financeiroParcelaController = new FinanceiroParcelaController();
 
     public boolean salvar(
             Venda venda,
@@ -31,6 +31,7 @@ public class VendaController {
         logger.info("Iniciando salvar Venda");
 
         try {
+
             if (venda == null) {
                 logger.error("Venda nula");
                 return false;
@@ -51,6 +52,7 @@ public class VendaController {
                 logger.error("Venda sem produtos");
                 return false;
             }
+
             if (formaPagamento == null) {
                 logger.error("Forma de pagamento não informada");
                 return false;
@@ -61,9 +63,8 @@ public class VendaController {
                 return false;
             }
 
-            int quantidadeVendas =
-                    vendaDAO.contarVendasPorCpfMes(
-                            venda.getCliente().getCpf());
+            int quantidadeVendas = vendaDAO.contarVendasPorCpfMes(
+                    venda.getCliente().getCpf());
 
             if (quantidadeVendas >= 3) {
                 logger.error("CPF excedeu limite de vendas no mês");
@@ -90,87 +91,115 @@ public class VendaController {
                 }
 
                 if (item.getValorUnitario() == null ||
-                    item.getValorUnitario() <= 0) {
+                        item.getValorUnitario() <= 0) {
                     logger.error("Valor unitário inválido");
                     return false;
                 }
 
-                boolean estoqueOk =
-                        produtoController.verificaEstoqueExistente(
-                                item.getProduto(),
-                                item.getQuantidade());
+                if (!produtoController.verificaEstoqueExistente(
+                        item.getProduto(),
+                        item.getQuantidade())) {
 
-                if (!estoqueOk) {
                     logger.error("Produto sem estoque suficiente");
                     return false;
                 }
 
-                boolean estoqueAtualizado =
-                        produtoController.atualizarEstoqueVenda(
-                                item.getProduto(),
-                                item.getQuantidade());
+                if (!produtoController.atualizarEstoqueVenda(
+                        item.getProduto(),
+                        item.getQuantidade())) {
 
-                if (!estoqueAtualizado) {
                     logger.error("Erro ao atualizar estoque");
                     return false;
                 }
 
-                boolean ultimaVendaAtualizada =
-                        produtoController.atualizarUltimaVenda(
-                                item.getProduto(),
-                                item.getValorUnitario());
+                if (!produtoController.atualizarUltimaVenda(
+                        item.getProduto(),
+                        item.getValorUnitario())) {
 
-                if (!ultimaVendaAtualizada) {
                     logger.error("Erro ao atualizar valor da última venda");
                     return false;
                 }
 
                 item.setVenda(venda);
 
-                valorTotal +=
-                        item.getQuantidade() * item.getValorUnitario();
+                valorTotal += item.getQuantidade() * item.getValorUnitario();
             }
 
             venda.setValorTotal(valorTotal);
 
-            boolean vendaSalva = vendaDAO.salvar(venda);
-
-            if (!vendaSalva) {
+            if (!vendaDAO.salvar(venda)) {
                 logger.error("Falha ao salvar venda");
                 return false;
             }
 
+            // Financeiro
+
             Financeiro financeiro = new Financeiro();
+
             financeiro.setDataConta(venda.getDataVenda());
             financeiro.setValorTotal(venda.getValorTotal());
-            financeiro.setPagarOuReceber(1); // conta a receber
+            financeiro.setPagarOuReceber(1); // Receber
             financeiro.setFormaPagamento(formaPagamento);
             financeiro.setTipoConta(tipoConta);
             financeiro.setCliente(venda.getCliente());
 
-            boolean financeiroSalvo =
-                    financeiroController.salvar(financeiro);
-
-            if (!financeiroSalvo) {
+            if (!financeiroController.salvar(financeiro)) {
                 logger.error("Erro ao gerar financeiro da venda");
                 vendaDAO.excluir(venda.getId());
                 return false;
             }
 
+            // Parcelas
+
+            int qtdeParcelas = formaPagamento.getQtdeParcela();
+
+            if (qtdeParcelas <= 0) {
+                qtdeParcelas = 1;
+            }
+
+            double valorParcela = venda.getValorTotal() / qtdeParcelas;
+
+            for (int i = 1; i <= qtdeParcelas; i++) {
+
+                FinanceiroParcela parcela = new FinanceiroParcela();
+
+                parcela.setFinanceiro(financeiro);
+                parcela.setNParcela(i);
+
+                parcela.setDataVencimento(
+                        venda.getDataVenda().plusDays(
+                                (long) formaPagamento.getPrazo() * i));
+
+                parcela.setDataPagamento(null);
+
+                parcela.setValorOriginal(valorParcela);
+                parcela.setDesconto(0.0);
+                parcela.setAcrescimo(0.0);
+                parcela.setValorFinal(valorParcela);
+
+                parcela.setStatus(0); // Aberta
+
+                if (!financeiroParcelaController.salvar(parcela)) {
+                    logger.error("Erro ao salvar parcela " + i);
+                    return false;
+                }
+            }
+
             venda.setFinanceiro(financeiro);
 
-            boolean vinculoOk = vendaDAO.alterar(venda);
-
-            if (!vinculoOk) {
+            if (!vendaDAO.alterar(venda)) {
                 logger.error("Erro ao vincular financeiro à venda");
                 return false;
             }
 
             logger.info("Venda salva com sucesso");
+
             return true;
 
         } catch (Exception e) {
-            logger.error("Erro ao salvar Venda: " + e.getMessage());
+
+            logger.error("Erro ao salvar Venda", e);
+
             return false;
         }
     }

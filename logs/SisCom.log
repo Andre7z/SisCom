@@ -2887,3 +2887,481 @@
 07-07-2026 18:57:01 INFO  FinanceiroController - Quantidade encontrada: 5
 07-07-2026 18:57:01 INFO  FinanceiroParcelaController - Iniciando pesquisar todas as FinanceiroParcela
 07-07-2026 18:57:01 INFO  FinanceiroParcelaController - Quantidade encontrada: 0
+08-07-2026 13:08:05 INFO  FinanceiroController - Iniciando pesquisar todos os Financeiros
+08-07-2026 13:08:05 INFO  Version - HHH000412: Hibernate ORM core version 6.5.2.Final
+08-07-2026 13:08:05 INFO  Environment - HHH000205: Loaded properties from resource hibernate.properties: {hibernate.connection.driver_class=org.postgresql.Driver, hibernate.format_sql=true, hibernate.connection.url=jdbc:postgresql://localhost:5432/SisCom _comercial_prog2_andre, hibernate.hbm2ddl.auto=update, hibernate.dialect=org.hibernate.dialect.PostgreSQLDialect, hibernate.show_sql=true, hibernate.connection.password=****, hibernate.connection.username=postgres}
+08-07-2026 13:08:05 INFO  RegionFactoryInitiator - HHH000026: Second-level cache disabled
+08-07-2026 13:08:06 WARN  pooling - HHH10001002: Using built-in connection pool (not intended for production use)
+08-07-2026 13:08:06 INFO  pooling - HHH10001005: Loaded JDBC driver class: org.postgresql.Driver
+08-07-2026 13:08:06 INFO  pooling - HHH10001012: Connecting with JDBC URL [jdbc:postgresql://localhost:5432/SisCom _comercial_prog2_andre]
+08-07-2026 13:08:06 INFO  pooling - HHH10001001: Connection properties: {user=postgres, password=****}
+08-07-2026 13:08:06 INFO  pooling - HHH10001003: Autocommit mode: false
+08-07-2026 13:08:06 INFO  pooling - HHH10001115: Connection pool size: 20 (min=1)
+08-07-2026 13:08:06 WARN  deprecation - HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+08-07-2026 13:08:07 INFO  JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+08-07-2026 13:08:07 INFO  access - HHH10001501: Connection obtained from JdbcConnectionAccess [org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess@9055436] for (non-JTA) DDL execution was not in auto-commit mode; the Connection 'local transaction' will be committed and the Connection will be set into auto-commit mode.
+08-07-2026 13:08:08 INFO  FinanceiroController - Quantidade encontrada: 5
+08-07-2026 13:08:08 INFO  TipoContaController - Iniciando pesquisar todos os TipoConta
+08-07-2026 13:08:08 INFO  TipoContaController - Quantidade encontrada: 3
+08-07-2026 13:08:08 INFO  FormaPagamentoController - Iniciando pesquisar todas as FormaPagamento
+08-07-2026 13:08:08 INFO  FormaPagamentoController - Quantidade encontrada: 2
+08-07-2026 13:08:08 INFO  FornecedorController - Iniciando pesquisar todos os Fornecedores
+08-07-2026 13:08:08 INFO  FornecedorController - Quantidade encontrada: 2
+08-07-2026 13:08:08 INFO  ClienteController - Iniciando pesquisar todos os Clientes
+08-07-2026 13:08:08 INFO  ClienteController - Quantidade encontrada: 1
+08-07-2026 13:08:08 INFO  FinanceiroController - Iniciando pesquisar todos os Financeiros
+08-07-2026 13:08:08 INFO  FinanceiroController - Quantidade encontrada: 5
+08-07-2026 13:08:26 INFO  FinanceiroController - Iniciando pesquisar Financeiro id=4
+08-07-2026 13:08:26 INFO  FinanceiroController - Financeiro encontrado
+08-07-2026 13:10:33 INFO  FinanceiroController - Iniciando pesquisar todos os Financeiros
+08-07-2026 13:10:33 INFO  Version - HHH000412: Hibernate ORM core version 6.5.2.Final
+08-07-2026 13:10:33 INFO  Environment - HHH000205: Loaded properties from resource hibernate.properties: {hibernate.connection.driver_class=org.postgresql.Driver, hibernate.format_sql=true, hibernate.connection.url=jdbc:postgresql://localhost:5432/SisCom _comercial_prog2_andre, hibernate.hbm2ddl.auto=update, hibernate.dialect=org.hibernate.dialect.PostgreSQLDialect, hibernate.show_sql=true, hibernate.connection.password=****, hibernate.connection.username=postgres}
+08-07-2026 13:10:33 INFO  RegionFactoryInitiator - HHH000026: Second-level cache disabled
+08-07-2026 13:10:33 WARN  pooling - HHH10001002: Using built-in connection pool (not intended for production use)
+08-07-2026 13:10:33 INFO  pooling - HHH10001005: Loaded JDBC driver class: org.postgresql.Driver
+08-07-2026 13:10:33 INFO  pooling - HHH10001012: Connecting with JDBC URL [jdbc:postgresql://localhost:5432/SisCom _comercial_prog2_andre]
+08-07-2026 13:10:33 INFO  pooling - HHH10001001: Connection properties: {user=postgres, password=****}
+08-07-2026 13:10:33 INFO  pooling - HHH10001003: Autocommit mode: false
+08-07-2026 13:10:33 INFO  pooling - HHH10001115: Connection pool size: 20 (min=1)
+08-07-2026 13:10:34 WARN  deprecation - HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+08-07-2026 13:10:35 INFO  JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+08-07-2026 13:10:35 INFO  access - HHH10001501: Connection obtained from JdbcConnectionAccess [org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess@9055436] for (non-JTA) DDL execution was not in auto-commit mode; the Connection 'local transaction' will be committed and the Connection will be set into auto-commit mode.
+08-07-2026 13:10:36 INFO  FinanceiroController - Quantidade encontrada: 5
+08-07-2026 13:10:36 INFO  TipoContaController - Iniciando pesquisar todos os TipoConta
+08-07-2026 13:10:36 INFO  TipoContaController - Quantidade encontrada: 3
+08-07-2026 13:10:36 INFO  FormaPagamentoController - Iniciando pesquisar todas as FormaPagamento
+08-07-2026 13:10:36 INFO  FormaPagamentoController - Quantidade encontrada: 2
+08-07-2026 13:10:36 INFO  FornecedorController - Iniciando pesquisar todos os Fornecedores
+08-07-2026 13:10:36 INFO  FornecedorController - Quantidade encontrada: 2
+08-07-2026 13:10:36 INFO  ClienteController - Iniciando pesquisar todos os Clientes
+08-07-2026 13:10:36 INFO  ClienteController - Quantidade encontrada: 1
+08-07-2026 13:10:36 INFO  FinanceiroController - Iniciando pesquisar todos os Financeiros
+08-07-2026 13:10:36 INFO  FinanceiroController - Quantidade encontrada: 5
+08-07-2026 13:12:06 INFO  FinanceiroController - Iniciando pesquisar todos os Financeiros
+08-07-2026 13:12:07 INFO  Version - HHH000412: Hibernate ORM core version 6.5.2.Final
+08-07-2026 13:12:07 INFO  Environment - HHH000205: Loaded properties from resource hibernate.properties: {hibernate.connection.driver_class=org.postgresql.Driver, hibernate.format_sql=true, hibernate.connection.url=jdbc:postgresql://localhost:5432/SisCom _comercial_prog2_andre, hibernate.hbm2ddl.auto=update, hibernate.dialect=org.hibernate.dialect.PostgreSQLDialect, hibernate.show_sql=true, hibernate.connection.password=****, hibernate.connection.username=postgres}
+08-07-2026 13:12:07 INFO  RegionFactoryInitiator - HHH000026: Second-level cache disabled
+08-07-2026 13:12:07 WARN  pooling - HHH10001002: Using built-in connection pool (not intended for production use)
+08-07-2026 13:12:07 INFO  pooling - HHH10001005: Loaded JDBC driver class: org.postgresql.Driver
+08-07-2026 13:12:07 INFO  pooling - HHH10001012: Connecting with JDBC URL [jdbc:postgresql://localhost:5432/SisCom _comercial_prog2_andre]
+08-07-2026 13:12:07 INFO  pooling - HHH10001001: Connection properties: {user=postgres, password=****}
+08-07-2026 13:12:07 INFO  pooling - HHH10001003: Autocommit mode: false
+08-07-2026 13:12:07 INFO  pooling - HHH10001115: Connection pool size: 20 (min=1)
+08-07-2026 13:12:07 WARN  deprecation - HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+08-07-2026 13:12:08 INFO  JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+08-07-2026 13:12:08 INFO  access - HHH10001501: Connection obtained from JdbcConnectionAccess [org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess@318fa330] for (non-JTA) DDL execution was not in auto-commit mode; the Connection 'local transaction' will be committed and the Connection will be set into auto-commit mode.
+08-07-2026 13:12:09 INFO  FinanceiroController - Quantidade encontrada: 5
+08-07-2026 13:12:09 INFO  TipoContaController - Iniciando pesquisar todos os TipoConta
+08-07-2026 13:12:09 INFO  TipoContaController - Quantidade encontrada: 3
+08-07-2026 13:12:09 INFO  FormaPagamentoController - Iniciando pesquisar todas as FormaPagamento
+08-07-2026 13:12:09 INFO  FormaPagamentoController - Quantidade encontrada: 2
+08-07-2026 13:12:09 INFO  FornecedorController - Iniciando pesquisar todos os Fornecedores
+08-07-2026 13:12:09 INFO  FornecedorController - Quantidade encontrada: 2
+08-07-2026 13:12:09 INFO  ClienteController - Iniciando pesquisar todos os Clientes
+08-07-2026 13:12:09 INFO  ClienteController - Quantidade encontrada: 1
+08-07-2026 13:12:09 INFO  FinanceiroController - Iniciando pesquisar todos os Financeiros
+08-07-2026 13:12:09 INFO  FinanceiroController - Quantidade encontrada: 5
+08-07-2026 13:12:13 INFO  FinanceiroController - Iniciando pesquisar todos os Financeiros
+08-07-2026 13:12:13 INFO  FinanceiroController - Quantidade encontrada: 5
+08-07-2026 13:12:13 INFO  FinanceiroParcelaController - Iniciando pesquisar todas as FinanceiroParcela
+08-07-2026 13:12:13 INFO  FinanceiroParcelaController - Quantidade encontrada: 0
+08-07-2026 13:12:32 INFO  FornecedorController - Iniciando pesquisar todos os Fornecedores
+08-07-2026 13:12:32 INFO  Version - HHH000412: Hibernate ORM core version 6.5.2.Final
+08-07-2026 13:12:32 INFO  Environment - HHH000205: Loaded properties from resource hibernate.properties: {hibernate.connection.driver_class=org.postgresql.Driver, hibernate.format_sql=true, hibernate.connection.url=jdbc:postgresql://localhost:5432/SisCom _comercial_prog2_andre, hibernate.hbm2ddl.auto=update, hibernate.dialect=org.hibernate.dialect.PostgreSQLDialect, hibernate.show_sql=true, hibernate.connection.password=****, hibernate.connection.username=postgres}
+08-07-2026 13:12:32 INFO  RegionFactoryInitiator - HHH000026: Second-level cache disabled
+08-07-2026 13:12:32 WARN  pooling - HHH10001002: Using built-in connection pool (not intended for production use)
+08-07-2026 13:12:32 INFO  pooling - HHH10001005: Loaded JDBC driver class: org.postgresql.Driver
+08-07-2026 13:12:32 INFO  pooling - HHH10001012: Connecting with JDBC URL [jdbc:postgresql://localhost:5432/SisCom _comercial_prog2_andre]
+08-07-2026 13:12:32 INFO  pooling - HHH10001001: Connection properties: {user=postgres, password=****}
+08-07-2026 13:12:32 INFO  pooling - HHH10001003: Autocommit mode: false
+08-07-2026 13:12:32 INFO  pooling - HHH10001115: Connection pool size: 20 (min=1)
+08-07-2026 13:12:33 WARN  deprecation - HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+08-07-2026 13:12:34 INFO  JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+08-07-2026 13:12:34 INFO  access - HHH10001501: Connection obtained from JdbcConnectionAccess [org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess@b650d4] for (non-JTA) DDL execution was not in auto-commit mode; the Connection 'local transaction' will be committed and the Connection will be set into auto-commit mode.
+08-07-2026 13:12:34 INFO  FornecedorController - Quantidade encontrada: 2
+08-07-2026 13:12:34 INFO  ProdutoController - Iniciando pesquisar todos os Produtos
+08-07-2026 13:12:34 INFO  ProdutoController - Quantidade encontrada: 2
+08-07-2026 13:12:34 INFO  FormaPagamentoController - Iniciando pesquisar todas as FormaPagamento
+08-07-2026 13:12:34 INFO  FormaPagamentoController - Quantidade encontrada: 2
+08-07-2026 13:12:34 INFO  TipoContaController - Iniciando pesquisar todos os TipoConta
+08-07-2026 13:12:34 INFO  TipoContaController - Quantidade encontrada: 3
+08-07-2026 13:12:51 INFO  CompraController - Iniciando salvar Compra
+08-07-2026 13:12:51 INFO  ProdutoController - Atualizando estoque após compra
+08-07-2026 13:12:52 INFO  ProdutoController - Atualizando última compra
+08-07-2026 13:12:52 INFO  ProdutoController - Atualizando preço médio
+08-07-2026 13:12:52 INFO  FinanceiroController - Iniciando salvar Financeiro
+08-07-2026 13:12:52 INFO  FinanceiroController - Financeiro salvo com sucesso
+08-07-2026 13:12:52 INFO  FinanceiroParcelaController - Iniciando salvar FinanceiroParcela
+08-07-2026 13:12:52 INFO  FinanceiroParcelaController - FinanceiroParcela salva com sucesso
+08-07-2026 13:12:52 INFO  CompraController - Compra salva com sucesso id=4
+08-07-2026 13:12:56 INFO  FinanceiroController - Iniciando pesquisar todos os Financeiros
+08-07-2026 13:12:56 INFO  FinanceiroController - Quantidade encontrada: 6
+08-07-2026 13:12:56 INFO  TipoContaController - Iniciando pesquisar todos os TipoConta
+08-07-2026 13:12:56 INFO  TipoContaController - Quantidade encontrada: 3
+08-07-2026 13:12:56 INFO  FormaPagamentoController - Iniciando pesquisar todas as FormaPagamento
+08-07-2026 13:12:56 INFO  FormaPagamentoController - Quantidade encontrada: 2
+08-07-2026 13:12:56 INFO  FornecedorController - Iniciando pesquisar todos os Fornecedores
+08-07-2026 13:12:56 INFO  FornecedorController - Quantidade encontrada: 2
+08-07-2026 13:12:56 INFO  ClienteController - Iniciando pesquisar todos os Clientes
+08-07-2026 13:12:56 INFO  ClienteController - Quantidade encontrada: 1
+08-07-2026 13:12:56 INFO  FinanceiroController - Iniciando pesquisar todos os Financeiros
+08-07-2026 13:12:56 INFO  FinanceiroController - Quantidade encontrada: 6
+08-07-2026 13:12:58 INFO  FinanceiroController - Iniciando pesquisar todos os Financeiros
+08-07-2026 13:12:58 INFO  FinanceiroController - Quantidade encontrada: 6
+08-07-2026 13:12:58 INFO  FinanceiroParcelaController - Iniciando pesquisar todas as FinanceiroParcela
+08-07-2026 13:12:58 INFO  FinanceiroParcelaController - Quantidade encontrada: 1
+08-07-2026 13:13:21 INFO  FinanceiroController - Iniciando pesquisar todos os Financeiros
+08-07-2026 13:13:22 INFO  Version - HHH000412: Hibernate ORM core version 6.5.2.Final
+08-07-2026 13:13:22 INFO  Environment - HHH000205: Loaded properties from resource hibernate.properties: {hibernate.connection.driver_class=org.postgresql.Driver, hibernate.format_sql=true, hibernate.connection.url=jdbc:postgresql://localhost:5432/SisCom _comercial_prog2_andre, hibernate.hbm2ddl.auto=update, hibernate.dialect=org.hibernate.dialect.PostgreSQLDialect, hibernate.show_sql=true, hibernate.connection.password=****, hibernate.connection.username=postgres}
+08-07-2026 13:13:22 INFO  RegionFactoryInitiator - HHH000026: Second-level cache disabled
+08-07-2026 13:13:22 WARN  pooling - HHH10001002: Using built-in connection pool (not intended for production use)
+08-07-2026 13:13:22 INFO  pooling - HHH10001005: Loaded JDBC driver class: org.postgresql.Driver
+08-07-2026 13:13:22 INFO  pooling - HHH10001012: Connecting with JDBC URL [jdbc:postgresql://localhost:5432/SisCom _comercial_prog2_andre]
+08-07-2026 13:13:22 INFO  pooling - HHH10001001: Connection properties: {user=postgres, password=****}
+08-07-2026 13:13:22 INFO  pooling - HHH10001003: Autocommit mode: false
+08-07-2026 13:13:22 INFO  pooling - HHH10001115: Connection pool size: 20 (min=1)
+08-07-2026 13:13:22 WARN  deprecation - HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+08-07-2026 13:13:23 INFO  JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+08-07-2026 13:13:23 INFO  access - HHH10001501: Connection obtained from JdbcConnectionAccess [org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess@22ce7b4] for (non-JTA) DDL execution was not in auto-commit mode; the Connection 'local transaction' will be committed and the Connection will be set into auto-commit mode.
+08-07-2026 13:13:24 INFO  FinanceiroController - Quantidade encontrada: 6
+08-07-2026 13:13:24 INFO  TipoContaController - Iniciando pesquisar todos os TipoConta
+08-07-2026 13:13:24 INFO  TipoContaController - Quantidade encontrada: 3
+08-07-2026 13:13:24 INFO  FormaPagamentoController - Iniciando pesquisar todas as FormaPagamento
+08-07-2026 13:13:24 INFO  FormaPagamentoController - Quantidade encontrada: 2
+08-07-2026 13:13:24 INFO  FornecedorController - Iniciando pesquisar todos os Fornecedores
+08-07-2026 13:13:24 INFO  FornecedorController - Quantidade encontrada: 2
+08-07-2026 13:13:24 INFO  ClienteController - Iniciando pesquisar todos os Clientes
+08-07-2026 13:13:24 INFO  ClienteController - Quantidade encontrada: 1
+08-07-2026 13:13:24 INFO  FinanceiroController - Iniciando pesquisar todos os Financeiros
+08-07-2026 13:13:24 INFO  FinanceiroController - Quantidade encontrada: 6
+08-07-2026 13:13:25 INFO  FinanceiroController - Iniciando pesquisar todos os Financeiros
+08-07-2026 13:13:25 INFO  FinanceiroController - Quantidade encontrada: 6
+08-07-2026 13:13:25 INFO  FinanceiroParcelaController - Iniciando pesquisar todas as FinanceiroParcela
+08-07-2026 13:13:25 INFO  FinanceiroParcelaController - Quantidade encontrada: 1
+08-07-2026 13:14:30 INFO  FinanceiroParcelaController - Iniciando pesquisar FinanceiroParcela id=1
+08-07-2026 13:14:30 INFO  FinanceiroParcelaController - FinanceiroParcela encontrada
+08-07-2026 13:14:32 INFO  FinanceiroParcelaController - Iniciando pesquisar FinanceiroParcela id=1
+08-07-2026 13:14:32 INFO  FinanceiroParcelaController - FinanceiroParcela encontrada
+08-07-2026 13:14:33 INFO  FinanceiroParcelaController - Iniciando pesquisar FinanceiroParcela id=1
+08-07-2026 13:14:33 INFO  FinanceiroParcelaController - FinanceiroParcela encontrada
+08-07-2026 13:14:36 INFO  FinanceiroParcelaController - Iniciando pesquisar FinanceiroParcela id=1
+08-07-2026 13:14:36 INFO  FinanceiroParcelaController - FinanceiroParcela encontrada
+08-07-2026 13:14:37 INFO  FinanceiroParcelaController - Iniciando pesquisar FinanceiroParcela id=1
+08-07-2026 13:14:37 INFO  FinanceiroParcelaController - FinanceiroParcela encontrada
+08-07-2026 13:14:48 INFO  FinanceiroParcelaController - Iniciando pesquisar FinanceiroParcela id=1
+08-07-2026 13:14:48 INFO  FinanceiroParcelaController - FinanceiroParcela encontrada
+08-07-2026 13:17:42 INFO  FinanceiroController - Iniciando pesquisar todos os Financeiros
+08-07-2026 13:17:42 INFO  Version - HHH000412: Hibernate ORM core version 6.5.2.Final
+08-07-2026 13:17:42 INFO  Environment - HHH000205: Loaded properties from resource hibernate.properties: {hibernate.connection.driver_class=org.postgresql.Driver, hibernate.format_sql=true, hibernate.connection.url=jdbc:postgresql://localhost:5432/SisCom _comercial_prog2_andre, hibernate.hbm2ddl.auto=update, hibernate.dialect=org.hibernate.dialect.PostgreSQLDialect, hibernate.show_sql=true, hibernate.connection.password=****, hibernate.connection.username=postgres}
+08-07-2026 13:17:43 INFO  RegionFactoryInitiator - HHH000026: Second-level cache disabled
+08-07-2026 13:17:43 WARN  pooling - HHH10001002: Using built-in connection pool (not intended for production use)
+08-07-2026 13:17:43 INFO  pooling - HHH10001005: Loaded JDBC driver class: org.postgresql.Driver
+08-07-2026 13:17:43 INFO  pooling - HHH10001012: Connecting with JDBC URL [jdbc:postgresql://localhost:5432/SisCom _comercial_prog2_andre]
+08-07-2026 13:17:43 INFO  pooling - HHH10001001: Connection properties: {user=postgres, password=****}
+08-07-2026 13:17:43 INFO  pooling - HHH10001003: Autocommit mode: false
+08-07-2026 13:17:43 INFO  pooling - HHH10001115: Connection pool size: 20 (min=1)
+08-07-2026 13:17:43 WARN  deprecation - HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+08-07-2026 13:17:44 INFO  JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+08-07-2026 13:17:44 INFO  access - HHH10001501: Connection obtained from JdbcConnectionAccess [org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess@6a98cfe8] for (non-JTA) DDL execution was not in auto-commit mode; the Connection 'local transaction' will be committed and the Connection will be set into auto-commit mode.
+08-07-2026 13:17:44 INFO  FinanceiroController - Quantidade encontrada: 6
+08-07-2026 13:17:44 INFO  TipoContaController - Iniciando pesquisar todos os TipoConta
+08-07-2026 13:17:44 INFO  TipoContaController - Quantidade encontrada: 3
+08-07-2026 13:17:44 INFO  FormaPagamentoController - Iniciando pesquisar todas as FormaPagamento
+08-07-2026 13:17:44 INFO  FormaPagamentoController - Quantidade encontrada: 2
+08-07-2026 13:17:44 INFO  FornecedorController - Iniciando pesquisar todos os Fornecedores
+08-07-2026 13:17:44 INFO  FornecedorController - Quantidade encontrada: 2
+08-07-2026 13:17:44 INFO  ClienteController - Iniciando pesquisar todos os Clientes
+08-07-2026 13:17:44 INFO  ClienteController - Quantidade encontrada: 1
+08-07-2026 13:17:44 INFO  FinanceiroController - Iniciando pesquisar todos os Financeiros
+08-07-2026 13:17:44 INFO  FinanceiroController - Quantidade encontrada: 6
+08-07-2026 13:17:46 INFO  FinanceiroController - Iniciando pesquisar todos os Financeiros
+08-07-2026 13:17:46 INFO  FinanceiroController - Quantidade encontrada: 6
+08-07-2026 13:17:46 INFO  FinanceiroParcelaController - Iniciando pesquisar todas as FinanceiroParcela
+08-07-2026 13:17:46 INFO  FinanceiroParcelaController - Quantidade encontrada: 1
+08-07-2026 13:17:50 INFO  FinanceiroParcelaController - Iniciando pesquisar FinanceiroParcela id=1
+08-07-2026 13:17:50 INFO  FinanceiroParcelaController - FinanceiroParcela encontrada
+08-07-2026 13:18:21 INFO  FinanceiroParcelaController - Iniciando pesquisar FinanceiroParcela id=1
+08-07-2026 13:18:21 INFO  FinanceiroParcelaController - FinanceiroParcela encontrada
+08-07-2026 13:18:21 INFO  FinanceiroParcelaController - Iniciando alterar FinanceiroParcela
+08-07-2026 13:18:21 INFO  FinanceiroParcelaController - FinanceiroParcela alterada com sucesso
+08-07-2026 13:18:23 INFO  FinanceiroParcelaController - Iniciando pesquisar todas as FinanceiroParcela
+08-07-2026 13:18:23 INFO  FinanceiroParcelaController - Quantidade encontrada: 1
+08-07-2026 13:18:42 INFO  FinanceiroController - Iniciando pesquisar todos os Financeiros
+08-07-2026 13:18:42 INFO  FinanceiroController - Quantidade encontrada: 6
+08-07-2026 13:18:42 INFO  FinanceiroParcelaController - Iniciando pesquisar todas as FinanceiroParcela
+08-07-2026 13:18:42 INFO  FinanceiroParcelaController - Quantidade encontrada: 1
+08-07-2026 13:20:16 INFO  FinanceiroController - Iniciando pesquisar todos os Financeiros
+08-07-2026 13:20:16 INFO  Version - HHH000412: Hibernate ORM core version 6.5.2.Final
+08-07-2026 13:20:16 INFO  Environment - HHH000205: Loaded properties from resource hibernate.properties: {hibernate.connection.driver_class=org.postgresql.Driver, hibernate.format_sql=true, hibernate.connection.url=jdbc:postgresql://localhost:5432/SisCom _comercial_prog2_andre, hibernate.hbm2ddl.auto=update, hibernate.dialect=org.hibernate.dialect.PostgreSQLDialect, hibernate.show_sql=true, hibernate.connection.password=****, hibernate.connection.username=postgres}
+08-07-2026 13:20:16 INFO  RegionFactoryInitiator - HHH000026: Second-level cache disabled
+08-07-2026 13:20:16 WARN  pooling - HHH10001002: Using built-in connection pool (not intended for production use)
+08-07-2026 13:20:16 INFO  pooling - HHH10001005: Loaded JDBC driver class: org.postgresql.Driver
+08-07-2026 13:20:16 INFO  pooling - HHH10001012: Connecting with JDBC URL [jdbc:postgresql://localhost:5432/SisCom _comercial_prog2_andre]
+08-07-2026 13:20:16 INFO  pooling - HHH10001001: Connection properties: {user=postgres, password=****}
+08-07-2026 13:20:16 INFO  pooling - HHH10001003: Autocommit mode: false
+08-07-2026 13:20:16 INFO  pooling - HHH10001115: Connection pool size: 20 (min=1)
+08-07-2026 13:20:16 WARN  deprecation - HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+08-07-2026 13:20:18 INFO  JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+08-07-2026 13:20:18 INFO  access - HHH10001501: Connection obtained from JdbcConnectionAccess [org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess@318fa330] for (non-JTA) DDL execution was not in auto-commit mode; the Connection 'local transaction' will be committed and the Connection will be set into auto-commit mode.
+08-07-2026 13:20:18 INFO  FinanceiroController - Quantidade encontrada: 6
+08-07-2026 13:20:18 INFO  TipoContaController - Iniciando pesquisar todos os TipoConta
+08-07-2026 13:20:18 INFO  TipoContaController - Quantidade encontrada: 3
+08-07-2026 13:20:18 INFO  FormaPagamentoController - Iniciando pesquisar todas as FormaPagamento
+08-07-2026 13:20:18 INFO  FormaPagamentoController - Quantidade encontrada: 2
+08-07-2026 13:20:18 INFO  FornecedorController - Iniciando pesquisar todos os Fornecedores
+08-07-2026 13:20:18 INFO  FornecedorController - Quantidade encontrada: 2
+08-07-2026 13:20:18 INFO  ClienteController - Iniciando pesquisar todos os Clientes
+08-07-2026 13:20:18 INFO  ClienteController - Quantidade encontrada: 1
+08-07-2026 13:20:18 INFO  FinanceiroController - Iniciando pesquisar todos os Financeiros
+08-07-2026 13:20:18 INFO  FinanceiroController - Quantidade encontrada: 6
+08-07-2026 13:20:33 INFO  FinanceiroController - Iniciando pesquisar todos os Financeiros
+08-07-2026 13:20:33 INFO  Version - HHH000412: Hibernate ORM core version 6.5.2.Final
+08-07-2026 13:20:33 INFO  Environment - HHH000205: Loaded properties from resource hibernate.properties: {hibernate.connection.driver_class=org.postgresql.Driver, hibernate.format_sql=true, hibernate.connection.url=jdbc:postgresql://localhost:5432/SisCom _comercial_prog2_andre, hibernate.hbm2ddl.auto=update, hibernate.dialect=org.hibernate.dialect.PostgreSQLDialect, hibernate.show_sql=true, hibernate.connection.password=****, hibernate.connection.username=postgres}
+08-07-2026 13:20:33 INFO  RegionFactoryInitiator - HHH000026: Second-level cache disabled
+08-07-2026 13:20:33 WARN  pooling - HHH10001002: Using built-in connection pool (not intended for production use)
+08-07-2026 13:20:33 INFO  pooling - HHH10001005: Loaded JDBC driver class: org.postgresql.Driver
+08-07-2026 13:20:33 INFO  pooling - HHH10001012: Connecting with JDBC URL [jdbc:postgresql://localhost:5432/SisCom _comercial_prog2_andre]
+08-07-2026 13:20:33 INFO  pooling - HHH10001001: Connection properties: {user=postgres, password=****}
+08-07-2026 13:20:33 INFO  pooling - HHH10001003: Autocommit mode: false
+08-07-2026 13:20:33 INFO  pooling - HHH10001115: Connection pool size: 20 (min=1)
+08-07-2026 13:20:33 WARN  deprecation - HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+08-07-2026 13:20:34 INFO  JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+08-07-2026 13:20:34 INFO  access - HHH10001501: Connection obtained from JdbcConnectionAccess [org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess@143f8c7d] for (non-JTA) DDL execution was not in auto-commit mode; the Connection 'local transaction' will be committed and the Connection will be set into auto-commit mode.
+08-07-2026 13:20:35 INFO  FinanceiroController - Quantidade encontrada: 6
+08-07-2026 13:20:35 INFO  TipoContaController - Iniciando pesquisar todos os TipoConta
+08-07-2026 13:20:35 INFO  TipoContaController - Quantidade encontrada: 3
+08-07-2026 13:20:35 INFO  FormaPagamentoController - Iniciando pesquisar todas as FormaPagamento
+08-07-2026 13:20:35 INFO  FormaPagamentoController - Quantidade encontrada: 2
+08-07-2026 13:20:35 INFO  FornecedorController - Iniciando pesquisar todos os Fornecedores
+08-07-2026 13:20:35 INFO  FornecedorController - Quantidade encontrada: 2
+08-07-2026 13:20:35 INFO  ClienteController - Iniciando pesquisar todos os Clientes
+08-07-2026 13:20:35 INFO  ClienteController - Quantidade encontrada: 1
+08-07-2026 13:20:35 INFO  FinanceiroController - Iniciando pesquisar todos os Financeiros
+08-07-2026 13:20:35 INFO  FinanceiroController - Quantidade encontrada: 6
+08-07-2026 13:20:37 INFO  ClienteController - Iniciando pesquisar todos os Clientes
+08-07-2026 13:20:37 INFO  ClienteController - Quantidade encontrada: 1
+08-07-2026 13:20:37 INFO  ProdutoController - Iniciando pesquisar todos os Produtos
+08-07-2026 13:20:37 INFO  ProdutoController - Quantidade encontrada: 2
+08-07-2026 13:20:37 INFO  FormaPagamentoController - Iniciando pesquisar todas as FormaPagamento
+08-07-2026 13:20:37 INFO  FormaPagamentoController - Quantidade encontrada: 2
+08-07-2026 13:20:37 INFO  TipoContaController - Iniciando pesquisar todos os TipoConta
+08-07-2026 13:20:37 INFO  TipoContaController - Quantidade encontrada: 3
+08-07-2026 13:20:48 INFO  VendaController - Iniciando salvar Venda
+08-07-2026 13:20:48 INFO  ProdutoController - Verificando estoque do Produto
+08-07-2026 13:20:48 INFO  ProdutoController - Atualizando estoque após venda
+08-07-2026 13:20:48 INFO  ProdutoController - Atualizando última venda
+08-07-2026 13:20:48 INFO  FinanceiroController - Iniciando salvar Financeiro
+08-07-2026 13:20:48 INFO  FinanceiroController - Financeiro salvo com sucesso
+08-07-2026 13:20:48 INFO  FinanceiroParcelaController - Iniciando salvar FinanceiroParcela
+08-07-2026 13:20:48 INFO  FinanceiroParcelaController - FinanceiroParcela salva com sucesso
+08-07-2026 13:20:48 INFO  FinanceiroParcelaController - Iniciando salvar FinanceiroParcela
+08-07-2026 13:20:48 INFO  FinanceiroParcelaController - FinanceiroParcela salva com sucesso
+08-07-2026 13:20:48 INFO  FinanceiroParcelaController - Iniciando salvar FinanceiroParcela
+08-07-2026 13:20:48 INFO  FinanceiroParcelaController - FinanceiroParcela salva com sucesso
+08-07-2026 13:20:48 INFO  VendaController - Venda salva com sucesso
+08-07-2026 13:20:58 INFO  VendaController - Iniciando salvar Venda
+08-07-2026 13:20:58 ERROR VendaController - CPF excedeu limite de vendas no mês
+08-07-2026 13:21:04 INFO  VendaController - Iniciando salvar Venda
+08-07-2026 13:21:04 ERROR VendaController - CPF excedeu limite de vendas no mês
+08-07-2026 13:21:14 INFO  VendaController - Iniciando pesquisar Venda id=1
+08-07-2026 13:21:14 INFO  VendaController - Venda encontrada
+08-07-2026 13:21:20 INFO  VendaController - Iniciando pesquisar Venda id=2
+08-07-2026 13:21:20 INFO  VendaController - Venda encontrada
+08-07-2026 13:21:27 INFO  VendaController - Iniciando pesquisar Venda id=3
+08-07-2026 13:21:27 INFO  VendaController - Venda encontrada
+08-07-2026 13:21:31 INFO  VendaController - Iniciando pesquisar Venda id=4
+08-07-2026 13:21:31 ERROR VendaController - Venda não encontrada
+08-07-2026 13:21:40 INFO  VendaController - Iniciando pesquisar Venda id=1
+08-07-2026 13:21:40 INFO  VendaController - Venda encontrada
+08-07-2026 13:21:49 INFO  VendaController - Iniciando pesquisar Venda id=1
+08-07-2026 13:21:49 INFO  VendaController - Venda encontrada
+08-07-2026 13:21:51 INFO  VendaController - Iniciando pesquisar Venda id=2
+08-07-2026 13:21:51 INFO  VendaController - Venda encontrada
+08-07-2026 13:21:59 INFO  VendaController - Iniciando excluir Venda id=2
+08-07-2026 13:21:59 INFO  VendaController - Venda excluída com sucesso
+08-07-2026 13:22:20 INFO  VendaController - Iniciando salvar Venda
+08-07-2026 13:22:20 INFO  ProdutoController - Verificando estoque do Produto
+08-07-2026 13:22:20 INFO  ProdutoController - Atualizando estoque após venda
+08-07-2026 13:22:20 INFO  ProdutoController - Atualizando última venda
+08-07-2026 13:22:20 INFO  FinanceiroController - Iniciando salvar Financeiro
+08-07-2026 13:22:20 INFO  FinanceiroController - Financeiro salvo com sucesso
+08-07-2026 13:22:20 INFO  FinanceiroParcelaController - Iniciando salvar FinanceiroParcela
+08-07-2026 13:22:20 INFO  FinanceiroParcelaController - FinanceiroParcela salva com sucesso
+08-07-2026 13:22:20 INFO  FinanceiroParcelaController - Iniciando salvar FinanceiroParcela
+08-07-2026 13:22:20 INFO  FinanceiroParcelaController - FinanceiroParcela salva com sucesso
+08-07-2026 13:22:20 INFO  FinanceiroParcelaController - Iniciando salvar FinanceiroParcela
+08-07-2026 13:22:20 INFO  FinanceiroParcelaController - FinanceiroParcela salva com sucesso
+08-07-2026 13:22:20 INFO  VendaController - Venda salva com sucesso
+08-07-2026 13:22:32 INFO  VendaController - Iniciando salvar Venda
+08-07-2026 13:22:32 ERROR VendaController - CPF excedeu limite de vendas no mês
+08-07-2026 13:23:19 INFO  ClienteController - Iniciando pesquisar todos os Clientes
+08-07-2026 13:23:19 INFO  ClienteController - Quantidade encontrada: 1
+08-07-2026 13:23:19 INFO  ProdutoController - Iniciando pesquisar todos os Produtos
+08-07-2026 13:23:19 INFO  ProdutoController - Quantidade encontrada: 2
+08-07-2026 13:23:19 INFO  FormaPagamentoController - Iniciando pesquisar todas as FormaPagamento
+08-07-2026 13:23:19 INFO  FormaPagamentoController - Quantidade encontrada: 2
+08-07-2026 13:23:19 INFO  TipoContaController - Iniciando pesquisar todos os TipoConta
+08-07-2026 13:23:19 INFO  TipoContaController - Quantidade encontrada: 3
+08-07-2026 13:23:23 INFO  VendaController - Iniciando pesquisar Venda id=1
+08-07-2026 13:23:23 INFO  VendaController - Venda encontrada
+08-07-2026 13:23:28 INFO  VendaController - Iniciando excluir Venda id=1
+08-07-2026 13:23:28 INFO  VendaController - Venda excluída com sucesso
+08-07-2026 13:23:38 INFO  VendaController - Iniciando salvar Venda
+08-07-2026 13:23:38 INFO  ProdutoController - Verificando estoque do Produto
+08-07-2026 13:23:38 INFO  ProdutoController - Atualizando estoque após venda
+08-07-2026 13:23:38 INFO  ProdutoController - Atualizando última venda
+08-07-2026 13:23:38 INFO  FinanceiroController - Iniciando salvar Financeiro
+08-07-2026 13:23:38 INFO  FinanceiroController - Financeiro salvo com sucesso
+08-07-2026 13:23:38 INFO  FinanceiroParcelaController - Iniciando salvar FinanceiroParcela
+08-07-2026 13:23:38 INFO  FinanceiroParcelaController - FinanceiroParcela salva com sucesso
+08-07-2026 13:23:38 INFO  VendaController - Venda salva com sucesso
+08-07-2026 13:23:43 INFO  VendaController - Iniciando pesquisar Venda id=2
+08-07-2026 13:23:43 ERROR VendaController - Venda não encontrada
+08-07-2026 13:23:46 INFO  VendaController - Iniciando pesquisar Venda id=3
+08-07-2026 13:23:46 INFO  VendaController - Venda encontrada
+08-07-2026 13:23:49 INFO  VendaController - Iniciando pesquisar Venda id=4
+08-07-2026 13:23:49 INFO  VendaController - Venda encontrada
+08-07-2026 13:23:51 INFO  VendaController - Iniciando pesquisar Venda id=5
+08-07-2026 13:23:51 INFO  VendaController - Venda encontrada
+08-07-2026 13:23:55 INFO  VendaController - Iniciando pesquisar Venda id=6
+08-07-2026 13:23:55 ERROR VendaController - Venda não encontrada
+08-07-2026 13:24:00 INFO  FinanceiroController - Iniciando pesquisar todos os Financeiros
+08-07-2026 13:24:00 INFO  FinanceiroController - Quantidade encontrada: 9
+08-07-2026 13:24:00 INFO  TipoContaController - Iniciando pesquisar todos os TipoConta
+08-07-2026 13:24:00 INFO  TipoContaController - Quantidade encontrada: 3
+08-07-2026 13:24:00 INFO  FormaPagamentoController - Iniciando pesquisar todas as FormaPagamento
+08-07-2026 13:24:00 INFO  FormaPagamentoController - Quantidade encontrada: 2
+08-07-2026 13:24:00 INFO  FornecedorController - Iniciando pesquisar todos os Fornecedores
+08-07-2026 13:24:00 INFO  FornecedorController - Quantidade encontrada: 2
+08-07-2026 13:24:00 INFO  ClienteController - Iniciando pesquisar todos os Clientes
+08-07-2026 13:24:00 INFO  ClienteController - Quantidade encontrada: 1
+08-07-2026 13:24:00 INFO  FinanceiroController - Iniciando pesquisar todos os Financeiros
+08-07-2026 13:24:00 INFO  FinanceiroController - Quantidade encontrada: 9
+08-07-2026 13:24:07 INFO  FinanceiroController - Iniciando pesquisar Financeiro id=8
+08-07-2026 13:24:07 INFO  FinanceiroController - Financeiro encontrado
+08-07-2026 13:24:09 INFO  FinanceiroController - Iniciando pesquisar Financeiro id=2
+08-07-2026 13:24:09 INFO  FinanceiroController - Financeiro encontrado
+08-07-2026 13:24:11 INFO  FinanceiroController - Iniciando pesquisar Financeiro id=9
+08-07-2026 13:24:11 INFO  FinanceiroController - Financeiro encontrado
+08-07-2026 13:24:13 INFO  FinanceiroController - Iniciando pesquisar Financeiro id=8
+08-07-2026 13:24:13 INFO  FinanceiroController - Financeiro encontrado
+08-07-2026 13:24:28 INFO  FinanceiroController - Iniciando pesquisar Financeiro id=8
+08-07-2026 13:24:28 INFO  FinanceiroController - Financeiro encontrado
+08-07-2026 13:24:28 INFO  FinanceiroController - Iniciando pesquisar Financeiro id=5
+08-07-2026 13:24:28 INFO  FinanceiroController - Financeiro encontrado
+08-07-2026 13:24:30 INFO  FinanceiroController - Iniciando pesquisar Financeiro id=5
+08-07-2026 13:24:30 INFO  FinanceiroController - Financeiro encontrado
+08-07-2026 13:24:32 INFO  FinanceiroController - Iniciando pesquisar Financeiro id=2
+08-07-2026 13:24:32 INFO  FinanceiroController - Financeiro encontrado
+08-07-2026 13:24:36 INFO  FinanceiroController - Iniciando pesquisar Financeiro id=2
+08-07-2026 13:24:36 INFO  FinanceiroController - Financeiro encontrado
+08-07-2026 13:24:36 INFO  FinanceiroController - Iniciando pesquisar todos os Financeiros
+08-07-2026 13:24:36 INFO  FinanceiroController - Quantidade encontrada: 9
+08-07-2026 13:24:36 INFO  FinanceiroParcelaController - Iniciando pesquisar todas as FinanceiroParcela
+08-07-2026 13:24:36 INFO  FinanceiroParcelaController - Quantidade encontrada: 8
+08-07-2026 13:24:40 INFO  FinanceiroController - Iniciando pesquisar Financeiro id=2
+08-07-2026 13:24:40 INFO  FinanceiroController - Financeiro encontrado
+08-07-2026 13:24:40 INFO  FinanceiroController - Iniciando pesquisar todos os Financeiros
+08-07-2026 13:24:40 INFO  FinanceiroController - Quantidade encontrada: 9
+08-07-2026 13:24:40 INFO  FinanceiroParcelaController - Iniciando pesquisar todas as FinanceiroParcela
+08-07-2026 13:24:41 INFO  FinanceiroParcelaController - Quantidade encontrada: 8
+08-07-2026 13:48:53 INFO  FinanceiroController - Iniciando pesquisar todos os Financeiros
+08-07-2026 13:48:53 INFO  FinanceiroController - Quantidade encontrada: 9
+08-07-2026 13:48:53 INFO  TipoContaController - Iniciando pesquisar todos os TipoConta
+08-07-2026 13:48:53 INFO  TipoContaController - Quantidade encontrada: 3
+08-07-2026 13:48:53 INFO  FormaPagamentoController - Iniciando pesquisar todas as FormaPagamento
+08-07-2026 13:48:53 INFO  FormaPagamentoController - Quantidade encontrada: 2
+08-07-2026 13:48:53 INFO  FornecedorController - Iniciando pesquisar todos os Fornecedores
+08-07-2026 13:48:53 INFO  FornecedorController - Quantidade encontrada: 2
+08-07-2026 13:48:53 INFO  ClienteController - Iniciando pesquisar todos os Clientes
+08-07-2026 13:48:53 INFO  ClienteController - Quantidade encontrada: 1
+08-07-2026 13:48:53 INFO  FinanceiroController - Iniciando pesquisar todos os Financeiros
+08-07-2026 13:48:53 INFO  FinanceiroController - Quantidade encontrada: 9
+08-07-2026 13:48:54 INFO  FinanceiroController - Iniciando pesquisar todos os Financeiros
+08-07-2026 13:48:54 INFO  FinanceiroController - Quantidade encontrada: 9
+08-07-2026 13:48:54 INFO  FinanceiroParcelaController - Iniciando pesquisar todas as FinanceiroParcela
+08-07-2026 13:48:54 INFO  FinanceiroParcelaController - Quantidade encontrada: 8
+08-07-2026 13:49:02 INFO  FinanceiroParcelaController - Iniciando pesquisar FinanceiroParcela id=5
+08-07-2026 13:49:02 INFO  FinanceiroParcelaController - FinanceiroParcela encontrada
+08-07-2026 13:49:03 INFO  FinanceiroParcelaController - Iniciando pesquisar FinanceiroParcela id=2
+08-07-2026 13:49:03 INFO  FinanceiroParcelaController - FinanceiroParcela encontrada
+08-07-2026 13:49:05 INFO  FinanceiroParcelaController - Iniciando pesquisar FinanceiroParcela id=8
+08-07-2026 13:49:05 INFO  FinanceiroParcelaController - FinanceiroParcela encontrada
+08-07-2026 13:49:06 INFO  FinanceiroParcelaController - Iniciando pesquisar FinanceiroParcela id=5
+08-07-2026 13:49:06 INFO  FinanceiroParcelaController - FinanceiroParcela encontrada
+08-07-2026 13:49:08 INFO  FinanceiroParcelaController - Iniciando pesquisar FinanceiroParcela id=3
+08-07-2026 13:49:08 INFO  FinanceiroParcelaController - FinanceiroParcela encontrada
+08-07-2026 13:49:09 INFO  FinanceiroParcelaController - Iniciando pesquisar FinanceiroParcela id=4
+08-07-2026 13:49:09 INFO  FinanceiroParcelaController - FinanceiroParcela encontrada
+08-07-2026 13:49:10 INFO  FinanceiroParcelaController - Iniciando pesquisar FinanceiroParcela id=3
+08-07-2026 13:49:10 INFO  FinanceiroParcelaController - FinanceiroParcela encontrada
+08-07-2026 13:49:12 INFO  FinanceiroParcelaController - Iniciando pesquisar FinanceiroParcela id=2
+08-07-2026 13:49:12 INFO  FinanceiroParcelaController - FinanceiroParcela encontrada
+08-07-2026 13:49:13 INFO  FinanceiroParcelaController - Iniciando pesquisar FinanceiroParcela id=3
+08-07-2026 13:49:13 INFO  FinanceiroParcelaController - FinanceiroParcela encontrada
+08-07-2026 13:49:15 INFO  FinanceiroParcelaController - Iniciando pesquisar FinanceiroParcela id=2
+08-07-2026 13:49:15 INFO  FinanceiroParcelaController - FinanceiroParcela encontrada
+08-07-2026 13:49:22 INFO  FinanceiroParcelaController - Iniciando pesquisar FinanceiroParcela id=7
+08-07-2026 13:49:22 INFO  FinanceiroParcelaController - FinanceiroParcela encontrada
+08-07-2026 13:49:23 INFO  FinanceiroParcelaController - Iniciando pesquisar FinanceiroParcela id=3
+08-07-2026 13:49:23 INFO  FinanceiroParcelaController - FinanceiroParcela encontrada
+08-07-2026 13:49:23 INFO  FinanceiroParcelaController - Iniciando pesquisar FinanceiroParcela id=4
+08-07-2026 13:49:23 INFO  FinanceiroParcelaController - FinanceiroParcela encontrada
+08-07-2026 13:49:25 INFO  FinanceiroParcelaController - Iniciando pesquisar FinanceiroParcela id=2
+08-07-2026 13:49:25 INFO  FinanceiroParcelaController - FinanceiroParcela encontrada
+08-07-2026 13:49:25 INFO  FinanceiroParcelaController - Iniciando pesquisar FinanceiroParcela id=4
+08-07-2026 13:49:25 INFO  FinanceiroParcelaController - FinanceiroParcela encontrada
+08-07-2026 13:49:29 INFO  FinanceiroParcelaController - Iniciando pesquisar FinanceiroParcela id=5
+08-07-2026 13:49:29 INFO  FinanceiroParcelaController - FinanceiroParcela encontrada
+08-07-2026 13:49:44 INFO  FinanceiroParcelaController - Iniciando pesquisar FinanceiroParcela id=8
+08-07-2026 13:49:44 INFO  FinanceiroParcelaController - FinanceiroParcela encontrada
+08-07-2026 13:49:45 INFO  FinanceiroParcelaController - Iniciando pesquisar FinanceiroParcela id=5
+08-07-2026 13:49:45 INFO  FinanceiroParcelaController - FinanceiroParcela encontrada
+08-07-2026 13:49:46 INFO  FinanceiroParcelaController - Iniciando pesquisar FinanceiroParcela id=3
+08-07-2026 13:49:46 INFO  FinanceiroParcelaController - FinanceiroParcela encontrada
+08-07-2026 13:49:47 INFO  FinanceiroParcelaController - Iniciando pesquisar FinanceiroParcela id=7
+08-07-2026 13:49:47 INFO  FinanceiroParcelaController - FinanceiroParcela encontrada
+08-07-2026 13:49:48 INFO  FinanceiroParcelaController - Iniciando pesquisar FinanceiroParcela id=6
+08-07-2026 13:49:48 INFO  FinanceiroParcelaController - FinanceiroParcela encontrada
+08-07-2026 13:49:49 INFO  FinanceiroParcelaController - Iniciando pesquisar FinanceiroParcela id=2
+08-07-2026 13:49:49 INFO  FinanceiroParcelaController - FinanceiroParcela encontrada
+08-07-2026 13:49:50 INFO  FinanceiroParcelaController - Iniciando pesquisar FinanceiroParcela id=1
+08-07-2026 13:49:50 INFO  FinanceiroParcelaController - FinanceiroParcela encontrada
+08-07-2026 13:49:50 INFO  FinanceiroParcelaController - Iniciando pesquisar FinanceiroParcela id=7
+08-07-2026 13:49:50 INFO  FinanceiroParcelaController - FinanceiroParcela encontrada
+08-07-2026 13:49:58 INFO  FinanceiroParcelaController - Iniciando pesquisar FinanceiroParcela id=2
+08-07-2026 13:49:58 INFO  FinanceiroParcelaController - FinanceiroParcela encontrada
+08-07-2026 13:50:13 INFO  FinanceiroController - Iniciando pesquisar Financeiro id=6
+08-07-2026 13:50:13 INFO  FinanceiroController - Financeiro encontrado
+08-07-2026 13:50:13 INFO  FinanceiroController - Iniciando pesquisar todos os Financeiros
+08-07-2026 13:50:13 INFO  FinanceiroController - Quantidade encontrada: 9
+08-07-2026 13:50:13 INFO  FinanceiroParcelaController - Iniciando pesquisar todas as FinanceiroParcela
+08-07-2026 13:50:13 INFO  FinanceiroParcelaController - Quantidade encontrada: 8
+08-07-2026 13:50:52 INFO  FinanceiroController - Iniciando pesquisar todos os Financeiros
+08-07-2026 13:50:52 INFO  Version - HHH000412: Hibernate ORM core version 6.5.2.Final
+08-07-2026 13:50:52 INFO  Environment - HHH000205: Loaded properties from resource hibernate.properties: {hibernate.connection.driver_class=org.postgresql.Driver, hibernate.format_sql=true, hibernate.connection.url=jdbc:postgresql://localhost:5432/SisCom _comercial_prog2_andre, hibernate.hbm2ddl.auto=update, hibernate.dialect=org.hibernate.dialect.PostgreSQLDialect, hibernate.show_sql=true, hibernate.connection.password=****, hibernate.connection.username=postgres}
+08-07-2026 13:50:52 INFO  RegionFactoryInitiator - HHH000026: Second-level cache disabled
+08-07-2026 13:50:52 WARN  pooling - HHH10001002: Using built-in connection pool (not intended for production use)
+08-07-2026 13:50:52 INFO  pooling - HHH10001005: Loaded JDBC driver class: org.postgresql.Driver
+08-07-2026 13:50:52 INFO  pooling - HHH10001012: Connecting with JDBC URL [jdbc:postgresql://localhost:5432/SisCom _comercial_prog2_andre]
+08-07-2026 13:50:52 INFO  pooling - HHH10001001: Connection properties: {user=postgres, password=****}
+08-07-2026 13:50:52 INFO  pooling - HHH10001003: Autocommit mode: false
+08-07-2026 13:50:52 INFO  pooling - HHH10001115: Connection pool size: 20 (min=1)
+08-07-2026 13:50:52 WARN  deprecation - HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+08-07-2026 13:50:53 INFO  JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+08-07-2026 13:50:53 INFO  access - HHH10001501: Connection obtained from JdbcConnectionAccess [org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess@3be67398] for (non-JTA) DDL execution was not in auto-commit mode; the Connection 'local transaction' will be committed and the Connection will be set into auto-commit mode.
+08-07-2026 13:50:54 INFO  FinanceiroController - Quantidade encontrada: 9
+08-07-2026 13:50:54 INFO  TipoContaController - Iniciando pesquisar todos os TipoConta
+08-07-2026 13:50:54 INFO  TipoContaController - Quantidade encontrada: 3
+08-07-2026 13:50:54 INFO  FormaPagamentoController - Iniciando pesquisar todas as FormaPagamento
+08-07-2026 13:50:54 INFO  FormaPagamentoController - Quantidade encontrada: 2
+08-07-2026 13:50:54 INFO  FornecedorController - Iniciando pesquisar todos os Fornecedores
+08-07-2026 13:50:54 INFO  FornecedorController - Quantidade encontrada: 2
+08-07-2026 13:50:54 INFO  ClienteController - Iniciando pesquisar todos os Clientes
+08-07-2026 13:50:54 INFO  ClienteController - Quantidade encontrada: 1
+08-07-2026 13:50:54 INFO  FinanceiroController - Iniciando pesquisar todos os Financeiros
+08-07-2026 13:50:54 INFO  FinanceiroController - Quantidade encontrada: 9
+08-07-2026 13:50:56 INFO  FinanceiroController - Iniciando pesquisar todos os Financeiros
+08-07-2026 13:50:56 INFO  FinanceiroController - Quantidade encontrada: 9
+08-07-2026 13:50:56 INFO  FinanceiroParcelaController - Iniciando pesquisar todas as FinanceiroParcela
+08-07-2026 13:50:56 INFO  FinanceiroParcelaController - Quantidade encontrada: 8

@@ -38,6 +38,7 @@ import siscom.model.FormaPagamento;
 import siscom.model.Fornecedor;
 import siscom.model.TipoConta;
 
+
 public class TelaFinanceiro extends JFrame {
 
     private JComboBox<Integer> cbId;
@@ -58,7 +59,7 @@ public class TelaFinanceiro extends JFrame {
     private JButton btnAlterar;
     private JButton btnExcluir;
     private JButton btnPesquisar;
-    private JButton btnImprimir;
+    private JButton btnParcelas;
 
     private JTable tabela;
     private DefaultTableModel modeloTabela;
@@ -169,13 +170,13 @@ public class TelaFinanceiro extends JFrame {
         btnAlterar = new JButton("Alterar");
         btnExcluir = new JButton("Excluir");
         btnPesquisar = new JButton("Pesquisar");
-        btnImprimir = new JButton("Imprimir");
+        btnParcelas = new JButton("Parcelas");
 
         painelBotoes.add(btnSalvar);
         painelBotoes.add(btnAlterar);
         painelBotoes.add(btnExcluir);
         painelBotoes.add(btnPesquisar);
-        painelBotoes.add(btnImprimir);
+        painelBotoes.add(btnParcelas);
 
         modeloTabela = new DefaultTableModel(
                 new Object[] {
@@ -245,9 +246,7 @@ public class TelaFinanceiro extends JFrame {
 
         btnPesquisar.addActionListener(e -> pesquisar());
 
-        btnImprimir.addActionListener(e ->
-                JOptionPane.showMessageDialog(this,
-                        "Relatório JasperReports"));
+        btnParcelas.addActionListener(e -> abrirParcelas());
 
         cbTipoMovimento.setSelectedIndex(0);
         atualizarCamposMovimento();
@@ -351,9 +350,10 @@ public class TelaFinanceiro extends JFrame {
         cbFornecedor.removeAllItems();
         cbCliente.removeAllItems();
 
-        List<Financeiro> financeiros = financeiroController.pesquisarTodos();
+        List<Financeiro> listaFinanceiro =
+                financeiroController.pesquisarTodos();
 
-        for (Financeiro financeiro : financeiros) {
+        for (Financeiro financeiro : listaFinanceiro) {
             cbId.addItem(financeiro.getId());
         }
 
@@ -706,6 +706,30 @@ public class TelaFinanceiro extends JFrame {
                     "Erro ao excluir.");
 
         }
+
+    }
+
+    private void abrirParcelas() {
+
+        Financeiro financeiro = null;
+
+        if (cbId.getSelectedItem() != null) {
+
+            financeiro = financeiroController.pesquisar(
+                    (Integer) cbId.getSelectedItem());
+
+            if (financeiro == null) {
+                JOptionPane.showMessageDialog(this,
+                        "Registro não encontrado.");
+                return;
+            }
+
+        }
+
+        TelaFinanceiroParcela telaParcelas =
+                new TelaFinanceiroParcela(financeiro);
+
+        telaParcelas.setVisible(true);
 
     }
 

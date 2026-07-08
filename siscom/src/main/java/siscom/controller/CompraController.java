@@ -11,6 +11,7 @@ import siscom.dao.CompraDAO;
 import siscom.model.Compra;
 import siscom.model.CompraProduto;
 import siscom.model.Financeiro;
+import siscom.model.FinanceiroParcela;
 import siscom.model.FormaPagamento;
 import siscom.model.TipoConta;
 
@@ -21,6 +22,7 @@ public class CompraController {
     private CompraDAO compraDAO = new CompraDAO();
     private ProdutoController produtoController = new ProdutoController();
     private FinanceiroController financeiroController = new FinanceiroController();
+    private FinanceiroParcelaController financeiroParcelaController = new FinanceiroParcelaController();
 
     public boolean salvar(
             Compra compra,
@@ -30,6 +32,7 @@ public class CompraController {
         logger.info("Iniciando salvar Compra");
 
         try {
+
             if (compra == null) {
                 logger.error("Compra nula");
                 return false;
@@ -83,29 +86,26 @@ public class CompraController {
 
                 item.setCompra(compra);
 
-                boolean estoqueOk = produtoController.atualizarEstoqueCompra(
+                if (!produtoController.atualizarEstoqueCompra(
                         item.getProduto(),
-                        item.getQuantidade());
+                        item.getQuantidade())) {
 
-                if (!estoqueOk) {
                     logger.error("Erro ao atualizar estoque");
                     return false;
                 }
 
-                boolean ultimaCompraOk = produtoController.atualizarUltimaCompra(
+                if (!produtoController.atualizarUltimaCompra(
                         item.getProduto(),
-                        item.getValorUnitario());
+                        item.getValorUnitario())) {
 
-                if (!ultimaCompraOk) {
                     logger.error("Erro ao atualizar última compra");
                     return false;
                 }
 
-                boolean precoMedioOk = produtoController.atualizarPrecoMedio(
+                if (!produtoController.atualizarPrecoMedio(
                         item.getProduto(),
-                        item.getValorUnitario());
+                        item.getValorUnitario())) {
 
-                if (!precoMedioOk) {
                     logger.error("Erro ao atualizar preço médio");
                     return false;
                 }
@@ -116,9 +116,7 @@ public class CompraController {
             compra.setValorTotal(valorTotal);
             compra.setDataCompra(LocalDate.now());
 
-            boolean compraSalva = compraDAO.salvar(compra);
-
-            if (!compraSalva) {
+            if (!compraDAO.salvar(compra)) {
                 logger.error("Falha ao salvar compra");
                 return false;
             }
@@ -126,34 +124,66 @@ public class CompraController {
             Financeiro financeiro = new Financeiro();
 
             financeiro.setDataConta(LocalDate.now());
-            financeiro.setValorTotal(compra.getValorTotal()); // NOVO
-            financeiro.setPagarOuReceber(0);
+            financeiro.setValorTotal(compra.getValorTotal());
+            financeiro.setPagarOuReceber(0); // Compra = Pagar
             financeiro.setFormaPagamento(formaPagamento);
             financeiro.setTipoConta(tipoConta);
             financeiro.setFornecedor(compra.getFornecedor());
 
-            boolean financeiroSalvo = financeiroController.salvar(financeiro);
-
-            if (!financeiroSalvo) {
+            if (!financeiroController.salvar(financeiro)) {
                 logger.error("Falha ao gerar financeiro");
                 compraDAO.excluir(compra.getId());
                 return false;
             }
+            Integer qtdeParcelas = formaPagamento.getQtdeParcela();
+
+            if (qtdeParcelas == null || qtdeParcelas <= 0) {
+                qtdeParcelas = 1;
+            }
+
+            double valorParcela = compra.getValorTotal() / qtdeParcelas;
+
+            for (int i = 1; i <= qtdeParcelas; i++) {
+
+                FinanceiroParcela parcela = new FinanceiroParcela();
+
+                parcela.setFinanceiro(financeiro);
+                parcela.setNParcela(i);
+
+                parcela.setDataVencimento(
+                        LocalDate.now().plusDays(
+                                (long) formaPagamento.getPrazo() * i));
+
+                parcela.setDataPagamento(null);
+
+                parcela.setValorOriginal(valorParcela);
+                parcela.setDesconto(0.0);
+                parcela.setAcrescimo(0.0);
+                parcela.setValorFinal(valorParcela);
+
+                parcela.setStatus(0); // Aberta
+
+                if (!financeiroParcelaController.salvar(parcela)) {
+                    logger.error("Erro ao salvar parcela " + i);
+                    return false;
+                }
+            }
 
             compra.setFinanceiro(financeiro);
 
-            boolean vinculoOk = compraDAO.alterar(compra);
-
-            if (!vinculoOk) {
+            if (!compraDAO.alterar(compra)) {
                 logger.error("Falha ao vincular financeiro");
                 return false;
             }
 
             logger.info("Compra salva com sucesso id=" + compra.getId());
+
             return true;
 
         } catch (Exception e) {
-            logger.error("Erro ao salvar Compra: " + e.getMessage());
+
+            logger.error("Erro ao salvar Compra", e);
+
             return false;
         }
     }
